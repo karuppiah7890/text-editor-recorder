@@ -2488,3 +2488,9 @@ Required. A font size
 
 For now I used the `editor.setFontSize(18)` and it's working well in the
 recorder and the player! :)
+
+---
+
+[TODO]
+- Show settings menu for the editor so that the user can customize the editor
+and then type :)
