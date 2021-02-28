@@ -2469,4 +2469,22 @@ in it!!
 
 I need more recording files!! :) For testing purposes. Hmm
 
+---
 
+I'm doing a short demo video of the cool player :D after the recorder :)
+
+I noticed that the font size is too small. Maybe I should bring in all the
+settings using the settings menu on the right. Hmm
+
+```
+setFontSize(Number size)
+Set a new font size (in pixels) for the editor text.
+
+Arguments:
+
+size: Number
+Required. A font size
+```
+
+For now I used the `editor.setFontSize(18)` and it's working well in the
+recorder and the player! :)
