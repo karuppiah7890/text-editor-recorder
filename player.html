@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Player</title>
+    <style type="text/css" media="screen">
+      body {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #editor {
+        height: 80%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <pre id="editor"></pre>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script>
+      const editor2 = ace.edit("editor");
+      editor2.setReadOnly(true);
+      editor2.setTheme("ace/theme/monokai");
+      editor2.session.setMode("ace/mode/javascript");
+      //   editor2.session.redoChanges([delta], true);
+    </script>
+  </body>
+</html>

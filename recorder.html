@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Recorder</title>
+    <style type="text/css" media="screen">
+      body {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #recording-editor {
+        height: 80%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <pre id="recording-editor"></pre>
+    <button id="start-recording">Start Recording</button>
+    <button id="stop-recording">Stop Recording</button>
+    <button id="download-recording" disabled>Download Recording</button>
+    <br />
+    <br />
+    <span id="status-message"></span>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script>
+      let recording = false;
+      let deltas = [];
+      const recordingEditor = ace.edit("recording-editor");
+      recordingEditor.setTheme("ace/theme/monokai");
+      recordingEditor.session.setMode("ace/mode/javascript");
+
+      function download(filename, text) {
+        var element = document.createElement("a");
+        element.setAttribute(
+          "href",
+          "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+        );
+        element.setAttribute("download", filename);
+
+        element.style.display = "none";
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+      }
+
+      function addListenerToButtons() {
+        const statusMessage = document.getElementById("status-message");
+
+        const downloadRecordingButton = document.getElementById(
+          "download-recording"
+        );
+        downloadRecordingButton.addEventListener("click", () => {
+          if (deltas.length == 0) {
+            statusMessage.innerText = "No Recording to download...";
+            return;
+          }
+
+          disableDownloadRecordingButton();
+          statusMessage.innerText = "Downloading Recording...";
+
+          const recordingData = JSON.stringify(deltas);
+          download("my-recording.textrec", recordingData);
+
+          statusMessage.innerText = "Downloaded Recording...";
+          enableDownloadRecordingButton();
+        });
+        function enableDownloadRecordingButton() {
+          downloadRecordingButton.removeAttribute("disabled");
+        }
+        function disableDownloadRecordingButton() {
+          downloadRecordingButton.setAttribute("disabled", "");
+        }
+
+        const startRecordingButton = document.getElementById("start-recording");
+        startRecordingButton.addEventListener("click", () => {
+          statusMessage.innerText = "Starting New Recording...";
+
+          disableDownloadRecordingButton();
+          recordingEditor.setReadOnly(true);
+          deltas = [];
+          const initialContent = recordingEditor.getValue();
+          delta = {
+            initialContent,
+          };
+          deltas.push(delta);
+          recording = true;
+
+          statusMessage.innerText = "Recording!";
+
+          recordingEditor.setReadOnly(false);
+        });
+
+        const stopRecordingButton = document.getElementById("stop-recording");
+        stopRecordingButton.addEventListener("click", () => {
+          statusMessage.innerText = "Stopping Recording...";
+
+          recordingEditor.setReadOnly(true);
+          recording = false;
+
+          statusMessage.innerText = "Stopped Recording...";
+          enableDownloadRecordingButton();
+
+          recordingEditor.setReadOnly(false);
+        });
+      }
+
+      addListenerToButtons();
+
+      recordingEditor.session.on("change", function (delta) {
+        if (recording) {
+          delete delta.id;
+          deltas.push(delta);
+        }
+      });
+    </script>
+  </body>
+</html>

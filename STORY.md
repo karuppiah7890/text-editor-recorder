@@ -1772,3 +1772,116 @@ Player:
 - Create a UI for player
   - An import button to import the JSON file of the recording
   - Start button to play the recording
+
+---
+
+Timers
+
+https://www.npmjs.com/search?q=timer
+
+---
+
+Let's start with the recorder!
+
+I'm starting to use version 1.4.12 instead of 1.4.11
+
+https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js
+
+---
+
+I want to be able to download the recording. For this I want the user to be
+able to download the file but just from the HTML and Js code. No server
+required kind of a thing. Hmm
+
+https://duckduckgo.com/?t=ffab&q=web+api+download&ia=web
+
+https://duckduckgo.com/?q=web+api+download+file&t=ffab&ia=web
+
+https://duckduckgo.com/?q=web+api+download+file+mozilla&t=ffab&ia=web
+
+https://duckduckgo.com/?q=web+api+download+content+mozilla&t=ffab&ia=web
+
+https://duckduckgo.com/?q=web+api+save+data&t=ffab&ia=web
+
+https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/downloads/download
+
+https://duckduckgo.com/?q=web+api+js+code+to+download+in-memory+content&t=ffab&ia=images&iax=qa
+
+http://stackoverflow.com/questions/3665115/ddg#18197341
+
+---
+
+For now I'm planning to store a big JSON to start off with. Like
+
+```json
+[{ "initialContent": "function add() { }" }, {}]
+```
+
+As now I'm just storing everything in-memory and finally downloading it. If it's
+any different I could use new-line delimited JSON and keep storing it with
+multiple JSONs as and when changes happen.
+
+Also by the way, new-line delimited JSON getting stored in a `.json` file is
+weird as according to JSON it's not one big JSON. It's multiple JSONs delimited
+or separated by a new line. asciinema called it `.cast` file :) and had their
+own media type. Gotta check it out. But I guess I could do that too! :D
+
+Maybe call it ".coderecording". Too big? 🤔 ".coderec" ? Hmm or more like,
+".textrec" as any text can be recorded! :D
+
+---
+
+I tried out the recording, but some issue happened with the download button.
+I messed up with the disabling part
+
+https://duckduckgo.com/?t=ffab&q=web+api+setAttribute&ia=web
+
+https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute#example
+
+I made the mistake of giving `disabled` attribute a value. It's more like a
+boolean attribute, no value is present for it
+
+```html
+<button id="download-recording" disabled>Download Recording</button>
+```
+
+```javascript
+downloadRecordingButton.setAttribute("disabled", true);
+```
+
+So, I need to do this
+
+```javascript
+downloadRecordingButton.setAttribute("disabled", "");
+```
+
+And I need to use `removeAttribute` instead of using `false` or even `null` for
+the attribute value as there's no value really in the first place!
+
+https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute
+
+So, instead of
+
+```javascript
+downloadRecordingButton.setAttribute("disabled", false);
+```
+
+It's gonna be
+
+```javascript
+downloadRecordingButton.removeAttribute("disabled");
+```
+
+And I finally tried it out and it worked!!!! YAY!!!!
+
+```json
+[{"initialContent":"function add(a, b) {\n    return a + b;\n}"},{"start":{"row":1,"column":16},"end":{"row":1,"column":17},"action":"insert","lines":[" "]},{"start":{"row":1,"column":16},"end":{"row":1,"column":17},"action":"remove","lines":[" "]},{"start":{"row":0,"column":17},"end":{"row":0,"column":18},"action":"insert","lines":[" "]},{"start":{"row":0,"column":17},"end":{"row":0,"column":18},"action":"remove","lines":[" "]},{"start":{"row":0,"column":17},"end":{"row":0,"column":18},"action":"insert","lines":[","]},{"start":{"row":0,"column":18},"end":{"row":0,"column":19},"action":"insert","lines":[" "]},{"start":{"row":0,"column":19},"end":{"row":0,"column":20},"action":"insert","lines":["c"]},{"start":{"row":1,"column":16},"end":{"row":1,"column":17},"action":"insert","lines":[" "]},{"start":{"row":1,"column":17},"end":{"row":1,"column":18},"action":"insert","lines":["+"]},{"start":{"row":1,"column":18},"end":{"row":1,"column":19},"action":"insert","lines":[" "]},{"start":{"row":1,"column":19},"end":{"row":1,"column":20},"action":"insert","lines":["c"]}]
+```
+
+So yeah, it didn't have indentation just to keep the space usage lesser - extra
+spaces uses up extra data. But if the above has indentation it's because my
+editor automatically indented it when I saved it!
+
+Next I need to work on the player! Umm, okay, I missed one important thing. Lol.
+The timing. Hahahaha. I need to add timings to the recording file. Right 😅 🙈
