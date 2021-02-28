@@ -966,10 +966,22 @@ Now, I'm assuming that these deltas should be in the right order. I can only ver
 Applications of recording coding?
 
 Interviews? Though I consider it a bad application.
-Another is, for teaching purposes. For example Scrimba has this recording where there's a recording of the code typed out and a voice over. I think the same can be done for workshops or coding tutorials. People on low bandwidths will benefit a lot if the only thing to show is code. So, there can be audio, which is low data and then recorded code being typed out which is again low data compared to a video which will have resolutions and what not and video may not even be clear and hence text may not even be clear.
-I think there are more tools with similar ideas. For example asciinema records terminal like this. There are also existing tools that record user typing. You can see it as plugins on code editors and as a feature used in coding platforms for interviews. I haven't used any other standalone tool yet. Will check it out soon! :)
+Another is, for teaching purposes. For example Scrimba has this recording where 
+there's a recording of the code typed out and a voice over. I think the same 
+can be done for workshops or coding tutorials. People on low bandwidths will 
+benefit a lot if the only thing to show is code. So, there can be audio, which 
+is low data and then recorded code being typed out which is again low data 
+compared to a video which will have resolutions and what not and video may not 
+even be clear and hence text may not even be clear.
+I think there are more tools with similar ideas. For example asciinema records 
+terminal like this. There are also existing tools that record user typing. You 
+can see it as plugins on code editors and as a feature used in coding platforms 
+for interviews. I haven't used any other standalone tool yet. Will check it out 
+soon! :)
 
-Which brings me to the point - how does asciinema record terminal? How does the data stored look like? Check the timing and understand how they play the log. Also check how tools play subtitles :)
+Which brings me to the point - how does asciinema record terminal? How does the 
+data stored look like? Check the timing and understand how they play the log. 
+Also check how tools play subtitles :)
 
 Action: check how the following happens
 asciinema play of recording
@@ -1124,6 +1136,8 @@ What this means is, when going backward, the text content in the editor should
 only have old stuff. In scrimba.com I see that when I go backward, the text is
 also getting deleted / undone. Like someone pressed undo.
 
+Example - https://scrimba.com/scrim/cPLv2cZ?pl=p7P5Hd
+
 Audio - going backwards, I think it's easy. There are already audio players.
 Surely there must be some recording and code editor players too, I guess.
 
@@ -1215,3 +1229,139 @@ editor2.session.redoChanges([delta], true);
 ```
 
 I had to use `true` to not select the changes.
+
+---
+
+I continued my research on asciinema and subtitles and how they work. I haven't
+read a lot of stuff. But this is what I found -
+
+Method for showing subtitles
+
+https://softwareengineering.stackexchange.com/q/381871/363229
+
+Complicated - https://patents.google.com/patent/RU2668721C1/en
+
+Web solution - https://www.w3.org/TR/webvtt1/
+
+Timed Text Working Group
+https://www.w3.org/AudioVideo/TT/
+
+Timed Text Markup Language (TTML) and WebVTT (Web Video Text Tracks)
+
+https://www.speechpad.com/captions/xml
+
+https://www.speechpad.com/captions/ttml
+
+https://w3c.github.io/webvtt/
+
+https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API
+
+https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video
+
+https://github.com/videojs/vtt.js/
+
+https://github.com/mozilla/vtt.js
+
+Showing subtitles seems to be like a complex thing and there are a lot of
+complex solutions out there. One difference between subtitles and text
+recording is - in text recording, it's only a log of stuff and you play it out.
+At least that's the basic feature. But in subtitles, you show it and then make
+the old subtitles disappear based on time. I was trying to understand the time
+part of it but then couldn't
+
+---
+
+I wanted to checkout about JavaScript timers just to understand it, thinking I
+might need it
+
+Javascript timer
+
+http://stackoverflow.com/questions/29971898/ddg#29972322
+
+https://www.sitepoint.com/creating-accurate-timers-in-javascript/
+
+---
+
+Recording user typing and Replaying
+
+When user records, take a snapshot of the editor and immediately attach a 
+listener to listen for changes and record the user typing. Only after this, 
+show the user that the recording has started. Maybe disable editor till 
+recording starts.
+
+After recording is stopped, remove the listener that listened for changes
+
+While playing the recording, start with the snapshot and then start adding 
+changes
+
+This way, the user is not forced to start recording from scratch. Also, they 
+don't have to copy and paste something big after starting to record. They can 
+simply record even if they already have some content and the recorder will 
+record it. !!! :D how cool is that? Like a camera!! :)
+
+---
+
+For asciinema, I was fortunate enough to read the code and after lots of
+thinking I think I know how it works to a basic extent, at least for the
+features I'm initially looking forward to, though it had pause and stuff.
+
+---
+
+Like asciinema, I'm going to adopt the v2 of the asciinema recording format,
+or what they call as cast format.
+
+v1 looked nice
+https://github.com/asciinema/asciinema/blob/develop/doc/asciicast-v1.md
+but it had some downsides apparently, which is mentioned in v2
+https://github.com/asciinema/asciinema/blob/develop/doc/asciicast-v2.md
+
+So, I'm going with new-line delimited JSON. So, something like
+
+```json
+{"obj": 1}
+{"obj": 2}
+```
+
+But JavaScript can't parse it though.
+
+```javascript
+let jsonstr = "{\"obj\": 1}\n{\"obj\": 2}"
+JSON.parse(jsonstr)
+```
+
+It gives the error
+
+```javascript
+Uncaught SyntaxError: JSON.parse: unexpected non-whitespace character after JSON data at line 2 column 1 of the JSON data
+    <anonymous> debugger eval code:1
+```
+
+So, maybe we can do this
+
+```javascript
+jsonstr.split('\n').forEach( e => console.log(JSON.parse(e)) )
+```
+
+which gives
+
+```javascript
+Object { obj: 1 }
+
+Object { obj: 2 }
+```
+
+So, I guess that will do. Also, apparently this kind of new-line delimited
+JSON is nice for streaming
+
+Something to note is, this format also talks about how the recording is done
+immediately or something similar. In v1, it was one big JSON with all the data.
+If something goes wrong in between - crash etc, then all the data present in the
+memory might not be converted to the big JSON. The big JSON can be obtained
+only when the recording stops. But in v2, I think the recorder can keep
+appending the data about the recording as and when it happens and doesn't have
+to wait till the end, as the storage is not a one big JSON :) I guess this is
+very advantageous!! :)
+
+https://github.com/asciinema/asciinema/blob/develop/asciinema/asciicast/events.py
+
+
