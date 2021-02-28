@@ -966,21 +966,21 @@ Now, I'm assuming that these deltas should be in the right order. I can only ver
 Applications of recording coding?
 
 Interviews? Though I consider it a bad application.
-Another is, for teaching purposes. For example Scrimba has this recording where 
-there's a recording of the code typed out and a voice over. I think the same 
-can be done for workshops or coding tutorials. People on low bandwidths will 
-benefit a lot if the only thing to show is code. So, there can be audio, which 
-is low data and then recorded code being typed out which is again low data 
-compared to a video which will have resolutions and what not and video may not 
+Another is, for teaching purposes. For example Scrimba has this recording where
+there's a recording of the code typed out and a voice over. I think the same
+can be done for workshops or coding tutorials. People on low bandwidths will
+benefit a lot if the only thing to show is code. So, there can be audio, which
+is low data and then recorded code being typed out which is again low data
+compared to a video which will have resolutions and what not and video may not
 even be clear and hence text may not even be clear.
-I think there are more tools with similar ideas. For example asciinema records 
-terminal like this. There are also existing tools that record user typing. You 
-can see it as plugins on code editors and as a feature used in coding platforms 
-for interviews. I haven't used any other standalone tool yet. Will check it out 
+I think there are more tools with similar ideas. For example asciinema records
+terminal like this. There are also existing tools that record user typing. You
+can see it as plugins on code editors and as a feature used in coding platforms
+for interviews. I haven't used any other standalone tool yet. Will check it out
 soon! :)
 
-Which brings me to the point - how does asciinema record terminal? How does the 
-data stored look like? Check the timing and understand how they play the log. 
+Which brings me to the point - how does asciinema record terminal? How does the
+data stored look like? Check the timing and understand how they play the log.
 Also check how tools play subtitles :)
 
 Action: check how the following happens
@@ -1284,19 +1284,19 @@ https://www.sitepoint.com/creating-accurate-timers-in-javascript/
 
 Recording user typing and Replaying
 
-When user records, take a snapshot of the editor and immediately attach a 
-listener to listen for changes and record the user typing. Only after this, 
-show the user that the recording has started. Maybe disable editor till 
+When user records, take a snapshot of the editor and immediately attach a
+listener to listen for changes and record the user typing. Only after this,
+show the user that the recording has started. Maybe disable editor till
 recording starts.
 
 After recording is stopped, remove the listener that listened for changes
 
-While playing the recording, start with the snapshot and then start adding 
+While playing the recording, start with the snapshot and then start adding
 changes
 
-This way, the user is not forced to start recording from scratch. Also, they 
-don't have to copy and paste something big after starting to record. They can 
-simply record even if they already have some content and the recorder will 
+This way, the user is not forced to start recording from scratch. Also, they
+don't have to copy and paste something big after starting to record. They can
+simply record even if they already have some content and the recorder will
 record it. !!! :D how cool is that? Like a camera!! :)
 
 ---
@@ -1325,8 +1325,8 @@ So, I'm going with new-line delimited JSON. So, something like
 But JavaScript can't parse it though.
 
 ```javascript
-let jsonstr = "{\"obj\": 1}\n{\"obj\": 2}"
-JSON.parse(jsonstr)
+let jsonstr = '{"obj": 1}\n{"obj": 2}';
+JSON.parse(jsonstr);
 ```
 
 It gives the error
@@ -1339,7 +1339,7 @@ Uncaught SyntaxError: JSON.parse: unexpected non-whitespace character after JSON
 So, maybe we can do this
 
 ```javascript
-jsonstr.split('\n').forEach( e => console.log(JSON.parse(e)) )
+jsonstr.split("\n").forEach((e) => console.log(JSON.parse(e)));
 ```
 
 which gives
@@ -1361,6 +1361,250 @@ only when the recording stops. But in v2, I think the recorder can keep
 appending the data about the recording as and when it happens and doesn't have
 to wait till the end, as the storage is not a one big JSON :) I guess this is
 very advantageous!! :)
+
+I noticed that asciinema has one issue which talks about stepping back in
+terminal replay but that web player has jt. At that point I recalled that
+asciinema has a web player and that the web player actually has play, pause,
+going back and forward too. But I don't remember using it much. I need to use
+it. Not sure how they implemented it and if they used the same file format for
+cast storage. I think they used the same. As I noticed the format doc mention
+about it's usage in different tools like web player and terminal recorder.
+
+This is the feature -
+https://github.com/asciinema/asciinema/issues/404
+
+There are many more interesting issues / feature requests
+
+Custom font -
+https://github.com/asciinema/asciinema/issues/421
+
+Splitting the recording -
+https://github.com/asciinema/asciinema/issues/399
+
+Quoting - not sure exactly if they mean just for preview image or for more
+https://github.com/asciinema/asciinema/issues/427
+But they want to go to a specific moment, which seems to be possible and also
+highlight some text for discussion. Hmm
+
+---
+
+I finally tried the web player version of asciinema for tinkering purposes and
+not just simply playing from first to last.
+
+I noticed that I can't pull the seek thingy. I can click on the timeline and the
+seek goes back. So, I guess they have a difficulty in "undoing" as that's
+something hard and crazy to do with the kind of data they have, also, it's
+a terminal. It would be weird to see the characters that appeared to go away one
+by one, including user typed characters. So, I guess this makes sense. But this
+terminal session recording is unlike recording a coding session. In coding, it's
+easy to show undo and makes sense too.
+
+---
+
+Another thing I noticed about the code that I currently use to apply changes is,
+the user can keep the cursor anywhere in the replay (live replay) but they can't
+change the code. Also, it doesn't show where the current cursor is present. I
+think it would be interesting to record that too, and show it properly. Mostly,
+the cursor will be present at where the change is happening. But let's say the
+user is moving around in the code and highlighting and stuff, at least for the
+moving around part, the recording can show the cursor. Let's see.
+
+Showing / recording the highlighting, folding / unfolding, the autocompletion,
+all this would be sooooo cool! :D But I'm not sure how the going backwards will
+work there. It would be weird to show the autocompletion stuff too while going
+backwards in time in the player. Hmm. Or maybe it's not weird. I don't know.
+We will know when it gets implemented and if it gets implemented :P :P Hmm
+
+About the timing, I read the asciinema code.
+
+https://github.com/asciinema/asciinema/blob/develop/asciinema/player.py
+
+I can see the `_play` method which I already say. I'm going to just take this
+part
+
+```python
+self._play(asciicast, idle_time_limit, speed, stdin, key_bindings)
+```
+
+And then go on from here
+
+```python
+ def _play(self, asciicast, idle_time_limit, speed, stdin, key_bindings):
+        idle_time_limit = idle_time_limit or asciicast.idle_time_limit
+        pause_key = key_bindings.get('pause')
+        step_key = key_bindings.get('step')
+
+        stdout = asciicast.stdout_events()
+        stdout = ev.to_relative_time(stdout)
+        stdout = ev.cap_relative_time(stdout, idle_time_limit)
+        stdout = ev.to_absolute_time(stdout)
+        stdout = ev.adjust_speed(stdout, speed)
+```
+
+So, there are some extra options like idle time limit - I think this is the time
+limit up to which the recording can show idleness between two actions / changes.
+Above this time limit, it will not be tolerated and the action will immediately
+happen I think.
+
+For example, if I type "function" and then wait for 5 seconds and then type
+"add() {}", then the player with option of idle time limit as 1 second will type
+the "function" and then wait only for 1 second and then immediately type the
+"add() {}" I think. This is just my assumption based on the code I read.
+However I'm not going to be configuring such time limit as of now but it's
+interesting to note all this. :)
+
+There are key bindings / keyboard shortcuts for pause and something called step.
+Not sure what step is, but I'm going to skip for now any of these cool stuff :P
+
+Next is the `asciicast.stdout_events()` method call. This method is here
+
+Assuming v2 format will be read by v2 asciicast code
+
+https://github.com/asciinema/asciinema/blob/develop/asciinema/asciicast/v2.py
+
+As I really don't know how to read full python code yet, so just based on
+assumption I'm going with this! :)
+
+The method is here
+
+https://github.com/asciinema/asciinema/blob/develop/asciinema/asciicast/v2.py#L28
+
+```python
+def stdout_events(self):
+    for time, type, data in self.events():
+        if type == 'o':
+            yield [time, type, data]
+```
+
+I haven't worked with stuff like `yield` or the iterator and other fancy stuff.
+But I think I can guess what it does. It gives out data in some iterative
+fashion I think.
+
+So, this is the method that reads the events with `events()` which is here
+
+https://github.com/asciinema/asciinema/blob/develop/asciinema/asciicast/v2.py#L24
+
+like this
+
+```python
+import json
+
+def events(self):
+    for line in self.__file:
+        yield json.loads(line)
+```
+
+So, now, we see that it loads the JSON and then gets the time, type of data,
+in this case "o" which is "output" and then the data itself.
+
+And then there are these lines
+
+```python
+import asciinema.asciicast.events as ev
+
+stdout = ev.to_relative_time(stdout)
+stdout = ev.cap_relative_time(stdout, idle_time_limit)
+stdout = ev.to_absolute_time(stdout)
+stdout = ev.adjust_speed(stdout, speed)
+```
+
+What this `ev.to_relative_time(stdout)` does is -
+
+https://github.com/asciinema/asciinema/blob/5816099c4bd3c151144414f5a245405b926d6c76/asciinema/asciicast/events.py#L1
+
+It converts the timing data present within the program. So, according to the
+storage format, it's like
+
+3, event1
+5, event2
+8, event3
+12, event4
+
+which means, event1 happens after 3 seconds since the start, event2 happens
+after 5 seconds since the start, event3 after 8 seconds from the start and so
+on. This is absolute timing of events based on the recording start time. This
+is converted to a relative time like
+
+3, event1
+2, event2
+3, event3
+4, event4
+
+What this means is, event1 occurs 3 seconds after the previous thing, in this
+case, the start of the recording. event2 occurs 2 seconds after event1. event3
+happens 3 seconds after event2, and so on. Now, this is called relative time
+or relative timing as this is timing each event based on the previous event.
+
+Now, why are we doing this? I mean, if we want this, why not store it in this
+format, the relative timing format. Actually that's how v1 was stored. But I
+think the catch is that, if one wants to jump directly to say the 5th second
+from the start or say the 8th second from the start, with relative timing, we
+need to add up the different relative times to understand which event is going
+to happen at the 5th second from the start. In the above case, add 3 and 2 and
+get 5 which shows that event2 happens at 5th second from the start. event3
+happens at 8th second from the start (3 + 2 + 3). Anyways, that's just my guess
+of why the format changed in v2 to show the absolute timing. Also, there are
+reasons mentioned in the format documentation which I didn't exactly understand.
+I need to research and dig more to understand them. Anyways, now, back to the
+question, why do this? Well, for this we need to check the next operation.
+
+`stdout = ev.cap_relative_time(stdout, idle_time_limit)`
+
+Remember the idle time limit? For that reason we do relative timing and check
+the time / delay between two events by understand the timing of events based on
+the previous events.
+
+`cap_relative_time` implementation -
+
+https://github.com/asciinema/asciinema/blob/5816099c4bd3c151144414f5a245405b926d6c76/asciinema/asciicast/events.py#L20
+
+You can see how there's a `min` function used among `delay` and the 
+`time_limit`. This way, we try to go with the minimum value - if delay is
+lesser than the time limit, that's fine. `time_limit` is out limit or threshold
+and we can't go above it. So, if there was a delay like 5 seconds like the
+example I mentioned and if the limit is 1 second, the min will be 1 second.
+
+So, that's why we did relative timing I think. Again, just my assumption, as I
+don't see a point otherwise :)
+
+Next we do `ev.to_absolute_time(stdout)`. The definition of the function is
+here
+
+https://github.com/asciinema/asciinema/blob/5816099c4bd3c151144414f5a245405b926d6c76/asciinema/asciicast/events.py#L11
+
+Why do this? Well, I think we need absolute time only. Hence the format. We just
+had to go to an intermediate state - the relative timing - for the capping or
+limiting of delays between the events. So, this is like going back to the
+actual format we want.
+
+Finally there's a `ev.adjust_speed(stdout, speed)`. Definition is here
+
+https://github.com/asciinema/asciinema/blob/5816099c4bd3c151144414f5a245405b926d6c76/asciinema/asciicast/events.py#L27
+
+```python
+def adjust_speed(events, speed):
+    return ([delay / speed, type, data] for delay, type, data in events)
+```
+
+I was surprised at the number of options this tool has. I was trying to
+understand this function. I realized how cool it is.
+
+So, `delay` is in seconds. I'm not sure what is the unit of `speed` here.
+But assuming it's just a number, higher the number seems like higher speed. Why?
+Well, based on mathematics, delay is the time of the event from the start of the
+recording. If the delay of the event occurring is lesser, the event occurs
+faster. So, when you divide delay by a bigger number, for example any number
+above 1, then the value of `delay / speed` decreases, and the final result is
+the final delay, which is lesser now and hence the event happens faster. Now,
+if the speed value is less than 1, then `delay / speed` value is more than
+`delay` and hence resulting delay increases and hence the event occurs slower.
+
+So, in general, if the speed value increases, the final delay value which is
+`delay / speed` decreases, which means the event occurs faster / at fast speed.
+Similarly if speed value decreases, the final delay value which is
+`delay / speed` increases, which means the event occurs slowly / at slow speed.
+
+
 
 https://github.com/asciinema/asciinema/blob/develop/asciinema/asciicast/events.py
 
