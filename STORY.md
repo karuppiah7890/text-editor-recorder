@@ -1558,7 +1558,7 @@ the previous events.
 
 https://github.com/asciinema/asciinema/blob/5816099c4bd3c151144414f5a245405b926d6c76/asciinema/asciicast/events.py#L20
 
-You can see how there's a `min` function used among `delay` and the 
+You can see how there's a `min` function used among `delay` and the
 `time_limit`. This way, we try to go with the minimum value - if delay is
 lesser than the time limit, that's fine. `time_limit` is out limit or threshold
 and we can't go above it. So, if there was a delay like 5 seconds like the
@@ -1604,8 +1604,171 @@ So, in general, if the speed value increases, the final delay value which is
 Similarly if speed value decreases, the final delay value which is
 `delay / speed` increases, which means the event occurs slowly / at slow speed.
 
+The next few lines are
 
+```python
+base_time = time.time()
+ctrl_c = False
+paused = False
+pause_time = None
+```
 
-https://github.com/asciinema/asciinema/blob/develop/asciinema/asciicast/events.py
+I'm not going to check much about the ctrl_c, paused / paused_time stuff as I'm
+not yet going to implement any of those. It's actually to interrupt the
+recording and to pause.
 
+The next lines are
 
+```python
+for t, _type, text in stdout:
+    delay = t - (time.time() - base_time)
+
+    while stdin and not ctrl_c and delay > 0:
+        if paused:
+            while True:
+                data = read_blocking(stdin.fileno(), 1000)
+
+                if 0x03 in data:  # ctrl-c
+                    ctrl_c = True
+                    break
+
+                if data == pause_key:
+                    paused = False
+                    base_time = base_time + (time.time() - pause_time)
+                    break
+
+                if data == step_key:
+                    delay = 0
+                    pause_time = time.time()
+                    base_time = pause_time - t
+                    break
+        else:
+            data = read_blocking(stdin.fileno(), delay)
+
+            if not data:
+                break
+
+            if 0x03 in data:  # ctrl-c
+                ctrl_c = True
+                break
+
+            if data == pause_key:
+                paused = True
+                pause_time = time.time()
+                slept = t - (pause_time - base_time)
+                delay = delay - slept
+
+    if ctrl_c:
+        break
+
+    sys.stdout.write(text)
+    sys.stdout.flush()
+```
+
+`stdout` has the stream of events / list of events, with time, type and the data
+
+`delay` is the time to wait to show the data. How did I find it out? So, `delay`
+is defined as
+
+`t - (time.time() - base_time)`
+
+`base_time` is the start time of the recording I think, or more like start time
+of the playing of the recording. It's a constant.
+
+`time.time()` is the current time I think, the current time at the time of that
+line's execution. The difference gives the time that has elapsed from the start
+of the playing of the recording.
+
+`t` is the time at which the event should happen, or the data should be printed
+basically.
+
+Let's say for the first data I type in the terminal, I take 5 seconds to type
+it. So, `t` is 5 seconds. Since the loop starts immediately, the time difference
+of `time.time()` and `base_time` won't be much, but it will be positive. Now,
+subtract that from 5 seconds and you get a big value, like something between
+4 and 5 seconds. Now, the program needs to wait for around 5 seconds to show the
+first data that I typed during the recording.
+
+I'm ignoring the `if paused` block as I'm not into pausing as of now.
+
+Let's look at the else part. There's a `read_blocking` from
+
+`from asciinema.term import raw, read_blocking`
+
+https://github.com/asciinema/asciinema/blob/develop/asciinema/term.py#L28
+
+```python
+def read_blocking(fd, timeout):
+    if fd in select.select([fd], [], [], timeout)[0]:
+        return os.read(fd, 1024)
+
+    return b''
+```
+
+So, here we see that there's some `select.select`. From python docs,
+
+https://docs.python.org/3/library/select.html#select.select
+
+```
+The optional timeout argument specifies a time-out as a floating point number
+in seconds.
+```
+
+Some more links:
+https://duckduckgo.com/?q=python+select.select&t=fpas&ia=qa
+
+https://stackoverflow.com/questions/11591054/python-how-select-select-works#11591492
+
+So, we are basically waiting for reading from the standard input I think -
+`stdin`. We wait in a blocking manner. But if we have a timeout, we only wait
+till that time. Why are we waiting to read from standard input, well, since this
+is a terminal application, we are checking if the user is trying to exit from
+the app anytime with ctrl + c keyboard shortcut or pause using a keyboard
+shortcut.
+
+So, let's skip those stuff. Basically, we wait for some delay amount of time.
+This is how we get the delay. I need to check how to simulate this delay in
+JavaScript - sleep? setTimeout? what's accurate? Gotta check.
+
+If there's no data from the user in this time, the loop breaks and then the
+data is show to the screen! :)
+
+---
+
+Steps to create a recorder and player for code editor.
+
+Recorder:
+
+- Create a UI for recording
+  - There should be a button to start recording and to stop recording
+- Recording button
+  - Once the user clicks it, the recorder should first take a snapshot of the
+    current editor content. Till the snapshot is taken, it should keep showing
+    "going to record". After the snapshot is done, only then it should start
+    recording and show "recording"
+- Stop recording button
+  - Once the user clicks it, the recorder should remove anything that is used to
+    record the actions of the user
+  - I don't see any edge cases here, like user typing in between when the
+    recording is being stopped. I don't mind any such cases too. But in the web,
+    when user is clicking a button to stop recording, the focus is on the button
+    and focus is not on the editor / it's out of the editor. But the user can
+    click the button and immediately start typing in the editor. Maybe to avoid
+    that kind of thing, once the stop is clicked, the editor should be disabled
+    or made readonly on the so that the recording can be stopped and the data
+    storage work is all done. Ideally data storage will keep happening in a
+    streaming manner. Anyways. Once all the post recording work is done, show
+    "stopped recording" message somehow and then re-enable the editor so that
+    the user can start typing again :)
+- Download the recording as JSON
+  - There should be a way to download the recording as a JSON
+  - Should we store the recording in local storage or indexed db or something?
+    Or just keep it in memory for now?
+  - This JSON file will be used to import the data in a player so that the
+    player can play the recording
+
+Player:
+
+- Create a UI for player
+  - An import button to import the JSON file of the recording
+  - Start button to play the recording
