@@ -1043,4 +1043,143 @@ back and then continue when I'm more awake. Going to sleep now!! :)
 `asciinema/asciicast/events.py` > `to_relative_time` and many other functions/
 methods
 
+---
 
+So many people use Ace editor!
+
+https://ace.c9.io/#nav=production
+
+---
+
+Apparently for auto completion, I need to do this
+
+```javascript
+// enable autocompletion and snippets
+editor.setOptions({
+  enableBasicAutocompletion: true,
+  enableSnippets: true,
+  enableLiveAutocompletion: false,
+});
+```
+
+Not sure what live autocompletion means, but that's disabled above.
+
+I noticed some nice demos at
+
+`ace-builds/demo`
+
+Loved the below ones
+
+`ace-builds/demo/bookmarklet/index.html` - I tried different themes, soft wrap
+and other simple features. I also bookmarked the link and double clicked on a
+text area on the page and it turned into an ace editor!! Wow thing!! :D That
+too a customized editor ;) :D
+
+`ace-builds/demo/emmet.html` - I tried typing `html` and then tab. I also
+tried `div.cool` and then tab.
+
+`autocompletion.html` - auto completion! I tried typing `console.log` with
+auto completion
+
+`autoresize.html` - based on size on the html page, or based on the settings it
+has like min lines and max lines, I could see differences in auto resizing. It
+was cool actually! :)
+
+`ace-builds/demo/settings_menu.html` - cool stuff by showing a settings menu,
+and that too with key binding!! :D
+
+`ace-builds/demo/shadow-dom.html` - it's cool! It's like the codepen.io , or
+jsbin.com and similar websites where you get to build a live web page / web app
+all by coding in a web app itself.
+
+`ace-builds/demo/toolbar.html` is nice too! Save, undo, redo and all.
+
+`ace-builds/demo/transform.html` has CSS transforms and the editor looks cool
+in various angles and also totally upside down too!! :D
+
+Didn't understand these though / couldn't understand how to view the demo -
+
+`chromevox.html`
+`code_lens.html`
+
+---
+
+Record and Replay:
+
+Let's say I want to build something like scrimba.com - where there is audio and
+a editor where the instructor types out stuff. Surely many might have built
+something like this. I want to build one myself though! :P
+
+For this I was thinking how it can be done. So, there are two parts to it.
+
+One is the recording of the text / code content in the editor
+Another is the recording of the audio by the instructor
+
+Also, these are sync by the way.
+
+And the cool feature is, you have a player - with play and pause button and a
+seek with a timeline. You can go forward and backward!! :D
+
+What this means is, when going backward, the text content in the editor should
+only have old stuff. In scrimba.com I see that when I go backward, the text is
+also getting deleted / undone. Like someone pressed undo.
+
+Audio - going backwards, I think it's easy. There are already audio players.
+Surely there must be some recording and code editor players too, I guess.
+
+Anyways, I was thinking how such a thing can be built.
+
+For audio, clearly we need a simple audio player, like the browser's built-in
+media player for video/audio.
+
+The tricky part is, we also need to sync the text editor recording being played
+with how the audio plays. It should be in sync. So, even while recording, the
+audio and the text should be recorded in such a way that there is content for
+exactly one duration. One tricky part with text content is, I think it might be
+hard to understand the duration. Or, maybe not. I mean, there must be a start
+and end time. I should not record anything in between. There might be an initial
+state for the text editor though, with some pre-existing code, after which the
+recording starts. Anyways. Also, scrimba.com also shows existing code when the
+recording starts.
+
+I think text content recording should also have precise duration so that it's
+clear as to how long it was recorded. But like any other media, nothing much
+will be there in some parts of the duration if there was no new data. At least
+in text content recording, if no new character was typed, it will just have no
+data for that time. But the recording might still end a lot later, when the
+stop button was pressed for the recording. :)
+
+Also, my idea was that - when the recording is played, the user cannot edit the
+editor content. I mean, it's a recording. We can play, pause, resume, go
+forward, go backward. You don't edit a recording that's playing, unless it's
+some sort of editing software. But I'm only planning to create a recorder and a
+player of sorts. Not an editor. But scrimba.com does have editing too, but when
+resuming, it resumes from where it left off. It shows a small icon on the seek
+at that point to ask if we want to save our edits etc. Nice thing! :)
+
+In ace editor, in read only mode, the user cannot edit, but they can still
+select code, copy and stuff :)
+
+I think for going forward and backward, it's going to be tricky. For now, I'm
+not planning on creating a player with so many options. Just play is the option
+for now. Not even pause I think. :P
+
+But for forward and backward, it will just be applying changes to the editor
+very fast or undoing the applied changes based on time. It's a very tricky thing
+though.
+
+Also, the player should be in such a way that I can get events for when it is
+paused, played, resumed, seeking forward or backward etc so that I can control
+the playing of the text editor recording. But I won't do anything to the audio
+playing.
+
+But both the audio and text editor should be played with one single player,
+at least from the UI perspective. Only one set of tools. It should be like the
+text and audio come together.
+
+Even for the recording, we should export two files - text and audio. I'm
+wondering how it can be one file. Not sure. Maybe two is better. Maybe it can
+compressed into one if needed, like a zip, tar, tar.gz etc.
+
+The player should take both of these files - text and audio and then play the
+audio and the text recording.
