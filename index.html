@@ -40,7 +40,7 @@
       editor1.session.on("change", function (delta) {
         // console.log(delta.start, delta.end, delta.lines, delta.action)
         console.log(delta);
-        editor2.session.redoChanges([delta]);
+        editor2.session.redoChanges([delta], true);
       });
     </script>
   </body>

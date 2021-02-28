@@ -1183,3 +1183,35 @@ compressed into one if needed, like a zip, tar, tar.gz etc.
 
 The player should take both of these files - text and audio and then play the
 audio and the text recording.
+
+---
+
+Back to the concept of implementing the recording. :)
+
+```javascript
+editor2.session.redoChanges([delta]);
+```
+
+The above is what I had used to apply one change / one delta. I noticed that
+this caused the change to be applied but the editor always selected the change
+or something. I recalled that there's another argument to this, something about
+select.
+
+```
+redoChanges(Array deltas, Boolean dontSelect): Range
+
+Re-implements a previously undone change to your document.
+
+Arguments:
+deltas: Array >
+Required. An array of previous changes
+
+dontSelect:	Boolean >
+Required. If true, doesn't select the range of where the change occurred
+```
+
+```javascript
+editor2.session.redoChanges([delta], true);
+```
+
+I had to use `true` to not select the changes.
