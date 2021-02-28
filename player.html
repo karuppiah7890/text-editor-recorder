@@ -18,6 +18,11 @@
 
   <body>
     <pre id="editor"></pre>
+    <input type="file" id="recording-file" />
+    <button id="play-recording" disabled>Play recording</button>
+    <br />
+    <br />
+    <span id="status-message"></span>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"
@@ -25,11 +30,110 @@
       charset="utf-8"
     ></script>
     <script>
-      const editor2 = ace.edit("editor");
-      editor2.setReadOnly(true);
-      editor2.setTheme("ace/theme/monokai");
-      editor2.session.setMode("ace/mode/javascript");
-      //   editor2.session.redoChanges([delta], true);
+      let deltas;
+      const playerEditor = ace.edit("editor");
+      playerEditor.setReadOnly(true);
+      playerEditor.setTheme("ace/theme/monokai");
+      playerEditor.session.setMode("ace/mode/javascript");
+      const loadRecordingFileButton = document.getElementById("recording-file");
+      const statusMessage = document.getElementById("status-message");
+      const playRecordingButton = document.getElementById("play-recording");
+
+      const sleep = (delayInMilliseconds) =>
+        new Promise((resolve) => setTimeout(resolve, delayInMilliseconds));
+
+      function enablePlayRecordingButton() {
+        playRecordingButton.removeAttribute("disabled");
+      }
+
+      function disablePlayRecordingButton() {
+        playRecordingButton.setAttribute("disabled", "");
+      }
+
+      async function playRecording() {
+        disablePlayRecordingButton();
+
+        const header = deltas.shift();
+
+        playerEditor.setValue(header.initialContent, 1);
+
+        const startTime = Date.now();
+        console.log("start time: ", startTime);
+
+        for (let i = 0; i < deltas.length; i++) {
+          const delta = deltas[i];
+          let delayToApplyDelta =
+            delta.timeFromStart - (Date.now() - startTime);
+          console.log("delayToApplyDelta: ", delayToApplyDelta);
+
+          if (delayToApplyDelta > 0) {
+            await sleep(delayToApplyDelta);
+          }
+
+          delete delta.timeFromStart;
+          playerEditor.session.redoChanges([delta], true);
+        }
+
+        enablePlayRecordingButton();
+      }
+
+      function loadDeltasFromFileContent(content) {
+        try {
+          deltas = JSON.parse(content);
+        } catch (err) {
+          statusMessage.innerText = `Error occurred while loading the recording file. Detailed error: ${err.message}`;
+        }
+        enablePlayRecordingButton();
+      }
+
+      function onSuccessfullyLoadingFile(event) {
+        const fileContent = event.target.result;
+
+        // This is a regular expression to identify carriage
+        // Returns and line breaks
+        const lines = fileContent.split(/\r\n|\n/);
+        const content = lines.join("\n");
+
+        loadDeltasFromFileContent(content);
+      }
+
+      function onErrorLoadingFile(event) {
+        event.target.error.name;
+      }
+
+      function addListenersToButtons() {
+        loadRecordingFileButton.addEventListener("change", () => {
+          disablePlayRecordingButton();
+
+          const recordingFiles = loadRecordingFileButton.files;
+
+          if (recordingFiles.length == 0) {
+            statusMessage.innerText =
+              "Error: No files have been selected for loading";
+            return;
+          }
+
+          if (recordingFiles.length != 1) {
+            statusMessage.innerText =
+              "Error: Exactly one file has to be selected";
+            return;
+          }
+
+          const recordingFile = recordingFiles[0];
+
+          let reader = new FileReader();
+
+          reader.addEventListener("load", onSuccessfullyLoadingFile);
+
+          reader.addEventListener("error", onErrorLoadingFile);
+
+          reader.readAsText(recordingFile);
+        });
+
+        playRecordingButton.addEventListener("click", playRecording);
+      }
+
+      addListenersToButtons();
     </script>
   </body>
 </html>

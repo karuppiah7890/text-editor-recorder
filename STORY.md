@@ -1772,6 +1772,7 @@ Player:
 - Create a UI for player
   - An import button to import the JSON file of the recording
   - Start button to play the recording
+- Play the recording by adding the deltas one by one based on time
 
 ---
 
@@ -1876,7 +1877,75 @@ downloadRecordingButton.removeAttribute("disabled");
 And I finally tried it out and it worked!!!! YAY!!!!
 
 ```json
-[{"initialContent":"function add(a, b) {\n    return a + b;\n}"},{"start":{"row":1,"column":16},"end":{"row":1,"column":17},"action":"insert","lines":[" "]},{"start":{"row":1,"column":16},"end":{"row":1,"column":17},"action":"remove","lines":[" "]},{"start":{"row":0,"column":17},"end":{"row":0,"column":18},"action":"insert","lines":[" "]},{"start":{"row":0,"column":17},"end":{"row":0,"column":18},"action":"remove","lines":[" "]},{"start":{"row":0,"column":17},"end":{"row":0,"column":18},"action":"insert","lines":[","]},{"start":{"row":0,"column":18},"end":{"row":0,"column":19},"action":"insert","lines":[" "]},{"start":{"row":0,"column":19},"end":{"row":0,"column":20},"action":"insert","lines":["c"]},{"start":{"row":1,"column":16},"end":{"row":1,"column":17},"action":"insert","lines":[" "]},{"start":{"row":1,"column":17},"end":{"row":1,"column":18},"action":"insert","lines":["+"]},{"start":{"row":1,"column":18},"end":{"row":1,"column":19},"action":"insert","lines":[" "]},{"start":{"row":1,"column":19},"end":{"row":1,"column":20},"action":"insert","lines":["c"]}]
+[
+  { "initialContent": "function add(a, b) {\n    return a + b;\n}" },
+  {
+    "start": { "row": 1, "column": 16 },
+    "end": { "row": 1, "column": 17 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 1, "column": 16 },
+    "end": { "row": 1, "column": 17 },
+    "action": "remove",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 0, "column": 17 },
+    "end": { "row": 0, "column": 18 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 0, "column": 17 },
+    "end": { "row": 0, "column": 18 },
+    "action": "remove",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 0, "column": 17 },
+    "end": { "row": 0, "column": 18 },
+    "action": "insert",
+    "lines": [","]
+  },
+  {
+    "start": { "row": 0, "column": 18 },
+    "end": { "row": 0, "column": 19 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 0, "column": 19 },
+    "end": { "row": 0, "column": 20 },
+    "action": "insert",
+    "lines": ["c"]
+  },
+  {
+    "start": { "row": 1, "column": 16 },
+    "end": { "row": 1, "column": 17 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 1, "column": 17 },
+    "end": { "row": 1, "column": 18 },
+    "action": "insert",
+    "lines": ["+"]
+  },
+  {
+    "start": { "row": 1, "column": 18 },
+    "end": { "row": 1, "column": 19 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 1, "column": 19 },
+    "end": { "row": 1, "column": 20 },
+    "action": "insert",
+    "lines": ["c"]
+  }
+]
 ```
 
 So yeah, it didn't have indentation just to keep the space usage lesser - extra
@@ -1885,3 +1954,519 @@ editor automatically indented it when I saved it!
 
 Next I need to work on the player! Umm, okay, I missed one important thing. Lol.
 The timing. Hahahaha. I need to add timings to the recording file. Right 😅 🙈
+
+---
+
+Sidetrack
+
+I wanted to check if I can remove the `on("change")` event listener. I noticed
+some code in the repo
+
+https://github.com/ajaxorg/ace
+
+There were some event emitters. I didn't understand all the stuff but it did
+have some concept of removing listeners. I think it's not properly documented,
+but I need to try it out and experiment. For now my implementation for
+recording and stopping recording is
+
+```javascript
+recordingEditor.session.on("change", function (delta) {
+  if (recording) {
+    delete delta.id;
+    deltas.push(delta);
+  }
+});
+```
+
+---
+
+Okay, back to recording with time. Hmm, let me check what's the accuracy of
+JavaScript timer / date / time functions.
+
+And what's the accuracy of sleep functions if any
+
+https://duckduckgo.com/?t=ffab&q=javascript+date+time+accuracy&ia=web
+
+https://duckduckgo.com/?t=ffab&q=javascript+sleep+accuracy&ia=web
+
+https://duckduckgo.com/?q=javascript+date+time+&t=ffab&ia=web
+
+https://www.w3schools.com/jsref/jsref_obj_date.asp
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+Looking at the date functions, I think milliseconds might be the closest we can
+get to in terms of accuracy? At least in the getter methods.
+
+What about the timestamp? Hmm
+
+Apparently there's also a new proposal for something new called Temporal
+
+https://tc39.es/proposal-temporal/docs/index.html
+
+https://blogs.igalia.com/compilers/2020/06/23/dates-and-times-in-javascript/
+
+And a survey https://forms.gle/iL9iZg7Y9LvH41Nv8 which seems to be closed now.
+
+https://maggiepint.com/2017/04/09/fixing-javascript-date-getting-started/
+
+Temporal -
+https://duckduckgo.com/?t=ffab&q=javascript+temporal&ia=web
+
+https://dev.to/romulocintra/temporal-date-time-in-javascript-today-23cb
+
+https://www.sitepoint.com/javascript-temporal-api-introduction/
+
+And oh yeah, I forgot about moment Js. Hmm
+
+https://www.npmjs.com/package/moment
+
+https://momentjs.com/docs/
+
+Moment Js - no idea what exactly it helps with but many use it. However it also
+doesn't have high level of precision. I think I have been using the wrong word
+previously over here! 😅 I was using "accuracy". Anyways.
+
+Temporal has support for nanosecond level precision.
+
+https://duckduckgo.com/?t=ffab&q=precision+vs+accuracy&ia=web
+
+https://www.thoughtco.com/difference-between-accuracy-and-precision-609328
+
+https://en.wikipedia.org/wiki/Accuracy_and_precision Wikipedia helped. Looks
+like there are too many links. So, gonna dodge all this now!
+
+Let me check if I have access to Temporal now! :)
+
+Looks like I don't, at least not in my browser! Back to my work!
+
+---
+
+JavaScript sleep
+http://stackoverflow.com/questions/951021/ddg#39914235
+
+https://duckduckgo.com/?t=ffab&q=javascript+sleep&ia=web
+
+This is mostly important in the player and not in the recorder actually. Oops :P
+
+Okay, so this seems to be the code people keep talking about. For sleep that
+is. It uses `setTimeout`, yes.
+
+```javascript
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+
+await sleep(1000); // milliseconds
+```
+
+https://gist.github.com/djD-REK/66279195e05dc3e92a56d577ed9f961f
+
+https://medium.com/dev-genius/how-to-make-javascript-sleep-or-wait-d95d33c99909
+
+---
+
+Let me start putting the timestamp in the recording first!! :)
+
+```bash
+> d = new Date()
+Date Sun Feb 28 2021 19:28:26 GMT+0530 (India Standard Time)
+
+> d
+Date Sun Feb 28 2021 19:28:26 GMT+0530 (India Standard Time)
+
+> d1 = Date.now()
+1614520713461
+
+> d2 = Date.now()
+1614520719357
+> d2 - d1
+5896
+
+> d2 - d
+12420
+```
+
+I like the unix timestamp with `Date.now()` than the `new Date()`, though both
+are really all the same internally.
+
+I added the timestamp to the recording now!! :D
+
+```json
+[
+  { "initialContent": "function add(a, b) {\n    return a + b;\n}" },
+  {
+    "start": { "row": 0, "column": 17 },
+    "end": { "row": 0, "column": 18 },
+    "action": "insert",
+    "lines": [","],
+    "timeFromStart": 4753
+  },
+  {
+    "start": { "row": 0, "column": 18 },
+    "end": { "row": 0, "column": 19 },
+    "action": "insert",
+    "lines": [" "],
+    "timeFromStart": 4842
+  },
+  {
+    "start": { "row": 0, "column": 19 },
+    "end": { "row": 0, "column": 20 },
+    "action": "insert",
+    "lines": ["c"],
+    "timeFromStart": 4994
+  },
+  {
+    "start": { "row": 1, "column": 16 },
+    "end": { "row": 1, "column": 17 },
+    "action": "insert",
+    "lines": [" "],
+    "timeFromStart": 5905
+  },
+  {
+    "start": { "row": 1, "column": 17 },
+    "end": { "row": 1, "column": 18 },
+    "action": "insert",
+    "lines": ["+"],
+    "timeFromStart": 6241
+  },
+  {
+    "start": { "row": 1, "column": 18 },
+    "end": { "row": 1, "column": 19 },
+    "action": "insert",
+    "lines": [" "],
+    "timeFromStart": 6401
+  },
+  {
+    "start": { "row": 1, "column": 19 },
+    "end": { "row": 1, "column": 20 },
+    "action": "insert",
+    "lines": ["c"],
+    "timeFromStart": 6705
+  }
+]
+```
+
+Output looks like that! Now, let's try to replay it in the player next! :D
+
+---
+
+How to load a file in Javascript in the browser? In nodejs, it has access to the
+disk ;) Web API must be there. That's what they use for uploading files and all
+I think :)
+
+https://duckduckgo.com/?t=ffab&q=load+text+file+in+javascript&ia=web&iax=qa
+
+https://duckduckgo.com/?q=load+text+file+in+javascript+in+browser&t=ffab&ia=web
+
+Oh, this link had it
+
+https://www.geeksforgeeks.org/how-to-load-the-contents-of-a-text-file-into-a-javascript-variable/
+
+But I ignored even after skimming 😅 🙈
+
+Another link with similar idea
+
+https://usefulangle.com/post/193/javascript-read-local-file
+
+https://ourcodeworld.com/articles/read/191/how-to-read-a-computer-file-using-javascript-in-the-browser
+
+https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+
+https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
+
+---
+
+Steps for the player development
+
+- Add a button to load the recording file
+- Add a play button which is disabled initially
+  - Enable the play button only if a recording file is uploaded and if it's
+    a valid recording file - we are able to parse it. Should we also check all
+    the values in the data? Like, check for `timeFromStart` fields, and the first
+    element which has initial data etc. I mean, if that's the case, we should then
+    check the whole set of values including all the fields in the deltas like
+    row, column, action, lines and what not! :)
+- When the play button is clicked, it should get disabled till the player has
+  completed the playing, at which point it can be enabled again, to play from the
+  start again.
+- When play button is clicked, we need to load the initial content first, and
+  then start looping through the different deltas and apply them after a sleep
+  time. Not sure about the accuracy of `setTimeout` but I'm hoping it will work
+  right. Though hope is not a strategy.
+
+Let's check a bit about `setTimeout` again.
+
+https://duckduckgo.com/?t=ffab&q=setTimeout&ia=web
+
+https://www.w3schools.com/jsref/met_win_settimeout.asp
+
+https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+
+There are reasons for delays
+
+https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#reasons_for_delays
+
+Apparently there's some throttling, but that's like if the call is done every
+4ms. Haha. I'm only going to do a single sleep every few milliseconds but not
+at the rate of 4ms.
+
+Something around a workaround for that too
+https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+
+https://dbaron.org/log/20100309-faster-timeouts
+
+Inactive tabs are going to be a problem I think. Hmm. I wonder how asciinema
+handles this whole thing. Hmm. Let me go check it out! :D :D I mean, they also
+created a web player version of asciinema player, apart from the terminal
+player. So, I'm going to check it out!! :D
+
+https://github.com/asciinema/asciinema-player
+
+---
+
+Side track, to check about sleep methods:
+
+https://www.npmjs.com/search?q=sleep
+
+https://www.npmjs.com/search?q=sleep%20browser
+
+---
+
+Back to asciinema web player. Wow. I see `cljs` files. Hmm. So...clojure script?
+Wow.
+
+No idea how that works etc. I have only heard of clojurescript among many other
+scripts like coffee script etc etc
+
+The `package.json` mentions that `resources/public/js/asciinema-player.js` is
+the main entry point. I think that's an auto generated file, since I can't find
+it! :/
+
+Let's dig deeper
+
+Wow, it was hard to understand that code!! Hmm..
+
+Some files I checked are
+
+`src/asciinema/player/asciicast/v2.cljs` - specific v2 thing. There are other
+version related files
+
+`src/asciinema/player/asciicast.cljs` - some common thing for all versions of
+asciicasts
+
+`src/asciinema/player/frames.cljs` - some frame related stuff, it has stuff
+similar to the python code I saw, like absolute timing and relative timing and
+conversions related to that
+
+I'm just going to continue with my player implementation for now and see how
+it works out :)
+
+I'm okay with inactive tabs being a problem. I'll tackle that later.
+
+---
+
+[PROBLEMS]
+
+- When using `setTimeout` for delay / sleep functionality, inactive tabs can
+  have problems with usage of this `setTimeout`
+  https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#reasons_for_delays
+- When using `setTimeout` the accuracy can be a bit weird at times. For example,
+  there can be delay more than what we provide as delay argument due to various
+  reasons. For example there can be throttling if we have `setTimeout` calls
+  every 4ms or < 10 ms I think. It varies based on browsers. There are many
+  more such issues.
+  https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#reasons_for_delays
+
+---
+
+I want to catch any exceptions like JSON parse issues. So, checking it out :P
+
+https://duckduckgo.com/?t=ffab&q=javascript+exceptions&ia=web
+
+I'm such a perfectionist sometimes. Phew.
+
+https://www.w3schools.com/js/js_errors.asp
+
+---
+
+To get the first element in a JavaScript array, and also remove it, I think
+shift is used. Unshift is for adding to the first position I think
+
+https://duckduckgo.com/?t=ffab&q=javascript+shift&ia=web
+
+https://www.w3schools.com/jsref/jsref_shift.asp
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift
+
+This is needed to get the header data from the deltas array. To get the
+initial content
+
+---
+
+For setting initial data, we use the editor method `setValue`
+
+https://ace.c9.io/#nav=api&api=editor
+
+```
+setValue(String val, Number cursorPos): String
+Sets the current document to val.
+
+Arguments:
+
+val:	String
+Required. The new value to set for the document
+
+cursorPos: Number
+Required. Where to set the new value. undefined or 0 is selectAll, -1 is at the document start, and 1 is at the end
+```
+
+---
+
+I'm checking where `await` can be used as I know it can only be used in `async`
+functions but double checking
+
+https://duckduckgo.com/?t=ffab&q=using+await+in+javascript&ia=web
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/async_function
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+
+Okay, I did get an error too
+
+```
+ Uncaught SyntaxError: await is only valid in async functions and async generators player.html:67:12
+```
+
+The errorneous code was
+
+```javascript
+deltas.forEach((delta) => {
+  let delayToApplyDelta = delta.timeFromStart - (Date.now() - startTime);
+
+  if (delayToApplyDelta > 0) {
+    await sleep(delayToApplyDelta);
+  }
+
+  delete delta.timeFromStart;
+  playerEditor.session.redoChanges([delta], true);
+});
+```
+
+To fix it I just added async to the arrow function. Not sure if that's okay.
+Hmm
+
+```javascript
+deltas.forEach(async (delta) => {
+  let delayToApplyDelta = delta.timeFromStart - (Date.now() - startTime);
+
+  if (delayToApplyDelta > 0) {
+    await sleep(delayToApplyDelta);
+  }
+
+  delete delta.timeFromStart;
+  playerEditor.session.redoChanges([delta], true);
+});
+```
+
+https://duckduckgo.com/?t=ffab&q=async+arrow+function+in+forEach&ia=web
+
+I guess I was right about thinking about the async behaviour being tricky.
+
+https://advancedweb.hu/how-to-use-async-functions-with-array-foreach-in-javascript/
+
+Hmm. Let's just use simple for loop for now. Hmm.
+
+---
+
+I finally finished my player code!!!! Yay!!!!
+
+I was able to import a recording and play it. But it was too fast. :/ Hmm
+
+I'm checking the logs by logging the time. I'm also planning to record a very
+slow typing and see how that plays too
+
+Oh wait. Now I found out what was the issue. Lol. The recording I imported was
+an old one where there were no changes. I found out that another recording works
+like a charm. At least looks okay :P
+
+Okay, so the one that didn't work was because there was no timing information
+in it!!
+
+```json
+[
+  { "initialContent": "function add(a, b) {\n    return a + b;\n}" },
+  {
+    "start": { "row": 1, "column": 16 },
+    "end": { "row": 1, "column": 17 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 1, "column": 16 },
+    "end": { "row": 1, "column": 17 },
+    "action": "remove",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 0, "column": 17 },
+    "end": { "row": 0, "column": 18 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 0, "column": 17 },
+    "end": { "row": 0, "column": 18 },
+    "action": "remove",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 0, "column": 17 },
+    "end": { "row": 0, "column": 18 },
+    "action": "insert",
+    "lines": [","]
+  },
+  {
+    "start": { "row": 0, "column": 18 },
+    "end": { "row": 0, "column": 19 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 0, "column": 19 },
+    "end": { "row": 0, "column": 20 },
+    "action": "insert",
+    "lines": ["c"]
+  },
+  {
+    "start": { "row": 1, "column": 16 },
+    "end": { "row": 1, "column": 17 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 1, "column": 17 },
+    "end": { "row": 1, "column": 18 },
+    "action": "insert",
+    "lines": ["+"]
+  },
+  {
+    "start": { "row": 1, "column": 18 },
+    "end": { "row": 1, "column": 19 },
+    "action": "insert",
+    "lines": [" "]
+  },
+  {
+    "start": { "row": 1, "column": 19 },
+    "end": { "row": 1, "column": 20 },
+    "action": "insert",
+    "lines": ["c"]
+  }
+]
+```
+
+I need more recording files!! :) For testing purposes. Hmm
+
+

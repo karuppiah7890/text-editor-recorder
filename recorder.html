@@ -33,6 +33,7 @@
     <script>
       let recording = false;
       let deltas = [];
+      let startTime, stopTime;
       const recordingEditor = ace.edit("recording-editor");
       recordingEditor.setTheme("ace/theme/monokai");
       recordingEditor.session.setMode("ace/mode/javascript");
@@ -71,7 +72,7 @@
           const recordingData = JSON.stringify(deltas);
           download("my-recording.textrec", recordingData);
 
-          statusMessage.innerText = "Downloaded Recording...";
+          statusMessage.innerText = "Downloaded Recording.";
           enableDownloadRecordingButton();
         });
         function enableDownloadRecordingButton() {
@@ -93,6 +94,7 @@
             initialContent,
           };
           deltas.push(delta);
+          startTime = Date.now();
           recording = true;
 
           statusMessage.innerText = "Recording!";
@@ -106,8 +108,9 @@
 
           recordingEditor.setReadOnly(true);
           recording = false;
+          stopTime = Date.now();
 
-          statusMessage.innerText = "Stopped Recording...";
+          statusMessage.innerText = "Stopped Recording";
           enableDownloadRecordingButton();
 
           recordingEditor.setReadOnly(false);
@@ -117,8 +120,11 @@
       addListenerToButtons();
 
       recordingEditor.session.on("change", function (delta) {
+        let currentTime = Date.now();
+        let diff = currentTime - startTime;
         if (recording) {
           delete delta.id;
+          delta.timeFromStart = diff;
           deltas.push(delta);
         }
       });
