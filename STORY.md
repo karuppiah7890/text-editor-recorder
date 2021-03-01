@@ -2492,8 +2492,9 @@ recorder and the player! :)
 ---
 
 [TODO]
+
 - Show settings menu for the editor so that the user can customize the editor
-and then type :)
+  and then type :)
 
 ---
 
@@ -2507,7 +2508,7 @@ Also, what's the cost of saving to disk / indexed DB / local storage multiple
 times after every change? Compared to once after recording is done and download
 button is clicked?
 
-Are there any performance issues to the different approaches? That is, time 
+Are there any performance issues to the different approaches? That is, time
 taken to store in indexed DB / local storage. Is it blocking? what else to
 consider? Is there any middle ground in such a case? Like, using in-memory
 storage and flushing to disk in batches is one way.
@@ -2539,52 +2540,277 @@ be a few nano / micro seconds.
 
 When applying a change or delta, put the cursor at the end position.
 
-This algorithm will not be able to capture movements when the user simply goes 
-up and down, left and right in the editor. Maybe those can be recorded too and 
+This algorithm will not be able to capture movements when the user simply goes
+up and down, left and right in the editor. Maybe those can be recorded too and
 applied separately. Hmm.
 
-What about the user moving the cursor around when the player plays. Hmm. Should 
+What about the user moving the cursor around when the player plays. Hmm. Should
 we disable the whole Ace editor element? Gotta see. Hmm
 
-Also, change captures only content. Movement of cursor happens too in this 
-case. If we capture both change and changecursor, it will be tricky. Applying 
-each of the recordings separately can be tricky and can go out of sync. For 
-example, if I capture cursor at one position while typing characters, while 
-Replaying, the cursor and characters might be at different places. Ideally 
-while typing characters, cursor is at the end of the last character, that is at 
-the right of the last character. Only while moving up and down, we could 
-separately capture cursor there alone but not all curso movements. So, use key 
+Also, change captures only content. Movement of cursor happens too in this
+case. If we capture both change and changecursor, it will be tricky. Applying
+each of the recordings separately can be tricky and can go out of sync. For
+example, if I capture cursor at one position while typing characters, while
+Replaying, the cursor and characters might be at different places. Ideally
+while typing characters, cursor is at the end of the last character, that is at
+the right of the last character. Only while moving up and down, we could
+separately capture cursor there alone but not all curso movements. So, use key
 bindings or something to capture that.
 
-Capture scroll. Scroll can happen when navigating to the code with just cursor 
-movement or when navigating the code by scrolling with mouse. Check if mouse 
+Capture scroll. Scroll can happen when navigating to the code with just cursor
+movement or when navigating the code by scrolling with mouse. Check if mouse
 events can be captured too. Hmm
 
 Check how the player looks after all this capturing and playback ! :)
 
-Also, for initial cursor position, record the initial content along with 
-initial cursor position so that we start from where the user started. Same for 
+Also, for initial cursor position, record the initial content along with
+initial cursor position so that we start from where the user started. Same for
 scroll position! Capture it! :)
 
 ---
 
-Storage space can be optimized by optimizing storage method. File format, file 
-content format and structure. For example, it's currently JSON. It's good 
-enough. Protobuf? Maybe. Anything else out there? What about compression 
-algorithms? Minification? For example, the JSON field names are too big. Can we 
-make it smaller? Hmm. Only the tools need to know what they mean. Hmm. Check 
-why asciicast chose an array..maybe they didn't want separate fields at all. 
-Hmm. Let's also go with that. That way, no fields, hence no field names!! Wow. 
+Storage space can be optimized by optimizing storage method. File format, file
+content format and structure. For example, it's currently JSON. It's good
+enough. Protobuf? Maybe. Anything else out there? What about compression
+algorithms? Minification? For example, the JSON field names are too big. Can we
+make it smaller? Hmm. Only the tools need to know what they mean. Hmm. Check
+why asciicast chose an array..maybe they didn't want separate fields at all.
+Hmm. Let's also go with that. That way, no fields, hence no field names!! Wow.
 Hmm. Concise! :)
 
-Too much optimization might cause some extra processing - more time maybe? Idk. 
-Ideally all processing should be done before hand, unless the data comes in 
-events. Then it's hard to get the data. No? Maybe not. Hmm. Arrays, nested 
+Too much optimization might cause some extra processing - more time maybe? Idk.
+Ideally all processing should be done before hand, unless the data comes in
+events. Then it's hard to get the data. No? Maybe not. Hmm. Arrays, nested
 arrays etc
 
-Delta - start with row an column, end with row and column, lines array, action 
+Delta - start with row an column, end with row and column, lines array, action
 which says insert, remove etc, timeFromStart.
 
-Try the new format with just arrays and values no field names in file. That's 
-okay I think. People may not exactly be able to tinker it though. Hmm. They 
+Try the new format with just arrays and values no field names in file. That's
+okay I think. People may not exactly be able to tinker it though. Hmm. They
 will have to read code to understand the file content. Hmm
+
+---
+
+Next thing I plan to do is:
+
+- Show the cursor moving when the recording is being played
+
+```
+gotoLine(Number lineNumber, Number column, Boolean animate)
+Moves the cursor to the specified line number, and also into the indicated column.
+
+Arguments:
+
+lineNumber: Number
+Required. The line number to go to
+
+column: Number
+Required. A column number to go to
+
+animate:	Boolean
+Required. If true animates scrolling
+```
+
+Let me try this out!
+
+---
+
+Regarding storage / size of recording file
+
+```bash
+$ ls -alh
+total 88
+drwxr-xr-x@  5 karuppiahn  staff   160B Feb 28 23:12 .
+drwx------@ 13 karuppiahn  staff   416B Feb 28 22:57 ..
+-rw-r--r--@  1 karuppiahn  staff   6.0K Feb 28 23:34 .DS_Store
+-rw-r--r--@  1 karuppiahn  staff    31K Feb 28 23:12 demo-1.textrec
+-rw-r--r--@  1 karuppiahn  staff   856B Feb 28 19:35 my-recording-1.textrec
+
+$ du -sh my-recording-1.textrec
+4.0K    my-recording-1.textrec
+
+$ du -sh demo-1.textrec
+ 32K    demo-1.textrec
+```
+
+It's not fair to have such big recordings. Gotta see how I can reduce it a bit
+and still not compromise too much on processing while reading / playing :)
+Let's see. No wonder media formats have tried compression algorithms for the
+storage formats. MP4 and stuff. Hmm.
+
+---
+
+Back to showing the cursor when player is typing / playing the recording
+
+I used the `delta.end.row` as line number and `delta.end.column` as colum and
+chose to animate the whole thing. Weirdly, I think the row is `0` indexed. But
+the editor shows line numbers starting from `1`. So, if the `row` number is `19`
+then the line number is actually 20. So, I'm going to add +1 to the row and see
+how that works.
+
+Also, as a user I'm able to move the cursor around. Hmm. Gotta see if I can do
+anything about that.
+
+Cool, now I can see the cursor. But the cursor looks so dim and not as white as
+when I focus on the editor by choosing it. Hmm.
+
+I think somehow the editor needs to be on focus so that the cursor shows up
+white and not as dim grey. Hmm
+
+Also, it scrolled to the bottom while playing the recording. Hmm. Nice!
+
+I don't see any difference when using `false` for the third argument to
+`gotoLine`, hmm. I mean, it seemed smooth this time too. Or maybe I'm just too
+slow in noticing such stuff. Hmm. I guess for now I'll just go with `true`! :)
+
+For moving the cursor, there are two more functions
+
+```
+moveCursorTo(Number row, Number column)
+Moves the cursor to the specified row and column. Note that this does not de-select the current selection.
+
+Arguments:
+
+row:	Number
+Required. The new row number
+
+column:	Number
+Required. The new column number
+
+```
+
+```
+moveCursorToPosition(Object pos)
+Moves the cursor to the position indicated by pos.row and pos.column.
+
+Arguments:
+
+pos:	Object
+Required. An object with two properties, row and column
+```
+
+Not sure how these differ. Except the `moveCursorTo()` mentions something about
+not de-selecting the current selection while moving. hmm
+
+---
+
+There are so many methods related to cursor movement. So many navigation methods
+on the editor.
+
+```
+navigateDown(Number times)
+
+Moves the cursor down in the document the specified number of times. Note that this does de-select the current selection.
+Arguments
+times	Number
+
+Required. The number of times to change navigation
+```
+
+```
+navigateFileEnd()
+
+Moves the cursor to the end of the current file. Note that this does de-select the current selection.
+```
+
+```
+navigateFileStart()
+
+Moves the cursor to the start of the current file. Note that this does de-select the current selection.
+```
+
+```
+navigateLeft(Number times)
+
+Moves the cursor left in the document the specified number of times. Note that
+this does de-select the current selection.
+
+Arguments:
+times:	Number
+
+Required. The number of times to change navigation
+```
+
+```
+navigateLineEnd()
+
+Moves the cursor to the end of the current line. Note that this does de-select the current selection.
+```
+
+```
+navigateLineStart()
+
+Moves the cursor to the start of the current line. Note that this does de-select the current selection.
+```
+
+```
+navigateRight(Number times)
+
+Moves the cursor right in the document the specified number of times. Note that
+this does de-select the current selection.
+
+Arguments:
+
+times:	Number
+Required. The number of times to change navigation
+```
+
+```
+navigateTo(Number row, Number column)
+
+Moves the cursor to the specified row and column. Note that this does de-select the current selection.
+
+Arguments:
+
+row:	Number
+Required. The new row number
+
+column:	Number
+Required. The new column number
+```
+
+```
+navigateUp(Number times)
+
+Moves the cursor up in the document the specified number of times. Note that this does de-select the current selection.
+Arguments
+times	Number
+
+Required. The number of times to change navigation
+```
+
+```
+navigateWordLeft()
+
+Moves the cursor to the word immediately to the left of the current position. Note that this does de-select the current selection.
+```
+
+```
+navigateWordRight()
+
+Moves the cursor to the word immediately to the right of the current position. Note that this does de-select the current selection.
+```
+
+---
+
+For keeping focus on the player, I'm going to start by putting the focus on the
+editor when it's playing the recording. This method is present on the editor
+object
+
+```
+focus() 
+
+Brings the current textInput into focus.
+```
+
+`editor.focus()`
+
+If user goes out of focus from the editor, then we can bring focus to the editor
+automatically. How to detect that editor has gone out of focus?
+
+```
+Editor.on("blur", function()) 
+
+Emitted once the editor has been blurred.
+```

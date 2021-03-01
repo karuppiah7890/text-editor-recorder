@@ -31,6 +31,7 @@
     ></script>
     <script>
       let deltas;
+      let playing = false;
       const playerEditor = ace.edit("editor");
       playerEditor.setFontSize(18);
       playerEditor.setReadOnly(true);
@@ -56,6 +57,9 @@
 
         const header = deltas.shift();
 
+        playerEditor.focus();
+        playing = true;
+
         playerEditor.setValue(header.initialContent, 1);
 
         const startTime = Date.now();
@@ -73,8 +77,10 @@
 
           delete delta.timeFromStart;
           playerEditor.session.redoChanges([delta], true);
+          playerEditor.gotoLine(delta.end.row + 1, delta.end.column, false);
         }
 
+        playing = false;
         enablePlayRecordingButton();
       }
 
@@ -135,6 +141,12 @@
       }
 
       addListenersToButtons();
+
+      playerEditor.on("blur", () => {
+        if (playing) {
+          playerEditor.focus();
+        }
+      });
     </script>
   </body>
 </html>
