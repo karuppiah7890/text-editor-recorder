@@ -2494,3 +2494,97 @@ recorder and the player! :)
 [TODO]
 - Show settings menu for the editor so that the user can customize the editor
 and then type :)
+
+---
+
+Some old notes which I wrote in my note book yesterday -
+
+If I choose new-line delimited JSON for storage, what are the advantages
+exactly? Also, how to continuously store the data? Maybe store it in Indexed DB
+or something like local storage? So that we can export to file later :)
+
+Also, what's the cost of saving to disk / indexed DB / local storage multiple
+times after every change? Compared to once after recording is done and download
+button is clicked?
+
+Are there any performance issues to the different approaches? That is, time 
+taken to store in indexed DB / local storage. Is it blocking? what else to
+consider? Is there any middle ground in such a case? Like, using in-memory
+storage and flushing to disk in batches is one way.
+
+What is the accuracy of JS Date and time object?
+
+When recording starts, that's the start time. It's a constant. Is it before or
+after `recording = true` ?
+
+When recording stops, that's the stop time. That is when `recording = false`,
+but is it before or after that statement?
+
+For start time, before `recording = true` is the start time.
+For stop time, after `recording = false` is the stop time.
+
+If we start after `recording = true`, it's very possible that something
+gets recorded due to the `recording = true` even before the moment we store the
+start time. Same is true for storing stop time before `recording = false` - if
+we store stop time before, then something could still get recorded till
+`recording = false` statement is executed.
+
+So, to avoid all these issues, it's better to start before recording, and stop
+before stopping recording. This way, nothing gets absurd in terms of recording
+and recording time. It's okay if it's not exactly accurate and if there's a
+little extra time before and after the recording. It won't be noticeable. It may
+be a few nano / micro seconds.
+
+---
+
+When applying a change or delta, put the cursor at the end position.
+
+This algorithm will not be able to capture movements when the user simply goes 
+up and down, left and right in the editor. Maybe those can be recorded too and 
+applied separately. Hmm.
+
+What about the user moving the cursor around when the player plays. Hmm. Should 
+we disable the whole Ace editor element? Gotta see. Hmm
+
+Also, change captures only content. Movement of cursor happens too in this 
+case. If we capture both change and changecursor, it will be tricky. Applying 
+each of the recordings separately can be tricky and can go out of sync. For 
+example, if I capture cursor at one position while typing characters, while 
+Replaying, the cursor and characters might be at different places. Ideally 
+while typing characters, cursor is at the end of the last character, that is at 
+the right of the last character. Only while moving up and down, we could 
+separately capture cursor there alone but not all curso movements. So, use key 
+bindings or something to capture that.
+
+Capture scroll. Scroll can happen when navigating to the code with just cursor 
+movement or when navigating the code by scrolling with mouse. Check if mouse 
+events can be captured too. Hmm
+
+Check how the player looks after all this capturing and playback ! :)
+
+Also, for initial cursor position, record the initial content along with 
+initial cursor position so that we start from where the user started. Same for 
+scroll position! Capture it! :)
+
+---
+
+Storage space can be optimized by optimizing storage method. File format, file 
+content format and structure. For example, it's currently JSON. It's good 
+enough. Protobuf? Maybe. Anything else out there? What about compression 
+algorithms? Minification? For example, the JSON field names are too big. Can we 
+make it smaller? Hmm. Only the tools need to know what they mean. Hmm. Check 
+why asciicast chose an array..maybe they didn't want separate fields at all. 
+Hmm. Let's also go with that. That way, no fields, hence no field names!! Wow. 
+Hmm. Concise! :)
+
+Too much optimization might cause some extra processing - more time maybe? Idk. 
+Ideally all processing should be done before hand, unless the data comes in 
+events. Then it's hard to get the data. No? Maybe not. Hmm. Arrays, nested 
+arrays etc
+
+Delta - start with row an column, end with row and column, lines array, action 
+which says insert, remove etc, timeFromStart.
+
+Try the new format with just arrays and values no field names in file. That's 
+okay I think. People may not exactly be able to tinker it though. Hmm. They 
+will have to read code to understand the file content. Hmm
