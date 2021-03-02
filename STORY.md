@@ -2799,7 +2799,7 @@ editor when it's playing the recording. This method is present on the editor
 object
 
 ```
-focus() 
+focus()
 
 Brings the current textInput into focus.
 ```
@@ -2810,7 +2810,177 @@ If user goes out of focus from the editor, then we can bring focus to the editor
 automatically. How to detect that editor has gone out of focus?
 
 ```
-Editor.on("blur", function()) 
+Editor.on("blur", function())
 
 Emitted once the editor has been blurred.
 ```
+
+---
+
+I tried to record the cursor with this
+
+```javascript
+recordingEditor.session.selection.on("changeCursor", function (e) {
+  console.log(recordingEditor.getCursorPosition());
+});
+```
+
+I noticed that the event is emitted even when I type. It makes sense though, as
+when I type, the cursor moves. But I already take care of playing the cursor
+moving while typing by just putting the cursor at the end of the insert or
+delete or any action of typing that's performed. I think it makes sense as of
+now. It will be too much to record cursor even for typing and moving the cursor
+based on that recording and also playing the characters being typed.
+
+---
+
+Some notes from my notes app -
+
+---
+
+Some notes from notes app -
+
+For recording cursor, I could record cursor movements in a separate deltas
+array. While playing I can control cursor position and movement asynchronously
+while also applying the character typing or removing changes
+
+Or I could use one array to store it all. I mean, a person can't type
+characters and also move the cursor to random places with arrow keys or mouse.
+While typing the cursor stays at where typing happens. Actually it's more like
+typing only happens where cursor is present. Anyways. I was only worried about
+how the cursor position change event is different from character change. I was
+just thinking if something crazy happens and if characters and cursor movement
+capture happens in some wrong order. It's an edge case maybe. Anyways let me
+ensure that i capture any event as soon as it happens ! :)
+
+The array or actually the element needs to have a differentiator to tell if the
+delta is for mouse movement alone or for character alone. I don't think there
+can and will be one with both. It will be two separate only. Anyways. This is
+kind of like Asciinema "o" for output for type of data. Hmm.
+
+It's going to be fun to see cursor movement!!!
+
+Similarly, I'm planning to record selections too! Same analogy for selections
+too, relating to cursor movement. Let's hope there are no clashes. I see it as
+a rare case. But yeah, "hope is not a strategy". Haha. Credits to an ex
+colleague for that cool dialogue. Applies to tech. Maybe not for life. Let's
+keep the features and implementation of those features simple for now. Not too
+complex or complicated. We can tackle or ignore if someone who uses the tool
+complains. :)
+
+---
+
+Some notes from my book -
+
+Try to work on cursor movement recording when moving the cursor with arrow keys
+or mouse but not while typing characters.
+
+Also, Pause feature for recording!
+
+- Pause recording
+- While resuming recording, the content might have changed, so, for this reason,
+  we need to take a full snapshot of the content when resuming and then deltas,
+  like
+
+```json
+{
+  "isFullContent": true,
+  "content": "this is full content\nokay",
+  "timeFromStart": 10000
+}
+```
+
+This is similar to initial content concept. The time factor is still there here
+of course. The tricky part is, we have paused in between, so we can't exactly
+take (current time - start time) as the time from start. Hmm.
+
+![paused-time-not-to-be-counted](./images/paused-time-not-to-be-counted.jpg)
+
+So, it's like t1 + t2 should be the time in the time from start for the delta
+for the action that happens at the end.
+
+![avoiding-counting-multiple-paused-times](./images/avoiding-counting-multiple-paused-times.jpg)
+
+I think a good formula is
+
+t-current - t-start - t-paused = time from the start for the action
+
+Any time we pause and resume, we need to note down the time we paused for and
+also add it to a global pause time so that all paused times can be subtracted
+out later as one entity.
+
+t-paused = t-paused-1 + t-paused-2 + .... t-paused-n
+
+where t-paused-n is the Nth paused time duration
+
+To test this feature after building:
+Test 1: Type something. Pause. Wait for 5 or 10 seconds. Resume. Type something.
+Pause. Wait for 5 or 10 seconds. Resume. Type something, then stop. During
+playing the recording, you should not see any 5 or 10 second delays of the
+pause. It should all be free flowing and continuous and fast, no lag or pause.
+
+Test 2: After pausing, write / copy-paste something big and then resume. This
+should show up in the record playing suddenly.
+
+Compression topic regarding recording file - to optimize (decrease) size of
+recording
+- Should we compress the recording as tar ball etc? And then decompress?
+- What about making field names smaller? "timeFromStart", "initialContent",
+"row", "end", "column", "start".
+
+Check how both helps or if compression is good enough in general and making
+field names will not have much effect really if compression is done.
+
+Minimizing field names to single character or two character names has one
+disadvantage. While playing, Ace editor needs deltas with proper field names
+like "row", "column", "start", "end" etc So if field name is minimized, we need
+to maximize / expand it. Also, if minimized or in any case, we need to
+document what the format specification is and start checking this spec and the
+recording file format before playing. Only if the player can understand the
+spec of the recording file, it can play it. So, spec should be present, spec
+version and the version should be used in the recording file. This way, the
+player can tell what spec it understands and implements, and can give error if
+it cannot understand a recording file in case it doesn't know the spec it was
+written in.
+The spec will also help understand detailed info. Especially a lot more useful
+when field names are too short or minimized, as we won't even understand or be
+able to guess what it is just based on value sometimes.
+
+---
+
+Some things to note with respect to recording cursor movement is - if I don't
+record it with the `changeCursor` event, which seems to be the best way, I need
+to see how else I can do it. And I want to record only the non-character typing
+cursor movement. This kind of cursor movement can happen because of many reasons apart from typing characters. For example, by arrow keys, or any other
+keys or even mouse clicks directly on some place. Some ideas for recording are
+
+- Look for APIs that can detect keyboard key press and capture the arrow up,
+  arrow down, arrow right and arrow left key presses and record the cursor
+  movement when detection such key presses. Downsides? If people use different
+  keys to move the cursor, for example w, a, s, d keys. Also, if people use vim
+  mode in Ace editor, which is currently not possible with the current
+  implementation but it's a setting / feature in Ace editor, then in that case,
+  people might use keys like h, j, k, l. Hmm. Also, If I go down this route, I
+  also need to check how to separately capture mouse click based cursor movement,
+  not sure what else is possible. For example, what if someone uses Joystick? :P
+  Lol. Hmm. But for simplicity, I can start with arrow keys. Hmm
+- Look for APIs that can detect navigation of the cursor regardless of the
+  input. For example, navigating up, down, left, right. More like navigation
+  events and not input related events.
+
+If both these ideas don't work out, then I might have to go back to choosing
+`changeCursor` as an option to capture mouse movement. Hmm. One tricky part over
+there is, apart from existing things I mentioned, it's that, if I capture it,
+along with time, I can kind of see that the timing information maybe right, but
+I gotta confirm. I mean, this is important as with `changeCursor` we capture
+both character typing cursor movement and non-character typing cursor movement.
+Non character typing seems easy, but character typing, I think first the
+character change event will happen and then cursor movement change event will be
+emitted, so the time will be in that order. But while playing, these two set of
+events will be in an order and I'll be playing them one by one. And I believe
+that the time between a character type and it's corresponding cursor movement
+is too low that the sleep would be too low which might be crazy and also, there
+might be lot of small processing going, which will make it all look like a slow
+and lagging cursor movement. Just a guess. Maybe I'm wrong and maybe the whole
+system is probably too fast than I think it is. I need to check this option too
+though! :)
