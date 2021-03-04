@@ -7,8 +7,8 @@
 - Playing the recording is possible
 - While playing the recording, the cursor is shown to move and type as though a
   real user is typing
-- When playing the recording, the cursor also moves in such a way that the
-  scrolling also happens if it's needed
+- When playing the recording, the cursor also moves (when typing) in such a way
+  that the scrolling also happens if it's needed
 - Recording file is a simple text file, very lightweight compared to a video of
   the user typing the text
 - Both recording and playing can work completely offline
