@@ -2924,9 +2924,10 @@ should show up in the record playing suddenly.
 
 Compression topic regarding recording file - to optimize (decrease) size of
 recording
+
 - Should we compress the recording as tar ball etc? And then decompress?
 - What about making field names smaller? "timeFromStart", "initialContent",
-"row", "end", "column", "start".
+  "row", "end", "column", "start".
 
 Check how both helps or if compression is good enough in general and making
 field names will not have much effect really if compression is done.
@@ -2991,123 +2992,123 @@ Some notes from my notes app -
 
 It's cool that I have already started thinking about pausing while recording.
 
-I think the next thing to lookout for is pausing while playing, going forward 
+I think the next thing to lookout for is pausing while playing, going forward
 with a seek bar and also going backwards! :D
 
 I was thinking about how to pause. It's a very tricky thing I guess.
 
-I need to check how asciinema does pausing for playing. I didn't check that 
+I need to check how asciinema does pausing for playing. I didn't check that
 code laat time.
 
- And I don't think they have pause for recording in the terminal.
+And I don't think they have pause for recording in the terminal.
 
 Anyways back to ace editor and playing recording and pausing.
 
-What are the expectations? It should just pause and it shouldn't do any work 
-behind the scenes unnecessarily like sleep or for loop etc. Only when we resume 
+What are the expectations? It should just pause and it shouldn't do any work
+behind the scenes unnecessarily like sleep or for loop etc. Only when we resume
 it should do work. Hmm.
 
-There are a few complexities. One is, what if someone pauses the playing while 
-the player is on sleep to finally wake up and apply any changes to play the 
-typing? This shows that we need to check if pause was pressed just after sleep 
+There are a few complexities. One is, what if someone pauses the playing while
+the player is on sleep to finally wake up and apply any changes to play the
+typing? This shows that we need to check if pause was pressed just after sleep
 is over and avoid playing the recording, if it's paused.
 
-Till now we have been having many toggles. Maybe we can club the related ones. 
+Till now we have been having many toggles. Maybe we can club the related ones.
 Like paused, playing etc are states of a player.
 
-Okay, now, back to pausing. The deltas have a field called time from start. If 
-we pause playing then it's possible that time from start has passed away. This 
-way many deltas maybe immediately applied on resume after the long pause. But 
-ideally, pausing a playing is only a concept of freezing time. Hmm. So it 
-should still resume playing and play at the same speed the recording is done 
+Okay, now, back to pausing. The deltas have a field called time from start. If
+we pause playing then it's possible that time from start has passed away. This
+way many deltas maybe immediately applied on resume after the long pause. But
+ideally, pausing a playing is only a concept of freezing time. Hmm. So it
+should still resume playing and play at the same speed the recording is done
 even if we pause and replay or resume.
 
-One thing I can think of is, add the paused time duration to the deltas. For 
-example, let's say an action needs to happen after 7 seconds from start. But 
-now, let's say that during the start you pause for 1 hr. And then continue. So 
-if you think about it, you started the player a long ago and the delta will be 
-applied after 1 hr pause and then the delta time of 7 seconds. So it's like you 
-add up pause time and the delta start time. Only then it can easily apply 
+One thing I can think of is, add the paused time duration to the deltas. For
+example, let's say an action needs to happen after 7 seconds from start. But
+now, let's say that during the start you pause for 1 hr. And then continue. So
+if you think about it, you started the player a long ago and the delta will be
+applied after 1 hr pause and then the delta time of 7 seconds. So it's like you
+add up pause time and the delta start time. Only then it can easily apply
 action after all that time. This is just an extreme case.
 
-Another crazy case is when pause button is pressed multiple times during 
+Another crazy case is when pause button is pressed multiple times during
 playing.
 
-Start playing, pause and wait for a long time like 2 minutes. Next pay and then 
-pause again for 2 minutes. All deltas after first pause needs to add the pause 
-I think. But when there's a second pause I think that any action after the 
-second pause will have to factor in both pauses and then play. Same for n 
-pauses. I'll check how else people plan and optimise this kind of stuff 
+Start playing, pause and wait for a long time like 2 minutes. Next pay and then
+pause again for 2 minutes. All deltas after first pause needs to add the pause
+I think. But when there's a second pause I think that any action after the
+second pause will have to factor in both pauses and then play. Same for n
+pauses. I'll check how else people plan and optimise this kind of stuff
 especially not doing any processing when paused
 
-Apart from adding up the pause times I can also shift the thought process to 
-considering the end of the pause time as the new start time. Like considering 
-the resume time as the new start time like thing. But for this we need to 
+Apart from adding up the pause times I can also shift the thought process to
+considering the end of the pause time as the new start time. Like considering
+the resume time as the new start time like thing. But for this we need to
 subtract the already played time from the time from start.
 
 For example if there are two deltas
 
 First delta happens after five seconds. Second delta happens after ten seconds.
 
-Now, after the first delta is applied, we immediately pause let's say. We pause 
-for one hour let's say. When I resume, it should take the resume time as start 
-time and remove the played time 5 seconds from time from start of all the 
-upcoming actions and now you have ten - five which is five and that's exactly 
-how much time to wait for second action. Something similar can be thought about 
+Now, after the first delta is applied, we immediately pause let's say. We pause
+for one hour let's say. When I resume, it should take the resume time as start
+time and remove the played time 5 seconds from time from start of all the
+upcoming actions and now you have ten - five which is five and that's exactly
+how much time to wait for second action. Something similar can be thought about
 for multiple pausing of playing the recording.
 
-One more tricky part is, if the app goes to sleep to wait for action time to 
-come, let's say for 10 seconds but user pauses after 5 seconds of sleep. And 
-pauses only for 5 seconds then we need to understand that the during that sleep 
-time, 5 seconds of it was playing and another 5 seconds was paused. Why is this 
-important? As we need to properly calculate when and how much we paused. We 
-also need to stop the sleep immediately whenever possible like when pause is 
+One more tricky part is, if the app goes to sleep to wait for action time to
+come, let's say for 10 seconds but user pauses after 5 seconds of sleep. And
+pauses only for 5 seconds then we need to understand that the during that sleep
+time, 5 seconds of it was playing and another 5 seconds was paused. Why is this
+important? As we need to properly calculate when and how much we paused. We
+also need to stop the sleep immediately whenever possible like when pause is
 clicked also if we stop sleep when it's unnecessary it's a cool thing! :)
 
 ---
 
-Currently the editor which does recording is always listening for changes and 
-then discards if it's not in recording mode. Something to checkout and 
-optimise. We can remove the listener if there's no recording and add only when 
+Currently the editor which does recording is always listening for changes and
+then discards if it's not in recording mode. Something to checkout and
+optimise. We can remove the listener if there's no recording and add only when
 it's recording
 
 ---
 
 Notes from notes app -
 
-For going backwards with seek, I think that we can simply undo all the 
-operations we performed between the two positions last and first from where 
+For going backwards with seek, I think that we can simply undo all the
+operations we performed between the two positions last and first from where
 seek moved backwards and in correct order
 
-Also, we need to take care of any sleep and possible applying of next actions 
+Also, we need to take care of any sleep and possible applying of next actions
 after the seek position from where we go backwards, while going backwards
 
-I think once we integrate a proper player with seek with the current player, we 
-might end up with a neater solution with no sleep etc. Player might help with 
+I think once we integrate a proper player with seek with the current player, we
+might end up with a neater solution with no sleep etc. Player might help with
 some stuff. Hmm let's see
 
-With player we will also know exact duration etc. And we can also move on to 
-recording audio with web API too along with recording user typing and play 
+With player we will also know exact duration etc. And we can also move on to
+recording audio with web API too along with recording user typing and play
 both!!! :D
 
-I need to learn how to record audio and save it in a file and then import it 
-and play it :) all in the browser, offline. Check how excalidraw downloads 
+I need to learn how to record audio and save it in a file and then import it
+and play it :) all in the browser, offline. Check how excalidraw downloads
 images as PNG or downloads JSON files. Hmm
 
 Check out any research papers on recording user typing and playing
 
 Talk about this in your blog post
 
-Talk about the cool codepen like app also that you created. All offline. Nice ! 
+Talk about the cool codepen like app also that you created. All offline. Nice !
 :)
 
-Maybe we can try similar things even for something like code sandbox without 
+Maybe we can try similar things even for something like code sandbox without
 backend. anyways.
 
-Maybe do more videos about this and show demoss. Cursor movement capture and 
+Maybe do more videos about this and show demoss. Cursor movement capture and
 replay. And what not
 
-What about selection, folding and scrolling? Hmm. Scrolling with mouse without 
+What about selection, folding and scrolling? Hmm. Scrolling with mouse without
 moving cursor and no typing.
 
 ---
@@ -3118,7 +3119,7 @@ I'm checking about web based players for playing recording of user typing and al
 
 There's HTML5 video and audio tag
 
-There's also track tag for captions, subtitles and also timed descriptions. 
+There's also track tag for captions, subtitles and also timed descriptions.
 Pretty slick! :)
 
 https://www.w3schools.com/html/html5_video.asp
@@ -3153,28 +3154,52 @@ https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
 
 https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/cross_browser_video_player
 
-What all can we do? Show video, audio, text (subtitles, captions, timed 
-description etc), show poster image before playing video, built-in controls or 
+What all can we do? Show video, audio, text (subtitles, captions, timed
+description etc), show poster image before playing video, built-in controls or
 our own interface and also manipulate with JavaScript
 
-How to create a custom player that can manage both user typing and also audio 
+How to create a custom player that can manage both user typing and also audio
 in sync in the future? Hmm :)
 
 ---
 
 Some notes from notes app -
 
-How to record audio by just using the web browser? Completely offline. And also 
+How to record audio by just using the web browser? Completely offline. And also
 download the content to local.
 
-How to record video from camera by just using the web browser? Completely 
+How to record video from camera by just using the web browser? Completely
 offline and download the content to local
 
-How to record screen by just using web browser? Completely offline and download 
+How to record screen by just using web browser? Completely offline and download
 content to local
 
-Ideally I want only audio. As video and screen recording are too rich content I 
-think. Audio too is rich, but we can get cheap and light weight (low in size) 
-audio content with good audio quality. Not sure about very good audio quality 
-though, I think the best are flv? Idk. Gotta check. MP3 is small and simple and 
+Ideally I want only audio. As video and screen recording are too rich content I
+think. Audio too is rich, but we can get cheap and light weight (low in size)
+audio content with good audio quality. Not sure about very good audio quality
+though, I think the best are flv? Idk. Gotta check. MP3 is small and simple and
 good enough I think
+
+---
+
+I have been doing a lot of thinking, gotta do some action now :P I stopped
+action when I started thinking about cursor movement. A hard problem. I have
+three ideas based on some thoughts
+
+- One is capture every single movement (typing/non-typing) of the cursor and put
+  it in the same deltas array. Only one worry is, how the timing will be when the
+  user is typing character and cursor is moving due to that, as the events are
+  two separate events. I think the character event occurs first and then the
+  cursor movement event. I gotta verify. In any case, it seems a little tricky
+- Another is, same as first one, but store the deltas in separate arrays, one
+  for cursor movement capture, another for character typing capture. But when
+  playing I'm afraid how it's gonna pan out. It's going to be hard to keep the
+  two in sync, as in, the time will be there to sync, but still, I'll be playing
+  two things now - one is the character typing player, another is the cursor
+  moving player. If I pause one, another also has to be paused. Similarly, play,
+  resume, etc. So, every action, I have to take care of it in two places. Hmm
+- Another is, capture cursor movements of non-typing alone separately and play
+  it. But this seems hard for some edge cases. But for simple cases, maybe it's
+  easy. I can simply do something indirectly, like capture keyboard and mouse
+  events and use the most popular (basically what I use :P) keys and buttons to
+  move the cursor or take the cursor to a position.
