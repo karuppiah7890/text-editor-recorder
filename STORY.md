@@ -3257,3 +3257,25 @@ still 0 and I got my mathematics lessons wrong. Lol. Anyways. I'm going with
 this option :D
 
 However fast I type, the logs in the console keep going on fast. Haha.
+
+---
+
+I'm going to post and celebrate on LinkedIn :D Maybe on Twitter too? Hmm
+
+"
+Text Editor Recorder Player: Demo 2 - Cursor Movement Recording and Playing - https://youtu.be/k-i6dwH6y70
+
+In this demo we see how the cursor movements are recorded. Note that selections (selecting blocks of text) or scrolling are not exactly recorded and played but the cursor movement causes them. Scroll movement is not exactly smooth. Looking forward to solve these problems in the future! :D
+
+Tool's Live Demo for you to play around -
+Recorder - https://karuppiah7890.github.io/text-editor-recorder/recorder.html
+Player - https://karuppiah7890.github.io/text-editor-recorder/player.html
+
+There's no server involved. It's completely client side app. You can even switch off Internet and use it. Just basic HTML, CSS, JavaScript.
+
+Source Code - https://github.com/karuppiah7890/text-editor-recorder/
+
+Last time I missed to put about my inspirations (and copy paste inspirations :P)So, here it goes! Inspirations -
+https://asciinema.org/ - Open Source Tool for recording and playing terminal sessions.
+https://scrimba.com/ - The courses show instructor typing code in actual editor and user can copy the code or even modify it and save it separately. The tutorial can be fast forwarded and one can go back too, and pause too. There's also the instructor voice in the background as audio. It's a pretty cool UI :)
+Example - https://scrimba.com/scrim/cV7M2uR?pl=p7P5Hd "
