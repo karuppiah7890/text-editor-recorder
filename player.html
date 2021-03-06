@@ -69,15 +69,22 @@
           const delta = deltas[i];
           let delayToApplyDelta =
             delta.timeFromStart - (Date.now() - startTime);
-          console.log("delayToApplyDelta: ", delayToApplyDelta);
+          // console.log("delayToApplyDelta: ", delayToApplyDelta);
 
-          if (delayToApplyDelta > 0) {
+          // Only when there's 10ms delay, sleep. Or else the loop will
+          // cause continuous calls to setTimeout which will throttle calls
+          // which are done rapidly in succession
+          // TODO: Move this logic of checking > 10ms in sleep function
+          if (delayToApplyDelta > 10) {
             await sleep(delayToApplyDelta);
           }
 
           delete delta.timeFromStart;
-          playerEditor.session.redoChanges([delta], true);
-          playerEditor.gotoLine(delta.end.row + 1, delta.end.column, false);
+          if (delta.isCursorMovement) {
+            playerEditor.gotoLine(delta.row + 1, delta.column, false);
+          } else {
+            playerEditor.session.redoChanges([delta], true);
+          }
         }
 
         playing = false;

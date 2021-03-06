@@ -3187,9 +3187,9 @@ action when I started thinking about cursor movement. A hard problem. I have
 three ideas based on some thoughts
 
 - One is capture every single movement (typing/non-typing) of the cursor and put
-  it in the same deltas array. Only one worry is, how the timing will be when the
-  user is typing character and cursor is moving due to that, as the events are
-  two separate events. I think the character event occurs first and then the
+  it in the same deltas array. Only one worry is, how the timing will be when
+  the user is typing character and cursor is moving due to that, as the events
+  are two separate events. I think the character event occurs first and then the
   cursor movement event. I gotta verify. In any case, it seems a little tricky
 - Another is, same as first one, but store the deltas in separate arrays, one
   for cursor movement capture, another for character typing capture. But when
@@ -3203,3 +3203,57 @@ three ideas based on some thoughts
   easy. I can simply do something indirectly, like capture keyboard and mouse
   events and use the most popular (basically what I use :P) keys and buttons to
   move the cursor or take the cursor to a position.
+
+---
+
+I'm going to try the first idea for cursor movement.
+
+---
+
+[Idea] [Testing] [End-to-End-Test] [Integration-Test]
+
+I really need end to end tests to test my features! :) Or some sort of
+integration testing with jsdom like environment. Hmm. Maybe some unit testing
+too if possible. With Jest, to test correctness. Given there are some time
+elements, gotta think how to do it. Anyways :) It's a good idea!
+
+---
+
+I just tried checking the logs after recording the cursor movement.
+
+I was like... -
+
+Ok wow this is fast. The capture of movements is fast. (Of course. Ace is cool)
+And it is in right order - the typed character log comes first and then the
+cursor movement and the time in both is right too, so the causal order is good.
+Also, even if it is too fast, like copy pasting very fast, at times the
+`timeFromStart` is the same for both!! So, this will be hard to play back as
+most times there's only 1ms or 0ms interval (!!!!) between typed character and
+the cursor movement. Wow. Hmm. How will the sleep work if the time difference
+is so little? Hmm. The sleep is based on `setTimeout` and it will not work out
+for such little and continuous sleeps.
+
+Maybe by respecting the limitations of `setTimeout`, maybe we should not sleep
+if the time interval is less than 10ms. I think that's a good value. I mean, I
+noticed that some browsers have issues with 4ms intervals of continuous calls,
+or even 5ms , 6ms etc. Hmm
+
+https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#reasons_for_delays
+
+I still didn't get the exact issues. In the example in the above web page, they
+use 0ms as the argument for `setTimeout` and it fails / gets throttled after a
+few (in this case 1!) continuous calls. It can be called continuously every
+4ms / 5ms / 6ms / 10ms or some value based on the browser I guess.
+
+So, for the player, for delay time we put the thing to sleep, we can sleep only
+when delay is above 10ms. Or else just show it immediately. I mean, how
+different is 10ms and 0ms for an end user. They won't even notice it I think.
+I mean, 1 second is 1000ms. 10ms is nothing. Instead of waiting for 10ms, I'll
+be directly playing the recording, which is like waiting for 0 time that is -
+not waiting. So, it's a bit faster. Not too fast. Even 10ms waiting and playing
+is fast. This is just 10x faster only in this case. :P Actually infinite times
+faster as 0 multiplied by anything is 0 unless it's infinity. Or...maybe it's
+still 0 and I got my mathematics lessons wrong. Lol. Anyways. I'm going with
+this option :D
+
+However fast I type, the logs in the console keep going on fast. Haha.
