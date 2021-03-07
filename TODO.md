@@ -2,7 +2,14 @@
 
 - Record and play cursor movements when not typing. Like moving up and down,
   left and right with cursor and also cursor movements based on mouse clicks or
-  any movement of cursor basically, when not typing characters.
+  any movement of cursor basically, when not typing characters. - DONE
+- Record and play selection of text
+- Record and play scrolling even when cursor is not moved. Usually cursor moving
+  around is one way to cause scrolling by going up or down to the end of the
+  editor view
+- Record and play multiple cursor movements
+- Record and play mouse movements
+- Record and play multiple selection by single and multiple cursors
 - Support pause while recording
 - Support pause while playing
 - A media player like interface for playing with options to play and pause
@@ -14,3 +21,5 @@
   - Download the audio content too while downloading recording
 - Support playing audio while playing user typing. Play it in sync.
   - Upload and process audio content too while playing recording
+- Support embedding the player in websites like Twitter, LinkedIn and on any
+  website with ease, for example Personal Blogs, Articles etc.
