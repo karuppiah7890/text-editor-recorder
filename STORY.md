@@ -3279,3 +3279,224 @@ Last time I missed to put about my inspirations (and copy paste inspirations :P)
 https://asciinema.org/ - Open Source Tool for recording and playing terminal sessions.
 https://scrimba.com/ - The courses show instructor typing code in actual editor and user can copy the code or even modify it and save it separately. The tutorial can be fast forwarded and one can go back too, and pause too. There's also the instructor voice in the background as audio. It's a pretty cool UI :)
 Example - https://scrimba.com/scrim/cV7M2uR?pl=p7P5Hd "
+
+---
+
+Notes from notes app:
+
+Show movement of mouse? A fancy mouse. It will atleast make sense when people see that a click has been made :)
+
+Also, show the mouse moving please?
+
+Cursor - can we customize it? Scrimba has a nice cursor!! :) Anyways
+
+I really want to do audio next!!! :D
+
+---
+
+I think Recording and Replaying user typing is the first step to understanding on how to build a collaborative editor. Why? As in a collaborative editor, you do have to record user typing in one computer and replay it in some remote computer.
+
+Btw, my next step is selection capture for now.
+
+And then maybe scroll capture.
+
+And then mouse movement capture. I wonder if I have to use browser's features
+and capture mouse and show a custom mouse or if Ace editor has anything
+interesting which I can use. Gotta think if I have to capture mouse just inside
+editor, or outside too. What happens if the mouse is actually going outside?
+Hmm. Not much of a problem I guess. Do I want to highlight clicks? With
+circles. Maybe given an option? Hmm. Check how Scrimba shows mouse and what
+about mouse clicks? Does it show pointer with circles or just the circles for a
+second? Hmm. In the editor, when clicking, it leads to the cursor moving to
+that place. So, it's an overlapping thing - two things at one place. One is the
+cursor that moved there, the other is the mouse pointer that's already present
+there. Hmm
+
+Also, I want to customise how the cursor looks. Scrimba one looks nice :p
+blinking and with some downward pointing arrow on top of the cursor. Mouse
+pointer also was cool. Hmm.
+
+Btw, what about multi cursor and recording multi cursor movements? Same for
+multi selection when there are multiple cursors
+
+Another thing to do is, show the settings menu so that the user can choose any
+theme, any kind of editor like vim, Emacs etc, any settings. Hmm
+
+Another thing regarding testing - I need to start checking how much time the
+recording takes and how much time the playing takes. I mean, I want it to be
+close if not exact. Exact would be nice though. I really have to check how
+swtTimeout alternatives work. Like that postMessage something that Mozilla
+mentioned. Gotta check if it works on all browsers. Why am I talking about
+this? Well, yesterday it seemed like during my recording I typed fast but
+playing looked slow. Maybe I was typing slower than what I wanted. But I can
+only verify if I check again and this time use a screen recorder and record it
+and see my player and video player side by side. Hmm. And also by measuring
+time for recording and playing. Hmm. I was doubting the slowness of setTimeout.
+As in, I have heard that setTimeout can take more time to timeout than what the
+arguments say and that it's not exact. Hmm. I want exact typing speed. Or
+atleast faster than reality, if not slower. But yeah, too fast also would seem
+like a robot or computer typed the thing and it was recorded. Lol. Some people
+do type really fast though. Hmm
+
+---
+
+I need to add README and LICENSE to this project. I was wondering what License
+to use.
+
+I could choose MIT. I was just thinking if I was okay with people using it for
+commercial purposes. I don't plan to make this as a commercial thing as of now.
+I was also wondering what kind of permissions I want to provide in terms of
+code - like, do I want people to be able to take the source code and host it
+themselves and use it with their users for any purposes including commercial
+purposes? And also be able to modify the code and distribute it non-commercially
+or commercially? That too without disclosing the source code with modifications?
+Hmm
+
+More like, do I want to permit
+- Commercial Use?
+- Modification and redistribution without disclosing the modifications?
+
+There are more stuff that each license does.
+
+Gonna check this site and choose one
+
+https://choosealicense.com
+
+I also need to check what's the license of the dependencies I use. As of now,
+I only use Ace editor. Let's see what it license it has! :)
+
+Ace editor has BSD I think. Not sure which version. Seems like v3.
+
+https://github.com/ajaxorg/ace/blob/master/LICENSE
+
+I checked for Redis, it's BSD v3
+
+https://github.com/redis/redis/blob/unstable/COPYING
+
+I don't want to go with unlicense
+
+https://choosealicense.com/licenses/#unlicense
+
+or No license
+
+https://choosealicense.com/no-permission/#for-users
+
+While reading some stuff, I realized that in the future, I might have to check
+about Contributor License Agreement too
+
+https://duckduckgo.com/?t=ffab&q=contributor+license+agreement&ia=web
+
+https://www.finnegan.com/en/insights/articles/what-you-should-know-about-contributor-license-agreements-in-open-source-projects.html
+
+Kubernetes has Apache License 2.0
+
+https://github.com/kubernetes/kubernetes/blob/master/LICENSE
+
+https://choosealicense.com/licenses/apache-2.0/
+
+I just looked at Asciinema license
+
+https://github.com/asciinema/asciinema/blob/develop/LICENSE
+https://github.com/asciinema/asciinema/commit/61d63ec89ca06a209eeaecc5c1cc0b08ec394344#diff-c693279643b8cd5d248172d9c22cb7cf4ed163a3c98c8a3f69c2717edd3eacb7 (change from MIT to GPLv3 I think)
+
+Asciinema has GPLv3 License
+
+https://choosealicense.com/licenses/gpl-3.0
+
+I have used MIT before. It's very permissive, hmm
+
+https://choosealicense.com/licenses/mit/
+
+Some more stuff I checked out
+https://choosealicense.com/community/
+
+I was also thinking about using AGPLv3
+
+https://spdx.org/licenses/AGPL-3.0-or-later.html
+
+I'm just wondering about the future of any software that I created. I might
+wanna create a product or a company out of it. Mostly I have been always in a
+dilemma between fully open source vs some open source and some closed source for
+some enterprise stuff like some sort of enterprise plugins. Hmm
+
+Hashicorp company has an open core model with enterprise versions on top of 
+their software. I don't know how they build the enterprise ones or how they
+relate to the open source ones. One example is nomad
+
+https://github.com/hashicorp/nomad/blob/master/LICENSE
+
+Nomad has Mozilla Public License (MPL) v2.0
+
+Discourse another software has GNU GPLv2
+
+https://github.com/discourse/discourse/blob/master/LICENSE.txt
+
+GitLab uses a mix of some licenses I think
+
+https://gitlab.com/gitlab-org/gitlab-foss/-/blob/master/LICENSE
+
+Helm has Apache License
+
+https://github.com/helm/helm/blob/master/LICENSE
+
+Checking YouTube videos for more knowledge
+
+https://www.youtube.com/results?search_query=open+source+licenses
+
+https://www.youtube.com/watch?v=DDx6gjwU0K8
+
+DronCode vs ArduPilot
+
+https://duckduckgo.com/?t=ffab&q=droncode&ia=web
+
+https://www.dronecode.org/
+https://github.com/PX4
+https://github.com/mavlink
+https://github.com/mavlink/qgroundcontrol
+https://github.com/mavlink/qgroundcontrol/blob/master/COPYING.md - mix of
+apache 2.0 license and GPL v3.0
+
+https://duckduckgo.com/?t=ffab&q=ardu+pilot&ia=web
+https://ardupilot.org/
+https://github.com/ArduPilot/ardupilot
+https://github.com/ArduPilot/ardupilot/blob/master/COPYING.txt - GPL v3
+
+Linkerd is software with a company behind it, which runs a business, they chose
+Apache License 2.0.
+
+https://github.com/linkerd/linkerd/blob/main/LICENSE
+
+https://www.youtube.com/watch?v=9Vj51JqQgzA
+
+PostgreSQL has a very permissive license of their own. Nice
+
+https://github.com/postgres/postgres/blob/master/COPYRIGHT
+
+Open Core Summit
+
+https://duckduckgo.com/?t=ffab&q=open+core+summit&ia=web
+
+https://2020.opencoresummit.com/
+
+https://2019.opencoresummit.com/
+
+Gravitational Teleport has Apache License 2.0
+
+https://github.com/gravitational/teleport/blob/master/LICENSE
+
+and many more Gravitational open source projects have Apache License 2.0
+
+https://github.com/gravitational/gravity/blob/master/LICENSE
+
+https://github.com/gravitational/teleconsole/blob/master/LICENSE
+
+https://github.com/gravitational/workshop/blob/master/LICENSE
+
+https://github.com/gravitational/force/blob/master/LICENSE
+
+https://github.com/gravitational/satellite/blob/master/LICENSE
+
+---
+
+Okay, I have spent a lot of energy on licensing. Let me go back to building
+software for some time! :)
