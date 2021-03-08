@@ -3268,7 +3268,7 @@ Text Editor Recorder Player: Demo 2 - Cursor Movement Recording and Playing - ht
 In this demo we see how the cursor movements are recorded. Note that selections (selecting blocks of text) or scrolling are not exactly recorded and played but the cursor movement causes them. Scroll movement is not exactly smooth. Looking forward to solve these problems in the future! :D
 
 Tool's Live Demo for you to play around -
-Recorder - https://karuppiah7890.github.io/text-editor-recorder/recorder.html
+Recorder - https://karuppiah7890.github.io/text-editor-recorder/
 Player - https://karuppiah7890.github.io/text-editor-recorder/player.html
 
 There's no server involved. It's completely client side app. You can even switch off Internet and use it. Just basic HTML, CSS, JavaScript.
@@ -3353,6 +3353,7 @@ or commercially? That too without disclosing the source code with modifications?
 Hmm
 
 More like, do I want to permit
+
 - Commercial Use?
 - Modification and redistribution without disclosing the modifications?
 
@@ -3419,7 +3420,7 @@ wanna create a product or a company out of it. Mostly I have been always in a
 dilemma between fully open source vs some open source and some closed source for
 some enterprise stuff like some sort of enterprise plugins. Hmm
 
-Hashicorp company has an open core model with enterprise versions on top of 
+Hashicorp company has an open core model with enterprise versions on top of
 their software. I don't know how they build the enterprise ones or how they
 relate to the open source ones. One example is nomad
 
@@ -3500,3 +3501,757 @@ https://github.com/gravitational/satellite/blob/master/LICENSE
 
 Okay, I have spent a lot of energy on licensing. Let me go back to building
 software for some time! :)
+
+---
+
+Idea -
+
+I was wondering how website load videos and stuff, like for YouTube, many
+websites embed the video. Similarly, some websites also have lots of rich
+content, like it can load images, previews, show and play GIFs.
+
+Asciinema has a way to embed it's player in websites
+
+I want to be able to build a thing that can help embed my player in other
+websites, like Twitter, LinkedIn. I don't care about or use Facebook, or
+Instagram now. Also Instagram is however for photos. So, meh.
+
+I also want to help people embed my text editor player in their websites with
+ease - like on their blogs, or on sites like medium, hashnode, dev.to for their
+articles
+
+I'm gonna work on the embedding too at some point. For now, let's get back to
+capturing selections :)
+
+---
+
+I was checking about selections
+
+https://ace.c9.io/#nav=api&api=selection
+
+I think I remember doing some `changeSelection` stuff. Let me check it out.
+
+I think the event didn't give much details except that the selection was
+changed. Hmm
+
+I was reading some stuff again like I had read before and tried some stuff. I
+need to try a bit more here. So, the thing is, there are methods at selection
+level for getting some data like cursor position, I couldn't find exactly the
+method for selection though of course there were some related methods, but I
+thought that - for cursor we get the position with the editor object, so I
+checked for similar methods for selection in editor object.
+
+Like I had checked before, these are some of the methods
+
+```
+getSelection() -> Selection
+
+Returns selection object.
+
+---
+
+getSelectionRange() -> Range
+
+Returns the Range for the selected text.
+
+---
+
+getSelectionStyle() -> String
+
+Returns the current selection style.
+```
+
+I need to try all of them. I have only tried `getSelectionRange` I think and it
+had details about the range to show the selection.
+
+Some of the methods on the selection object for getting selection are
+
+https://ace.c9.io/#nav=api&api=selection
+
+```
+getRange(): Range
+Returns the Range for the selected text.
+
+---
+
+getSelectionAnchor(): Object
+Returns an object containing the row and column of the calling selection anchor.
+
+---
+
+getSelectionLead(): Object
+Returns an object containing the row and column of the calling selection lead.
+
+---
+
+isBackwards(): Boolean
+Returns true if the selection is going backwards in the document.
+
+---
+
+isEmpty(): Boolean
+Returns true if the selection is empty.
+
+---
+
+isMultiLine(): Boolean
+Returns true if the selection is a multi-line.
+```
+
+For playing the recording, to show selection, I noticed some possible methods
+that can help with this
+
+https://ace.c9.io/#nav=api&api=selection
+
+```
+setSelectionRange(Range range, Boolean reverse)
+Sets the selection to the provided range.
+
+Arguments:
+
+range:	Range
+Required. The range of text to select
+
+reverse:	Boolean
+Required. Indicates if the range should go backwards (true) or not
+
+----
+
+setSelectionAnchor(Number row, Number column)
+Sets the row and column position of the anchor. This function also emits the
+'changeSelection' event.
+
+---
+
+selectTo(Number row, Number column)
+Moves the selection cursor to the indicated row and column.
+
+---
+
+selectToPosition(Object pos)
+Moves the selection cursor to the row and column indicated by pos.
+
+Arguments:
+
+pos:	Object
+Required. An object containing the row and column
+```
+
+I just tried the editor level methods first
+
+```javascript
+recordingEditor.session.selection.on("changeSelection", function (e) {
+  console.log("Selection: ", recordingEditor.getSelection());
+  console.log("Selection Range: ", recordingEditor.getSelectionRange());
+  console.log("Selection Style: ", recordingEditor.getSelectionStyle());
+});
+```
+
+There were a lot of logs even when I wasn't selecting text. Hmm. There seems to
+be some confusion around what selection even means now. Hmm.
+
+I noticed that `changeSelection` event happens a lot of times.
+
+Also, there's a thing called anchor and cursor. Looks like the anchor is the
+start of selection, cursor is the end of the selection. But the selection
+range always seems to be showing from left to right values for column, didn't check for row, though the selection can be backwards, in which case it should
+show right to left or bottom to top for backward selection. Hmm.
+
+Some console log examples -
+
+```javascript
+Selection:
+Object { session: {…}, doc: {…}, "$isEmpty": false, _eventRegistry: {…}, _defaultHandlers: {}, lead: {…}, cursor: {…}, anchor: {…}, "$silent": false, rangeList: {…}, … }
+
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Style:  line
+```
+
+```javascript
+Selection:
+{…}
+​
+"$anchorChanged": true
+​
+"$cursorChanged": true
+​
+"$desiredColumn": null
+​
+"$isEmpty": false
+​
+"$keepDesiredColumnOnChange": false
+​
+"$silent": false
+​
+_defaultHandlers: Object {  }
+​
+_eventRegistry: Object { changeCursor: (2) […], changeSelection: (2) […], addRange: (1) […], … }
+​
+anchor: Object { "$onChange": (), row: 4, column: 0, … }
+​
+cursor: Object { "$onChange": (), row: 4, column: 0, … }
+​
+doc: Object { "$lines": (5) […], _eventRegistry: {…}, "$autoNewLine": "\n" }
+​
+lead: Object { "$onChange": (), row: 4, column: 0, … }
+​
+rangeCount: 0
+​
+rangeList: Object { ranges: [], "$bias": 1 }
+​
+ranges: Array []
+​
+session: {…}
+​​
+"$annotations": Array []
+​​
+"$backMarkers": Object { 2: {…}, 32: {…} }
+​​
+"$bidiHandler": Object { EOL: "¬", showInvisibles: true, isRtlDir: false, … }
+​​
+"$breakpoints": Array []
+​​
+"$decorations": Array []
+​​
+"$docRowCache": Array(4) [ 1, 2, 3, … ]
+​​
+"$foldData": Array []
+​​
+"$foldMode": Object {  }
+​​
+"$frontMarkers": Object {  }
+​​
+"$highlightLineMarker": Object { start: {…}, end: {…}, id: 32 }
+​​
+"$informUndoManager": function i(e)
+​​
+"$markerId": 33
+​​
+"$mode": Object { HighlightRules: u(e)
+, "$outdent": {}, "$id": "ace/mode/javascript", … }
+​​
+"$modeId": "ace/mode/javascript"
+​​
+"$modified": false
+​​
+"$onChange": function ()
+​​
+"$rowLengthCache": Array(5) [ 3, 0, 21, … ]
+​​
+"$screenRowCache": Array(4) [ 1, 2, 3, … ]
+​​
+"$searchHighlight": Object { clazz: "ace_selected-word", type: "text", id: 2, … }
+​​
+"$selectionMarker": null
+​​
+"$selectionMarkers": Array []
+​​
+"$syncInformUndoManager": function $syncInformUndoManager()
+​​
+"$tagHighlight": null
+​​
+"$tokenizerUpdateFoldWidgets": function ()
+​​
+"$undoManager": Object { "$maxRev": 20, "$fromUndo": false, "$rev": 20, … }
+​​
+"$undoSelect": true
+​​
+"$updateFoldWidgets": function ()
+​​
+"$updating": false
+​​
+"$worker": Object { "$worker": Worker, "$sendDeltaQueue": (), callbackId: 1, … }
+​​
+"$wrapAsCode": true
+​​
+"$wrapData": Array []
+​​
+_defaultHandlers: Object {  }
+​​
+_eventRegistry: Object { changeFold: (2) […], change: (4) […], changeMode: (1) […], … }
+​​
+bgTokenizer: Object { running: false, lines: (6) […], currentLine: 5, … }
+​​
+curOp: Object { command: {…}, scrollTop: 0, selectionChanged: true, … }
+​​
+doc: Object { "$lines": (5) […], _eventRegistry: {…}, "$autoNewLine": "\n" }
+​​
+foldWidgets: Array(5) [ "", "", "", … ]
+​​
+getFoldWidget: function ()
+​​
+getFoldWidgetRange: function ()
+​​
+id: "session1"
+​​
+mergeUndoDeltas: false
+​​
+multiSelect: Object { session: {…}, "$isEmpty": false, "$silent": false, … }
+​​
+nonTokenRe: /^(?:[^0-9A-Z_a-zªµºÀ-ÖØ-öø-ˁˆ-ˑˠ-ˤˬˮ̀-ʹͶ-ͷͺ-ͽΆΈ-ΊΌΎ-ΡΣ-ϵϷ-ҁ҃-҇Ҋ-ԥԱ-Ֆՙա-և֑-ֽֿׁ-ׂׄ-ׇׅא-תװ-ײؐ-ؚء-ٞ٠-٩ٮ-ۓە-ۜ۟-۪ۨ-ۼۿܐ-݊ݍ-ޱ߀-ߵߺࠀ-࠭ऀ-ह़-ॎॐ-ॕक़-ॣ०-९ॱ-ॲॹ-ॿঁ-ঃঅ-ঌএ-ঐও-নপ-রলশ-হ়-ৄে-ৈো-ৎৗড়-ঢ়য়-ৣ০-ৱਁ-ਃਅ-ਊਏ-ਐਓ-ਨਪ-ਰਲ-ਲ਼ਵ-ਸ਼ਸ-ਹ਼ਾ-ੂੇ-ੈੋ-੍ੑਖ਼-ੜਫ਼੦-ੵઁ-ઃઅ-ઍએ-ઑઓ-નપ-રલ-ળવ-હ઼-ૅે-ૉો-્ૐૠ-ૣ૦-૯ଁ-ଃଅ-ଌଏ-ଐଓ-ନପ-ରଲ-ଳଵ-ହ଼-ୄେ-ୈୋ-୍ୖ-ୗଡ଼-ଢ଼ୟ-ୣ୦-୯ୱஂ-ஃஅ-ஊஎ-ஐஒ-கங-சஜஞ-டண-தந-பம-ஹா-ூெ-ைொ-்ௐௗ௦-௯ఁ-ఃఅ-ఌఎ-ఐఒ-నప-ళవ-హఽ-ౄె-ైొ-్ౕ-ౖౘ-ౙౠ-ౣ౦-౯ಂ-ಃಅ-ಌಎ-ಐಒ-ನಪ-ಳವ-ಹ಼-ೄೆ-ೈೊ-್ೕ-ೖೞೠ-ೣ೦-೯ം-ഃഅ-ഌഎ-ഐഒ-നപ-ഹഽ-ൄെ-ൈൊ-്ൗൠ-ൣ൦-൯ൺ-ൿං-ඃඅ-ඖක-නඳ-රලව-ෆ්ා-ුූෘ-ෟෲ-ෳก-ฺเ-๎๐-๙ກ-ຂຄງ-ຈຊຍດ-ທນ-ຟມ-ຣລວສ-ຫອ-ູົ-ຽເ-ໄໆ່-ໍ໐-໙ໜ-ໝༀ༘-༙༠-༩༹༵༷༾-ཇཉ-ཬཱ-྄྆-ྋྐ-ྗྙ-ྼ࿆က-၉ၐ-ႝႠ-Ⴥა-ჺჼᄀ-ቈቊ-ቍቐ-ቖቘቚ-ቝበ-ኈኊ-ኍነ-ኰኲ-ኵኸ-ኾዀዂ-ዅወ-ዖዘ-ጐጒ-ጕጘ-ፚ፟ᎀ-ᎏᎠ-Ᏼᐁ-ᙬᙯ-ᙿᚁ-ᚚᚠ-ᛪᜀ-ᜌᜎ-᜔ᜠ-᜴ᝀ-ᝓᝠ-ᝬᝮ-ᝰᝲ-ᝳក-ឳា-៓ៗៜ-៝០-៩᠋-᠍᠐-᠙ᠠ-ᡷᢀ-ᢪᢰ-ᣵᤀ-ᤜᤠ-ᤫᤰ-᤻᥆-ᥭᥰ-ᥴᦀ-ᦫᦰ-ᧉ᧐-᧚ᨀ-ᨛᨠ-ᩞ᩠-᩿᩼-᪉᪐-᪙ᪧᬀ-ᭋ᭐-᭙᭫-᭳ᮀ-᮪ᮮ-᮹ᰀ-᰷᱀-᱉ᱍ-ᱽ᳐-᳔᳒-ᳲᴀ-᷽ᷦ-ἕἘ-Ἕἠ-ὅὈ-Ὅὐ-ὗὙὛὝὟ-ώᾀ-ᾴᾶ-ᾼιῂ-ῄῆ-ῌῐ-ΐῖ-Ίῠ-Ῥῲ-ῴῶ-ῼ‿-⁀⁔ⁱⁿₐ-ₔ⃐-⃥⃜⃡-⃰ℂℇℊ-ℓℕℙ-ℝℤΩℨK-ℭℯ-ℹℼ-ℿⅅ-ⅉⅎↃ-ↄⰀ-Ⱞⰰ-ⱞⱠ-ⳤⳫ-⳱ⴀ-ⴥⴰ-ⵥⵯⶀ-ⶖⶠ-ⶦⶨ-ⶮⶰ-ⶶⶸ-ⶾⷀ-ⷆⷈ-ⷎⷐ-ⷖⷘ-ⷞⷠ-ⷿⸯ々-〆〪-〯〱-〵〻-〼ぁ-ゖ゙-゚ゝ-ゟァ-ヺー-ヿㄅ-ㄭㄱ-ㆎㆠ-ㆷㇰ-ㇿ㐀-䶵一-鿋ꀀ-ꒌꓐ-ꓽꔀ-ꘌꘐ-ꘫꙀ-ꙟꙢ-꙯꙼-꙽ꙿ-ꚗꚠ-ꛥ꛰-꛱ꜗ-ꜟꜢ-ꞈꞋ-ꞌꟻ-ꠧꡀ-ꡳꢀ-꣄꣐-꣙꣠-ꣷꣻ꤀-꤭ꤰ-꥓ꥠ-ꥼꦀ-꧀ꧏ-꧙ꨀ-ꨶꩀ-ꩍ꩐-꩙ꩠ-ꩶꩺ-ꩻꪀ-ꫂꫛ-ꫝꯀ-ꯪ꯬-꯭꯰-꯹가-힣ힰ-ퟆퟋ-ퟻ豈-鶴侮-舘並-龎ﬀ-ﬆﬓ-ﬗיִ-ﬨשׁ-זּטּ-לּמּנּ-סּףּ-פּצּ-ﮱﯓ-ﴽﵐ-ﶏﶒ-ﷇﷰ-ﷻ︀-️︠-︦︳-︴﹍-﹏ﹰ-ﹴﹶ-ﻼ０-９Ａ-Ｚ＿ａ-ｚｦ-ﾾￂ-ￇￊ-ￏￒ-ￗￚ-ￜ\$_]|\s])+/g
+​​
+screenWidth: 21
+​​
+selection: Object { session: {…}, "$isEmpty": false, "$silent": false, … }
+​​
+tokenRe: /^[0-9A-Z_a-zªµºÀ-ÖØ-öø-ˁˆ-ˑˠ-ˤˬˮ̀-ʹͶ-ͷͺ-ͽΆΈ-ΊΌΎ-ΡΣ-ϵϷ-ҁ҃-҇Ҋ-ԥԱ-Ֆՙա-և֑-ֽֿׁ-ׂׄ-ׇׅא-תװ-ײؐ-ؚء-ٞ٠-٩ٮ-ۓە-ۜ۟-۪ۨ-ۼۿܐ-݊ݍ-ޱ߀-ߵߺࠀ-࠭ऀ-ह़-ॎॐ-ॕक़-ॣ०-९ॱ-ॲॹ-ॿঁ-ঃঅ-ঌএ-ঐও-নপ-রলশ-হ়-ৄে-ৈো-ৎৗড়-ঢ়য়-ৣ০-ৱਁ-ਃਅ-ਊਏ-ਐਓ-ਨਪ-ਰਲ-ਲ਼ਵ-ਸ਼ਸ-ਹ਼ਾ-ੂੇ-ੈੋ-੍ੑਖ਼-ੜਫ਼੦-ੵઁ-ઃઅ-ઍએ-ઑઓ-નપ-રલ-ળવ-હ઼-ૅે-ૉો-્ૐૠ-ૣ૦-૯ଁ-ଃଅ-ଌଏ-ଐଓ-ନପ-ରଲ-ଳଵ-ହ଼-ୄେ-ୈୋ-୍ୖ-ୗଡ଼-ଢ଼ୟ-ୣ୦-୯ୱஂ-ஃஅ-ஊஎ-ஐஒ-கங-சஜஞ-டண-தந-பம-ஹா-ூெ-ைொ-்ௐௗ௦-௯ఁ-ఃఅ-ఌఎ-ఐఒ-నప-ళవ-హఽ-ౄె-ైొ-్ౕ-ౖౘ-ౙౠ-ౣ౦-౯ಂ-ಃಅ-ಌಎ-ಐಒ-ನಪ-ಳವ-ಹ಼-ೄೆ-ೈೊ-್ೕ-ೖೞೠ-ೣ೦-೯ം-ഃഅ-ഌഎ-ഐഒ-നപ-ഹഽ-ൄെ-ൈൊ-്ൗൠ-ൣ൦-൯ൺ-ൿං-ඃඅ-ඖක-නඳ-රලව-ෆ්ා-ුූෘ-ෟෲ-ෳก-ฺเ-๎๐-๙ກ-ຂຄງ-ຈຊຍດ-ທນ-ຟມ-ຣລວສ-ຫອ-ູົ-ຽເ-ໄໆ່-ໍ໐-໙ໜ-ໝༀ༘-༙༠-༩༹༵༷༾-ཇཉ-ཬཱ-྄྆-ྋྐ-ྗྙ-ྼ࿆က-၉ၐ-ႝႠ-Ⴥა-ჺჼᄀ-ቈቊ-ቍቐ-ቖቘቚ-ቝበ-ኈኊ-ኍነ-ኰኲ-ኵኸ-ኾዀዂ-ዅወ-ዖዘ-ጐጒ-ጕጘ-ፚ፟ᎀ-ᎏᎠ-Ᏼᐁ-ᙬᙯ-ᙿᚁ-ᚚᚠ-ᛪᜀ-ᜌᜎ-᜔ᜠ-᜴ᝀ-ᝓᝠ-ᝬᝮ-ᝰᝲ-ᝳក-ឳា-៓ៗៜ-៝០-៩᠋-᠍᠐-᠙ᠠ-ᡷᢀ-ᢪᢰ-ᣵᤀ-ᤜᤠ-ᤫᤰ-᤻᥆-ᥭᥰ-ᥴᦀ-ᦫᦰ-ᧉ᧐-᧚ᨀ-ᨛᨠ-ᩞ᩠-᩿᩼-᪉᪐-᪙ᪧᬀ-ᭋ᭐-᭙᭫-᭳ᮀ-᮪ᮮ-᮹ᰀ-᰷᱀-᱉ᱍ-ᱽ᳐-᳔᳒-ᳲᴀ-᷽ᷦ-ἕἘ-Ἕἠ-ὅὈ-Ὅὐ-ὗὙὛὝὟ-ώᾀ-ᾴᾶ-ᾼιῂ-ῄῆ-ῌῐ-ΐῖ-Ίῠ-Ῥῲ-ῴῶ-ῼ‿-⁀⁔ⁱⁿₐ-ₔ⃐-⃥⃜⃡-⃰ℂℇℊ-ℓℕℙ-ℝℤΩℨK-ℭℯ-ℹℼ-ℿⅅ-ⅉⅎↃ-ↄⰀ-Ⱞⰰ-ⱞⱠ-ⳤⳫ-⳱ⴀ-ⴥⴰ-ⵥⵯⶀ-ⶖⶠ-ⶦⶨ-ⶮⶰ-ⶶⶸ-ⶾⷀ-ⷆⷈ-ⷎⷐ-ⷖⷘ-ⷞⷠ-ⷿⸯ々-〆〪-〯〱-〵〻-〼ぁ-ゖ゙-゚ゝ-ゟァ-ヺー-ヿㄅ-ㄭㄱ-ㆎㆠ-ㆷㇰ-ㇿ㐀-䶵一-鿋ꀀ-ꒌꓐ-ꓽꔀ-ꘌꘐ-ꘫꙀ-ꙟꙢ-꙯꙼-꙽ꙿ-ꚗꚠ-ꛥ꛰-꛱ꜗ-ꜟꜢ-ꞈꞋ-ꞌꟻ-ꠧꡀ-ꡳꢀ-꣄꣐-꣙꣠-ꣷꣻ꤀-꤭ꤰ-꥓ꥠ-ꥼꦀ-꧀ꧏ-꧙ꨀ-ꨶꩀ-ꩍ꩐-꩙ꩠ-ꩶꩺ-ꩻꪀ-ꫂꫛ-ꫝꯀ-ꯪ꯬-꯭꯰-꯹가-힣ힰ-ퟆퟋ-ퟻ豈-鶴侮-舘並-龎ﬀ-ﬆﬓ-ﬗיִ-ﬨשׁ-זּטּ-לּמּנּ-סּףּ-פּצּ-ﮱﯓ-ﴽﵐ-ﶏﶒ-ﷇﷰ-ﷻ︀-️︠-︦︳-︴﹍-﹏ﹰ-ﹴﹶ-ﻼ０-９Ａ-Ｚ＿ａ-ｚｦ-ﾾￂ-ￇￊ-ￏￒ-ￗￚ-ￜ\$_]+/g
+​​
+<prototype>: Object { _dispatchEvent: _dispatchEvent(e, t), _emit: _dispatchEvent(e, t), _signal: _signal(e, t)
+, … }
+​
+<prototype>: Object { _dispatchEvent: _dispatchEvent(e, t), _emit: _dispatchEvent(e, t), _signal: _signal(e, t), … }
+```
+
+```javascript
+ Selection Range:
+{…}
+​
+end: Object { row: 4, column: 0 }
+​
+start: Object { row: 2, column: 0 }
+​
+<prototype>: Object { isEqual: isEqual(e), toString: toString(), contains: contains(e, t), … }
+```
+
+I was also just thinking about how to unselect an already selected block of
+text. Hmm
+
+Let me try the methods on Selection instead of the Editor.
+
+It was interesting. So, this is what I tried
+
+```javascript
+recordingEditor.session.selection.on("changeSelection", function (e) {
+  const selection = recordingEditor.session.selection;
+  console.log("Selection isEmpty: ", selection.isEmpty());
+  console.log("Selection isBackwards: ", selection.isBackwards());
+  console.log("Selection isMultiLine: ", selection.isMultiLine());
+  console.log("Selection Range: ", selection.getRange());
+  console.log("Selection Anchor: ", selection.getSelectionAnchor());
+  console.log("Selection Lead: ", selection.getSelectionLead());
+});
+```
+
+I tried a simple demo with some interesting ideas to test this thing.
+
+```
+Selection isEmpty:  true
+Selection isBackwards:  false
+Selection isMultiLine:  false
+Selection Range:
+{…}
+​
+end: Object { row: 0, column: 3 }
+​
+start: Object { row: 0, column: 3 }
+​
+<prototype>: Object { isEqual: isEqual(e), toString: toString(), contains: contains(e, t)
+, … }
+
+Selection Anchor:
+Object { row: 0, column: 3 }
+
+Selection Lead:
+{…}
+​
+column: 3
+​
+row: 0
+​
+<prototype>: Object { … }
+
+Selection isEmpty:  true
+Selection isBackwards:  false
+Selection isMultiLine:  false
+Selection Range:
+{…}
+​
+end: Object { row: 0, column: 3 }
+​
+start: Object { row: 0, column: 3 }
+​
+<prototype>: Object { isEqual: isEqual(e), toString: toString(), contains: contains(e, t)
+, … }
+
+Selection Anchor:
+{…}
+​
+column: 3
+​
+row: 0
+​
+<prototype>: Object { … }
+
+Selection Lead:
+{…}
+​
+column: 3
+​
+row: 0
+​
+<prototype>: Object { … }
+
+Selection isEmpty:  false
+Selection isBackwards:  true
+Selection isMultiLine:  true
+Selection Range:
+{…}
+​
+end: Object { row: 2, column: 3 }
+​
+start: Object { row: 1, column: 3 }
+​
+<prototype>: Object { isEqual: isEqual(e), toString: toString(), contains: contains(e, t)
+, … }
+
+Selection Anchor:
+Object { row: 2, column: 3 }
+
+Selection Lead:
+Object { row: 1, column: 3 }
+
+Selection isEmpty:  true
+Selection isBackwards:  true
+Selection isMultiLine:  false
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 1, column: 3 }
+
+Selection Lead:
+Object { row: 1, column: 3 }
+
+Selection isEmpty:  false
+Selection isBackwards:  true
+Selection isMultiLine:  true
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 2, column: 3 }
+
+Selection Lead:
+Object { row: 1, column: 3 }
+
+Selection isEmpty:  false
+Selection isBackwards:  true
+Selection isMultiLine:  true
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 2, column: 3 }
+
+Selection Lead:
+Object { row: 0, column: 3 }
+
+Selection isEmpty:  true
+Selection isBackwards:  true
+Selection isMultiLine:  false
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 0, column: 3 }
+
+Selection Lead:
+Object { row: 0, column: 3 }
+
+Selection isEmpty:  false
+Selection isBackwards:  true
+Selection isMultiLine:  true
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 2, column: 3 }
+
+Selection Lead:
+Object { row: 1, column: 3 }
+
+Selection isEmpty:  false
+Selection isBackwards:  true
+Selection isMultiLine:  true
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 2, column: 3 }
+
+Selection Lead:
+Object { row: 0, column: 3 }
+
+Selection isEmpty:  false
+Selection isBackwards:  true
+Selection isMultiLine:  true
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 2, column: 3 }
+
+Selection Lead:
+Object { row: 0, column: 0 }
+
+Selection isEmpty:  true
+Selection isBackwards:  false
+Selection isMultiLine:  false
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 0, column: 0 }
+
+Selection Lead:
+Object { row: 0, column: 0 }
+
+Selection isEmpty:  true
+Selection isBackwards:  false
+Selection isMultiLine:  false
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 0, column: 0 }
+
+Selection Lead:
+Object { row: 0, column: 0 }
+
+Selection isEmpty:  false
+Selection isBackwards:  false
+Selection isMultiLine:  true
+Selection Range:
+Object { start: {…}, end: {…} }
+
+Selection Anchor:
+Object { row: 0, column: 0 }
+
+Selection Lead:
+Object { row: 2, column: 3 }
+```
+
+Test 1 for selection:
+Start recording. Start typing -
+Start with a comment line first, using command + /. Now, type some comments.
+Type comments for multiple lines. Select the text in the comments now. Select
+forward. Select backward. After selection, type something. What this leads to is
+replacing the text that has been selected.
+
+Stop recording. Play the recording. See how it looks and if it feels similar to
+how you typed with no weird experiences. Remember, selections should go away
+in an intuitive way in the same way they went away while typing (and recording)
+instead of the selection always staying there and then the cursor moving around
+or typing. That would be weird as that's not how selections work when we type.
+They go away when the cursor moves or when we type - selected text gets
+replaced. Ideally the text change recording will take care of removing and
+replacing. The selection removal will still be new code.
+
+During recording, Try to select a block of code in between big blocks of text,
+so that you can see what happens when you type after selecting or when you
+simply move around after selecting :)
+
+---
+
+Now, I'm just wondering how to record the selection and also it's removal. Hmm.
+There's a nice `isEmpty` method on the selection which tells if the selection
+is empty. Hmm. So, I guess it's like whatever change happens in the selection
+it will show up in the `changeSelection` event - addition or removal of
+selection that is or even modification of existing selection.
+
+So, whenever there's a change in selection, if it's an empty selection, I'll
+ensure that I clear any possible selections while playing. There's a method to
+do that too ;)
+
+```
+clearSelection()
+Empties the selection (by de-selecting it). This function also emits the 'changeSelection' event.
+```
+
+Fortunately I call that method only while playing and don't have any listeners
+to `changeSelection`. Or else imagine a situation where someone writes a code
+to clear selection inside the event handler of `changeSelection`, it will be
+an infinite loop I think, as clear selection emits `changeSelection` event.
+Also, some weird things emit the event, idk how it exactly works as of now.
+
+Now, I know how to clear selection. I was just thinking about how the cursor
+movement is part of the selection. I mean, I'm already capturing cursor
+movements and playing them. Does setting a selection or adding a selection while
+playing the recording move the cursor too? Not sure, gotta check. Also, how does
+the two cursor moves - one because of selection play and another because of
+cursor movement play, how do they work? Do they work well together? Or do they
+mess up things or conflict each other? Something to check out. Maybe I can
+comment out the playing of cursor movement and see how selection play works
+standalone :)
+
+Something to note is, there's a method called `selectTo`. Maybe this is what
+moves the cursor but setting selection doesn't? Hmm. I'll validate it :)
+
+```
+selectTo(Number row, Number column)
+Moves the selection cursor to the indicated row and column.
+```
+
+Oops, I tried coding the recorder and player and it failed in the player. I got
+this error
+
+```javascript
+Uncaught (in promise) TypeError: playerEditor.session.setSelectionRange is not a function
+    playRecording file:///Users/karuppiahn/oss/github.com/karuppiah7890/text-editor-recorder/player.html:89
+    addListenersToButtons file:///Users/karuppiahn/oss/github.com/karuppiah7890/text-editor-recorder/player.html:156
+    <anonymous> file:///Users/karuppiahn/oss/github.com/karuppiah7890/text-editor-recorder/player.html:159
+player.html:89:36
+    playRecording file:///Users/karuppiahn/oss/github.com/karuppiah7890/text-editor-recorder/player.html:100
+    AsyncFunctionNext self-hosted:690
+    (Async: async)
+    addListenersToButtons file:///Users/karuppiahn/oss/github.com/karuppiah7890/text-editor-recorder/player.html:156
+    <anonymous> file:///Users/karuppiahn/oss/github.com/karuppiah7890/text-editor-recorder/player.html:159
+```
+
+This is how I coded it
+
+Recorder -
+
+```javascript
+recordingEditor.session.selection.on("changeSelection", function (e) {
+  let currentTime = Date.now();
+  let diff = currentTime - startTime;
+  const selection = recordingEditor.session.selection;
+
+  if (recording) {
+    delta = {
+      isSelectionAction: true,
+      timeFromStart: diff,
+    };
+    if (selection.isEmpty()) {
+      delta.clearSelection = true;
+      return;
+    }
+    delta.range = selection.getRange();
+    delta.isBackwards = selection.isBackwards();
+    deltas.push(delta);
+    // console.log(delta);
+  }
+});
+```
+
+Player -
+
+```javascript
+if (delta.isCursorMovement) {
+  // playerEditor.gotoLine(delta.row + 1, delta.column, false);
+} else if (delta.isSelectionAction) {
+  if (delta.clearSelection) {
+    playerEditor.session.clearSelection();
+  } else {
+    playerEditor.session.setSelectionRange(delta.range, delta.isBackwards);
+  }
+} else {
+  playerEditor.session.redoChanges([delta], true);
+}
+```
+
+It says that the below line has error and that the function does not exist.
+
+```javascript
+playerEditor.session.setSelectionRange(delta.range, delta.isBackwards);
+```
+
+Ace editor shows it in their doc though. Hmm
+
+Clearly sounds like a syntax issue than any data issue. I mean, javascript is
+too chill about issues in code. I was wondering about how the shape (structure)
+of range might have been wrong and if I should send something different, like
+send a `range` key too at the top level along with `start` and `end` in it,
+instead of having `start` and `end` directly at the top level in the supplied
+arguments. Anyways, I've to dig into this
+
+Going to take a break to come back with a fresh mind. Also, there's some issue
+in the recording too - in the recording file, I noticed that there's a
+selection action in the start and it's not even cleared later. But I never
+selected anything in the start, I was just writing comments. Hmm. Gotta see
+how to solve those kind of problems, hmm
+
+Wow. I found out the issue. DAMN IT. I was so sleepy that I didn't even notice
+that I was always using
+
+```javascript
+playerEditor.session.setSelectionRange(delta.range, delta.isBackwards);
+```
+
+I even started reading the Ace editor codebase for this. I just bit my teeth
+and grit. Damn thing.
+
+I was always using the `setSelectionRange` on the `session` and NOT the
+`selection`. DAMN thing. DAMN nested objects and my sleepiness. I also need to
+really understand more internals and be more awake. Damn. Hmm.
+
+So, the right thing is
+
+```javascript
+playerEditor.session.selection.setSelectionRange(
+  delta.range,
+  delta.isBackwards
+);
+```
+
+All this while I was trying so many things. Like, I was checking in console
+
+```javascript
+console.log(playerEditor.session);
+console.log(playerEditor.session.setSelectionRange);
+```
+
+And I noticed `selection` as a key in the first object. The second console
+of course gave undefined as error. Damn thing. That's the one good thing about
+having types and using TypeScript. I can use suggestions and find out that
+there's no such thing and find more on what's going on. Hmm. I think in this
+case the main issue was that I was sleepy.
+
+I finally played it. Surprisingly the cursor moved a lot here and there and
+especially during selections. Even though I had commented out the cursor
+movement code.
+
+Also the play was no so smooth. But I guess it was fine. I think I should start
+taking videos of any tests I do. And save the video, the recording file and also
+a video of the playing. It will help in debugging. Hmm. As there are many steps
+to this. Recording and it should properly record what I do. And then there's the
+file which should have right content and then when I see playing, I should be
+able to see similar to what I had typed, mostly similar experience as typing.
+Hmm
+
+The play looks nice when the cursor movement has been enabled. It gets rid of
+some glitches I noticed. So, all good!
+
+I do see a big pause in the whole play for some reason. I don't know why. Gotta
+check that alone and it doesn't cover one of the cases I had in mind. It didn't
+get played well.
+
+Somehow there's a magic number `104292` in the `timeFromStart` field. I used
+this log to debug
+
+```javascript
+for (let i = 0; i < deltas.length; i++) {
+  const delta = deltas[i];
+  const now = Date.now();
+  let delayToApplyDelta = delta.timeFromStart - (now - startTime);
+  console.log(
+    "timeFromStart: ",
+    delta.timeFromStart,
+    "now:",
+    now,
+    "startTime:",
+    startTime,
+    "In ",
+    delayToApplyDelta,
+    "ms time, going to apply this delta: ",
+    delta
+  );
+
+  // ... other code
+}
+```
+
+I'm going to store the demo and use it to debug it.

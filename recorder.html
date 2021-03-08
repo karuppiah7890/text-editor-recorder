@@ -144,6 +144,27 @@
           // console.log(delta);
         }
       });
+
+      recordingEditor.session.selection.on("changeSelection", function (e) {
+        let currentTime = Date.now();
+        let diff = currentTime - startTime;
+        const selection = recordingEditor.session.selection;
+
+        if (recording) {
+          delta = {
+            isSelectionAction: true,
+            timeFromStart: diff,
+          };
+          if (selection.isEmpty()) {
+            delta.clearSelection = true;
+            return;
+          }
+          delta.range = selection.getRange();
+          delta.isBackwards = selection.isBackwards();
+          deltas.push(delta);
+          // console.log(delta);
+        }
+      });
     </script>
   </body>
 </html>
