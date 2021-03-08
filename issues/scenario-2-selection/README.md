@@ -22,3 +22,7 @@ Gotta check the two video recordings of the recording and the playing side by
 side to see what went wrong.
 
 Recording of the mishap -
+https://youtu.be/QQ14tbOZjVY
+
+Mishap Playlist -
+https://www.youtube.com/playlist?list=PL6xKBQ9SsrsY6nbWlNaVTNvYO6OjcKCfg
