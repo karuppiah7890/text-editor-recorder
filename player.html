@@ -63,24 +63,24 @@
         playerEditor.setValue(header.initialContent, 1);
 
         const startTime = Date.now();
-        console.log("start time: ", startTime);
+        // console.log("start time: ", startTime);
 
         for (let i = 0; i < deltas.length; i++) {
           const delta = deltas[i];
           const now = Date.now();
           let delayToApplyDelta = delta.timeFromStart - (now - startTime);
-          console.log(
-            "timeFromStart: ",
-            delta.timeFromStart,
-            "now:",
-            now,
-            "startTime:",
-            startTime,
-            "In ",
-            delayToApplyDelta,
-            "ms time, going to apply this delta: ",
-            delta
-          );
+          // console.log(
+          //   "timeFromStart: ",
+          //   delta.timeFromStart,
+          //   "now:",
+          //   now,
+          //   "startTime:",
+          //   startTime,
+          //   "In ",
+          //   delayToApplyDelta,
+          //   "ms time, going to apply this delta: ",
+          //   delta
+          // );
 
           // Only when there's 10ms delay, sleep. Or else the loop will
           // cause continuous calls to setTimeout which will throttle calls
