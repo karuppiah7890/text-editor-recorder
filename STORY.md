@@ -4255,3 +4255,303 @@ for (let i = 0; i < deltas.length; i++) {
 ```
 
 I'm going to store the demo and use it to debug it.
+
+---
+
+I have stored the demo files, seen the video and tried to see where the issue
+started and what happened. I remember seeing lot of negative delay values
+and also lot of long interval between some two actions suddenly in the
+recording file. I think there's some big issue in the recording itself. I need
+to understand what it is. Also, I noticed that the timeFromStart is not
+always increasing, it's sometime decreasing too in the list of deltas. For
+example, if there's
+
+delta1
+delta2
+delta3
+delta4
+...
+...
+deltaN
+
+Then, if deltaI causally happens before deltaI+1 then it should appear in the
+order
+
+deltaI, deltaI+1
+
+in the list of deltas and also, the `timeFromStart` field value of deltaI
+should be less than that of deltaI+1 . Now I need to understand why the timing
+is wrong and if there's anything else wrong. Hmm
+
+```bash
+cat issues/scenario-1-selection-issue/0f0a59dcf3ea86f39762b2d7f6353a6e1c3854a3.textrec | jq '.[].timeFromStart'
+```
+
+The `timeFromStart` values are not in increasing order. Hmm. Is the delta
+element in that position itself is wrong or just the `timeFromStart` is now
+the question. I need to analyze the anomalies and then find out the issue. Hmm
+
+I wrote a small piece of code to understand the anomaly. I started checking the
+deltas where the value decreased instead of increasing. Actually the value can
+be equal too I didn't think of that while writing the code
+
+```javascript
+const fs = require("fs");
+
+const fileContent = fs.readFileSync(
+  `${__dirname}/0f0a59dcf3ea86f39762b2d7f6353a6e1c3854a3.textrec`,
+  "utf8"
+);
+
+const deltas = JSON.parse(fileContent);
+
+// console.log(deltas);
+
+deltas.forEach((delta, index) => {
+  if (index == 0) {
+    return;
+  }
+
+  const previousDelta = deltas[index - 1];
+
+  if (delta.timeFromStart < previousDelta.timeFromStart) {
+    console.log(delta);
+  }
+});
+```
+
+```bash
+$ node issues/scenario-1-selection-issue/debug-issue.js
+{ row: 10, column: 12, timeFromStart: 63651, isCursorMovement: true }
+{ row: 10, column: 13, timeFromStart: 63995, isCursorMovement: true }
+{ row: 10, column: 14, timeFromStart: 64092, isCursorMovement: true }
+{ row: 10, column: 15, timeFromStart: 64275, isCursorMovement: true }
+{ row: 10, column: 16, timeFromStart: 64386, isCursorMovement: true }
+{ row: 10, column: 17, timeFromStart: 64907, isCursorMovement: true }
+{ row: 10, column: 18, timeFromStart: 65012, isCursorMovement: true }
+{ row: 10, column: 19, timeFromStart: 65076, isCursorMovement: true }
+{ row: 10, column: 20, timeFromStart: 65180, isCursorMovement: true }
+{ row: 10, column: 21, timeFromStart: 65235, isCursorMovement: true }
+{ row: 10, column: 22, timeFromStart: 65267, isCursorMovement: true }
+{ row: 10, column: 23, timeFromStart: 65370, isCursorMovement: true }
+{ row: 10, column: 24, timeFromStart: 65546, isCursorMovement: true }
+{ row: 10, column: 25, timeFromStart: 65626, isCursorMovement: true }
+{ row: 10, column: 26, timeFromStart: 65745, isCursorMovement: true }
+{ row: 10, column: 27, timeFromStart: 66043, isCursorMovement: true }
+{ row: 10, column: 28, timeFromStart: 66107, isCursorMovement: true }
+{ row: 10, column: 29, timeFromStart: 66147, isCursorMovement: true }
+{ row: 10, column: 30, timeFromStart: 66217, isCursorMovement: true }
+{ row: 10, column: 31, timeFromStart: 66595, isCursorMovement: true }
+{ row: 10, column: 32, timeFromStart: 66691, isCursorMovement: true }
+{ row: 10, column: 30, timeFromStart: 67034, isCursorMovement: true }
+{ row: 10, column: 31, timeFromStart: 67177, isCursorMovement: true }
+{ row: 10, column: 32, timeFromStart: 67251, isCursorMovement: true }
+{ row: 10, column: 33, timeFromStart: 67339, isCursorMovement: true }
+{ row: 10, column: 34, timeFromStart: 67354, isCursorMovement: true }
+{ row: 10, column: 35, timeFromStart: 67578, isCursorMovement: true }
+{ row: 9, column: 35, timeFromStart: 68611, isCursorMovement: true }
+{ row: 10, column: 18, timeFromStart: 104473, isCursorMovement: true }
+{ row: 10, column: 19, timeFromStart: 104473, isCursorMovement: true }
+{ row: 10, column: 20, timeFromStart: 104473, isCursorMovement: true }
+{ row: 10, column: 21, timeFromStart: 104474, isCursorMovement: true }
+{ row: 10, column: 22, timeFromStart: 104474, isCursorMovement: true }
+{ row: 10, column: 23, timeFromStart: 104474, isCursorMovement: true }
+{ row: 10, column: 24, timeFromStart: 104474, isCursorMovement: true }
+{ row: 10, column: 25, timeFromStart: 104474, isCursorMovement: true }
+{ row: 10, column: 26, timeFromStart: 104923, isCursorMovement: true }
+{ row: 10, column: 27, timeFromStart: 104923, isCursorMovement: true }
+{ row: 10, column: 28, timeFromStart: 104923, isCursorMovement: true }
+{ row: 10, column: 29, timeFromStart: 104923, isCursorMovement: true }
+{ row: 10, column: 30, timeFromStart: 105282, isCursorMovement: true }
+{ row: 10, column: 31, timeFromStart: 105283, isCursorMovement: true }
+{ row: 10, column: 32, timeFromStart: 105283, isCursorMovement: true }
+{ row: 10, column: 31, timeFromStart: 105908, isCursorMovement: true }
+{ row: 10, column: 30, timeFromStart: 105908, isCursorMovement: true }
+```
+
+The weird part is, there was also a long delay I think. I guess I need to do a
+lot of analysis. I was also thinking about looking at the previous 5 and after
+5 deltas wherever the anomalies occur. More like the `rg` search context for
+before and after search result. Hmm
+
+Let me write down the issues causing the weird playing now
+
+- There's a long delay suddenly at one point as the timeFromStart value is just
+  too damn high?
+- And then a lot of deltas get applied immediately after the long delay. This
+  is because their timeFromStart is too low and the delay for sleep is negative
+  which means it's like saying "I should have been applied yesterday!" so it gets
+  applied immediately with no waiting.
+
+One thing to note is, using the above program, I found that all the deltas where
+the anomaly occurs are all cursor movement deltas
+
+We do have a magic number for one of the demos - scenario 1 - `104292`
+
+Analyzing more on the scenario 1 data I checked the diff in the timeFromStart
+value in terms of the decrease
+
+```bash
+$ node issues/scenario-1-selection-issue/debug-issue.js
+The deltas whose timeFromStart decreases compared to previous delta
+{ row: 10, column: 12, timeFromStart: 63651, isCursorMovement: true } 40641
+{ row: 10, column: 13, timeFromStart: 63995, isCursorMovement: true } 40297
+{ row: 10, column: 14, timeFromStart: 64092, isCursorMovement: true } 40200
+{ row: 10, column: 15, timeFromStart: 64275, isCursorMovement: true } 40017
+{ row: 10, column: 16, timeFromStart: 64386, isCursorMovement: true } 39906
+{ row: 10, column: 17, timeFromStart: 64907, isCursorMovement: true } 39385
+{ row: 10, column: 18, timeFromStart: 65012, isCursorMovement: true } 46525
+{ row: 10, column: 19, timeFromStart: 65076, isCursorMovement: true } 46461
+{ row: 10, column: 20, timeFromStart: 65180, isCursorMovement: true } 46357
+{ row: 10, column: 21, timeFromStart: 65235, isCursorMovement: true } 46302
+{ row: 10, column: 22, timeFromStart: 65267, isCursorMovement: true } 46270
+{ row: 10, column: 23, timeFromStart: 65370, isCursorMovement: true } 46167
+{ row: 10, column: 24, timeFromStart: 65546, isCursorMovement: true } 45991
+{ row: 10, column: 25, timeFromStart: 65626, isCursorMovement: true } 45911
+{ row: 10, column: 26, timeFromStart: 65745, isCursorMovement: true } 45951
+{ row: 10, column: 27, timeFromStart: 66043, isCursorMovement: true } 45653
+{ row: 10, column: 28, timeFromStart: 66107, isCursorMovement: true } 45589
+{ row: 10, column: 29, timeFromStart: 66147, isCursorMovement: true } 45549
+{ row: 10, column: 30, timeFromStart: 66217, isCursorMovement: true } 45663
+{ row: 10, column: 31, timeFromStart: 66595, isCursorMovement: true } 45285
+{ row: 10, column: 32, timeFromStart: 66691, isCursorMovement: true } 45189
+{ row: 10, column: 30, timeFromStart: 67034, isCursorMovement: true } 45054
+{ row: 10, column: 31, timeFromStart: 67177, isCursorMovement: true } 45375
+{ row: 10, column: 32, timeFromStart: 67251, isCursorMovement: true } 45301
+{ row: 10, column: 33, timeFromStart: 67339, isCursorMovement: true } 45213
+{ row: 10, column: 34, timeFromStart: 67354, isCursorMovement: true } 45198
+{ row: 10, column: 35, timeFromStart: 67578, isCursorMovement: true } 44974
+{ row: 9, column: 35, timeFromStart: 68611, isCursorMovement: true } 45405
+{ row: 10, column: 18, timeFromStart: 104473, isCursorMovement: true } 7064
+{ row: 10, column: 19, timeFromStart: 104473, isCursorMovement: true } 7064
+{ row: 10, column: 20, timeFromStart: 104473, isCursorMovement: true } 7064
+{ row: 10, column: 21, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 22, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 23, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 24, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 25, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 26, timeFromStart: 104923, isCursorMovement: true } 6773
+{ row: 10, column: 27, timeFromStart: 104923, isCursorMovement: true } 6773
+{ row: 10, column: 28, timeFromStart: 104923, isCursorMovement: true } 6773
+{ row: 10, column: 29, timeFromStart: 104923, isCursorMovement: true } 6773
+{ row: 10, column: 30, timeFromStart: 105282, isCursorMovement: true } 6598
+{ row: 10, column: 31, timeFromStart: 105283, isCursorMovement: true } 6597
+{ row: 10, column: 32, timeFromStart: 105283, isCursorMovement: true } 6597
+{ row: 10, column: 31, timeFromStart: 105908, isCursorMovement: true } 6180
+{ row: 10, column: 30, timeFromStart: 105908, isCursorMovement: true } 6181
+```
+
+Many have 40 or 45 seconds. Some have just a few seconds like 7 seconds or 6
+seconds. Hmm. So, it means that these deltas should have been applied so many
+seconds before the previous delta. But weren't. Hmm. Just because they were put
+in the array in the wrong order for some reason. Hmm.
+
+I did some more analysis with the data with this javascript code
+
+```javascript
+const fs = require("fs");
+
+const fileContent = fs.readFileSync(
+  `${__dirname}/0f0a59dcf3ea86f39762b2d7f6353a6e1c3854a3.textrec`,
+  "utf8"
+);
+
+const deltas = JSON.parse(fileContent);
+
+// console.log(deltas);
+
+console.log(
+  "The deltas whose timeFromStart decreases compared to previous delta"
+);
+deltas.forEach((delta, index) => {
+  if (index == 0) {
+    return;
+  }
+
+  const previousDelta = deltas[index - 1];
+
+  if (delta.timeFromStart < previousDelta.timeFromStart) {
+    console.log(delta, previousDelta.timeFromStart - delta.timeFromStart);
+  }
+});
+
+let deltaWithMaxDiff = {};
+let largestDiff = deltas.reduce((maxDiff, delta, index) => {
+  if (index == 0) {
+    return maxDiff;
+  }
+
+  const previousDelta = deltas[index - 1];
+
+  if (delta.timeFromStart < previousDelta.timeFromStart) {
+    diff = previousDelta.timeFromStart - delta.timeFromStart;
+    if (diff > maxDiff) {
+      deltaWithMaxDiff = delta;
+      maxDiff = diff;
+    }
+  }
+  return maxDiff;
+}, 0);
+console.log(
+  "The largest diff between timeFromStart of two deltas is - ",
+  largestDiff
+);
+console.log(
+  "The delta which occurs after the largest diff is - ",
+  deltaWithMaxDiff
+);
+```
+
+And got this
+
+```bash
+$ node issues/scenario-1-selection-issue/debug-issue.js
+The deltas whose timeFromStart decreases compared to previous delta
+{ row: 10, column: 12, timeFromStart: 63651, isCursorMovement: true } 40641
+{ row: 10, column: 13, timeFromStart: 63995, isCursorMovement: true } 40297
+{ row: 10, column: 14, timeFromStart: 64092, isCursorMovement: true } 40200
+{ row: 10, column: 15, timeFromStart: 64275, isCursorMovement: true } 40017
+{ row: 10, column: 16, timeFromStart: 64386, isCursorMovement: true } 39906
+{ row: 10, column: 17, timeFromStart: 64907, isCursorMovement: true } 39385
+{ row: 10, column: 18, timeFromStart: 65012, isCursorMovement: true } 46525
+{ row: 10, column: 19, timeFromStart: 65076, isCursorMovement: true } 46461
+{ row: 10, column: 20, timeFromStart: 65180, isCursorMovement: true } 46357
+{ row: 10, column: 21, timeFromStart: 65235, isCursorMovement: true } 46302
+{ row: 10, column: 22, timeFromStart: 65267, isCursorMovement: true } 46270
+{ row: 10, column: 23, timeFromStart: 65370, isCursorMovement: true } 46167
+{ row: 10, column: 24, timeFromStart: 65546, isCursorMovement: true } 45991
+{ row: 10, column: 25, timeFromStart: 65626, isCursorMovement: true } 45911
+{ row: 10, column: 26, timeFromStart: 65745, isCursorMovement: true } 45951
+{ row: 10, column: 27, timeFromStart: 66043, isCursorMovement: true } 45653
+{ row: 10, column: 28, timeFromStart: 66107, isCursorMovement: true } 45589
+{ row: 10, column: 29, timeFromStart: 66147, isCursorMovement: true } 45549
+{ row: 10, column: 30, timeFromStart: 66217, isCursorMovement: true } 45663
+{ row: 10, column: 31, timeFromStart: 66595, isCursorMovement: true } 45285
+{ row: 10, column: 32, timeFromStart: 66691, isCursorMovement: true } 45189
+{ row: 10, column: 30, timeFromStart: 67034, isCursorMovement: true } 45054
+{ row: 10, column: 31, timeFromStart: 67177, isCursorMovement: true } 45375
+{ row: 10, column: 32, timeFromStart: 67251, isCursorMovement: true } 45301
+{ row: 10, column: 33, timeFromStart: 67339, isCursorMovement: true } 45213
+{ row: 10, column: 34, timeFromStart: 67354, isCursorMovement: true } 45198
+{ row: 10, column: 35, timeFromStart: 67578, isCursorMovement: true } 44974
+{ row: 9, column: 35, timeFromStart: 68611, isCursorMovement: true } 45405
+{ row: 10, column: 18, timeFromStart: 104473, isCursorMovement: true } 7064
+{ row: 10, column: 19, timeFromStart: 104473, isCursorMovement: true } 7064
+{ row: 10, column: 20, timeFromStart: 104473, isCursorMovement: true } 7064
+{ row: 10, column: 21, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 22, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 23, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 24, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 25, timeFromStart: 104474, isCursorMovement: true } 7063
+{ row: 10, column: 26, timeFromStart: 104923, isCursorMovement: true } 6773
+{ row: 10, column: 27, timeFromStart: 104923, isCursorMovement: true } 6773
+{ row: 10, column: 28, timeFromStart: 104923, isCursorMovement: true } 6773
+{ row: 10, column: 29, timeFromStart: 104923, isCursorMovement: true } 6773
+{ row: 10, column: 30, timeFromStart: 105282, isCursorMovement: true } 6598
+{ row: 10, column: 31, timeFromStart: 105283, isCursorMovement: true } 6597
+{ row: 10, column: 32, timeFromStart: 105283, isCursorMovement: true } 6597
+{ row: 10, column: 31, timeFromStart: 105908, isCursorMovement: true } 6180
+{ row: 10, column: 30, timeFromStart: 105908, isCursorMovement: true } 6181
+The largest diff between timeFromStart of two deltas is -  46525
+The delta which occurs after the largest diff is -  { row: 10, column: 18, timeFromStart: 65012, isCursorMovement: true }
+```
