@@ -4721,4 +4721,14 @@ https://duckduckgo.com/?q=javascript%3A+concurrency+issues+when+using+array.push
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
 
+Next Steps:
 
+- Understand the concurrency issue
+- Understand why the order of deltas is different in console log and the
+  recording file
+- Understand why some of the deltas are probably missing
+  - clear selection will be missing as it has not been pushed to the array
+
+[Tasks]
+
+- Fix clear selection delta not being pushed to the deltas array
