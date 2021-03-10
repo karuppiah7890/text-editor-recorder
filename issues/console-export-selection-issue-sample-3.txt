@@ -1,0 +1,2296 @@
+23:12:02.267
+Object { isSelectionAction: true, timeFromStart: 429, clearSelection: true }
+recorder.html:160:21
+23:12:02.271 clear selection recorder.html:161:21
+23:12:04.766
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 2928 }
+recorder.html:131:19
+23:12:04.768
+Object { row: 0, column: 3, timeFromStart: 2930, isCursorMovement: true }
+recorder.html:144:19
+23:12:04.769
+Object { isSelectionAction: true, timeFromStart: 2931, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:12:04.770
+Object { isSelectionAction: true, timeFromStart: 2932, clearSelection: true }
+recorder.html:160:21
+23:12:04.770 clear selection recorder.html:161:21
+23:12:09.422
+Object { isSelectionAction: true, timeFromStart: 7584, clearSelection: true }
+recorder.html:160:21
+23:12:09.423 clear selection recorder.html:161:21
+23:12:09.424
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 7587 }
+recorder.html:131:19
+23:12:09.425
+Object { row: 0, column: 4, timeFromStart: 7588, isCursorMovement: true }
+recorder.html:144:19
+23:12:09.540
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 7702 }
+recorder.html:131:19
+23:12:09.541
+Object { row: 0, column: 5, timeFromStart: 7704, isCursorMovement: true }
+recorder.html:144:19
+23:12:09.659
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 7822 }
+recorder.html:131:19
+23:12:09.660
+Object { row: 0, column: 6, timeFromStart: 7823, isCursorMovement: true }
+recorder.html:144:19
+23:12:09.771
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 7934 }
+recorder.html:131:19
+23:12:09.772
+Object { row: 0, column: 7, timeFromStart: 7935, isCursorMovement: true }
+recorder.html:144:19
+23:12:09.917
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 8080 }
+recorder.html:131:19
+23:12:09.918
+Object { row: 0, column: 8, timeFromStart: 8080, isCursorMovement: true }
+recorder.html:144:19
+23:12:10.075
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 8238 }
+recorder.html:131:19
+23:12:10.076
+Object { row: 0, column: 9, timeFromStart: 8239, isCursorMovement: true }
+recorder.html:144:19
+23:12:10.146
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 8309 }
+recorder.html:131:19
+23:12:10.147
+Object { row: 0, column: 10, timeFromStart: 8309, isCursorMovement: true }
+recorder.html:144:19
+23:12:10.247
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 8410 }
+recorder.html:131:19
+23:12:10.248
+Object { row: 0, column: 11, timeFromStart: 8411, isCursorMovement: true }
+recorder.html:144:19
+23:12:10.349
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 8512 }
+recorder.html:131:19
+23:12:10.350
+Object { row: 0, column: 12, timeFromStart: 8513, isCursorMovement: true }
+recorder.html:144:19
+23:12:10.859
+Object { row: 0, column: 11, timeFromStart: 9022, isCursorMovement: true }
+recorder.html:144:19
+23:12:10.860
+Object { isSelectionAction: true, timeFromStart: 9023, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:10.862
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 9024 }
+recorder.html:131:19
+23:12:10.862
+Object { isSelectionAction: true, timeFromStart: 9024, clearSelection: true }
+recorder.html:160:21
+23:12:10.863 clear selection recorder.html:161:21
+23:12:10.863
+Object { isSelectionAction: true, timeFromStart: 9025, clearSelection: true }
+recorder.html:160:21
+23:12:10.863 clear selection recorder.html:161:21
+23:12:10.995
+Object { row: 0, column: 10, timeFromStart: 9157, isCursorMovement: true }
+recorder.html:144:19
+23:12:10.996
+Object { isSelectionAction: true, timeFromStart: 9158, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:10.997
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 9159 }
+recorder.html:131:19
+23:12:10.997
+Object { isSelectionAction: true, timeFromStart: 9160, clearSelection: true }
+recorder.html:160:21
+23:12:10.998 clear selection recorder.html:161:21
+23:12:10.998
+Object { isSelectionAction: true, timeFromStart: 9161, clearSelection: true }
+recorder.html:160:21
+23:12:10.998 clear selection recorder.html:161:21
+23:12:11.144
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 9307 }
+recorder.html:131:19
+23:12:11.145
+Object { row: 0, column: 11, timeFromStart: 9308, isCursorMovement: true }
+recorder.html:144:19
+23:12:11.236
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 9398 }
+recorder.html:131:19
+23:12:11.237
+Object { row: 0, column: 12, timeFromStart: 9399, isCursorMovement: true }
+recorder.html:144:19
+23:12:11.354
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 9517 }
+recorder.html:131:19
+23:12:11.355
+Object { row: 0, column: 13, timeFromStart: 9518, isCursorMovement: true }
+recorder.html:144:19
+23:12:11.587
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 9750 }
+recorder.html:131:19
+23:12:11.588
+Object { row: 0, column: 14, timeFromStart: 9751, isCursorMovement: true }
+recorder.html:144:19
+23:12:11.786
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 9948 }
+recorder.html:131:19
+23:12:11.787
+Object { row: 0, column: 15, timeFromStart: 9949, isCursorMovement: true }
+recorder.html:144:19
+23:12:11.899
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 10061 }
+recorder.html:131:19
+23:12:11.900
+Object { row: 0, column: 16, timeFromStart: 10063, isCursorMovement: true }
+recorder.html:144:19
+23:12:12.003
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 10165 }
+recorder.html:131:19
+23:12:12.004
+Object { row: 0, column: 17, timeFromStart: 10166, isCursorMovement: true }
+recorder.html:144:19
+23:12:12.107
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 10270 }
+recorder.html:131:19
+23:12:12.108
+Object { row: 0, column: 18, timeFromStart: 10271, isCursorMovement: true }
+recorder.html:144:19
+23:12:12.459
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 10622 }
+recorder.html:131:19
+23:12:12.460
+Object { row: 0, column: 19, timeFromStart: 10623, isCursorMovement: true }
+recorder.html:144:19
+23:12:12.554
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 10716 }
+recorder.html:131:19
+23:12:12.555
+Object { row: 0, column: 20, timeFromStart: 10718, isCursorMovement: true }
+recorder.html:144:19
+23:12:12.795
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 10958 }
+recorder.html:131:19
+23:12:12.796
+Object { row: 0, column: 21, timeFromStart: 10959, isCursorMovement: true }
+recorder.html:144:19
+23:12:12.946
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 11108 }
+recorder.html:131:19
+23:12:12.947
+Object { row: 0, column: 22, timeFromStart: 11109, isCursorMovement: true }
+recorder.html:144:19
+23:12:13.043
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 11205 }
+recorder.html:131:19
+23:12:13.044
+Object { row: 0, column: 23, timeFromStart: 11206, isCursorMovement: true }
+recorder.html:144:19
+23:12:13.131
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 11294 }
+recorder.html:131:19
+23:12:13.132
+Object { row: 0, column: 24, timeFromStart: 11295, isCursorMovement: true }
+recorder.html:144:19
+23:12:13.181
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 11343 }
+recorder.html:131:19
+23:12:13.181
+Object { row: 0, column: 25, timeFromStart: 11343, isCursorMovement: true }
+recorder.html:144:19
+23:12:13.315
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 11477 }
+recorder.html:131:19
+23:12:13.316
+Object { row: 0, column: 26, timeFromStart: 11478, isCursorMovement: true }
+recorder.html:144:19
+23:12:13.385
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 11548 }
+recorder.html:131:19
+23:12:13.386
+Object { row: 0, column: 27, timeFromStart: 11549, isCursorMovement: true }
+recorder.html:144:19
+23:12:13.715
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 11878 }
+recorder.html:131:19
+23:12:13.716
+Object { row: 0, column: 28, timeFromStart: 11878, isCursorMovement: true }
+recorder.html:144:19
+23:12:13.787
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 11950 }
+recorder.html:131:19
+23:12:13.788
+Object { row: 0, column: 29, timeFromStart: 11951, isCursorMovement: true }
+recorder.html:144:19
+23:12:13.889
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 12051 }
+recorder.html:131:19
+23:12:13.889
+Object { row: 0, column: 30, timeFromStart: 12052, isCursorMovement: true }
+recorder.html:144:19
+23:12:13.987
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 12150 }
+recorder.html:131:19
+23:12:13.988
+Object { row: 0, column: 31, timeFromStart: 12151, isCursorMovement: true }
+recorder.html:144:19
+23:12:14.116
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 12279 }
+recorder.html:131:19
+23:12:14.117
+Object { row: 0, column: 32, timeFromStart: 12280, isCursorMovement: true }
+recorder.html:144:19
+23:12:14.197
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 12360 }
+recorder.html:131:19
+23:12:14.198
+Object { row: 0, column: 33, timeFromStart: 12361, isCursorMovement: true }
+recorder.html:144:19
+23:12:14.659
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 12821 }
+recorder.html:131:19
+23:12:14.660
+Object { row: 0, column: 34, timeFromStart: 12822, isCursorMovement: true }
+recorder.html:144:19
+23:12:15.289
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 13452 }
+recorder.html:131:19
+23:12:15.290
+Object { row: 0, column: 35, timeFromStart: 13452, isCursorMovement: true }
+recorder.html:144:19
+23:12:15.386
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 13549 }
+recorder.html:131:19
+23:12:15.387
+Object { row: 0, column: 36, timeFromStart: 13549, isCursorMovement: true }
+recorder.html:144:19
+23:12:15.763
+Object { start: {…}, end: {…}, action: "insert", lines: (2) […], timeFromStart: 13925 }
+recorder.html:131:19
+23:12:15.763
+Object { row: 1, column: 0, timeFromStart: 13926, isCursorMovement: true }
+recorder.html:144:19
+23:12:15.915
+Object { start: {…}, end: {…}, action: "insert", lines: (2) […], timeFromStart: 14078 }
+recorder.html:131:19
+23:12:15.916
+Object { row: 2, column: 0, timeFromStart: 14078, isCursorMovement: true }
+recorder.html:144:19
+23:12:16.068
+Object { start: {…}, end: {…}, action: "insert", lines: (2) […], timeFromStart: 14230 }
+recorder.html:131:19
+23:12:16.068
+Object { row: 3, column: 0, timeFromStart: 14230, isCursorMovement: true }
+recorder.html:144:19
+23:12:16.427
+Object { row: 2, column: 0, timeFromStart: 14589, isCursorMovement: true }
+recorder.html:144:19
+23:12:16.707
+Object { start: {…}, end: {…}, action: "insert", lines: (2) […], timeFromStart: 14870 }
+recorder.html:131:19
+23:12:16.708
+Object { row: 3, column: 0, timeFromStart: 14870, isCursorMovement: true }
+recorder.html:144:19
+23:12:17.427
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 15589 }
+recorder.html:131:19
+23:12:17.428
+Object { row: 3, column: 1, timeFromStart: 15590, isCursorMovement: true }
+recorder.html:144:19
+23:12:17.513
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 15676 }
+recorder.html:131:19
+23:12:17.514
+Object { row: 3, column: 2, timeFromStart: 15677, isCursorMovement: true }
+recorder.html:144:19
+23:12:17.562
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 15725 }
+recorder.html:131:19
+23:12:17.563
+Object { row: 3, column: 3, timeFromStart: 15726, isCursorMovement: true }
+recorder.html:144:19
+23:12:17.643
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 15805 }
+recorder.html:131:19
+23:12:17.643
+Object { row: 3, column: 4, timeFromStart: 15806, isCursorMovement: true }
+recorder.html:144:19
+23:12:17.771
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 15934 }
+recorder.html:131:19
+23:12:17.772
+Object { row: 3, column: 5, timeFromStart: 15934, isCursorMovement: true }
+recorder.html:144:19
+23:12:17.835
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 15997 }
+recorder.html:131:19
+23:12:17.836
+Object { row: 3, column: 6, timeFromStart: 15998, isCursorMovement: true }
+recorder.html:144:19
+23:12:18.006
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 16168 }
+recorder.html:131:19
+23:12:18.007
+Object { row: 3, column: 7, timeFromStart: 16169, isCursorMovement: true }
+recorder.html:144:19
+23:12:18.033
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 16195 }
+recorder.html:131:19
+23:12:18.034
+Object { row: 3, column: 8, timeFromStart: 16196, isCursorMovement: true }
+recorder.html:144:19
+23:12:18.138
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 16300 }
+recorder.html:131:19
+23:12:18.138
+Object { row: 3, column: 9, timeFromStart: 16301, isCursorMovement: true }
+recorder.html:144:19
+23:12:18.230
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 16392 }
+recorder.html:131:19
+23:12:18.230
+Object { row: 3, column: 10, timeFromStart: 16393, isCursorMovement: true }
+recorder.html:144:19
+23:12:18.426
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 16589 }
+recorder.html:131:19
+23:12:18.427
+Object { row: 3, column: 11, timeFromStart: 16590, isCursorMovement: true }
+recorder.html:144:19
+23:12:18.555
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 16717 }
+recorder.html:131:19
+23:12:18.556
+Object { row: 3, column: 12, timeFromStart: 16718, isCursorMovement: true }
+recorder.html:144:19
+23:12:18.859
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 17022 }
+recorder.html:131:19
+23:12:18.860
+Object { row: 3, column: 14, timeFromStart: 17023, isCursorMovement: true }
+recorder.html:144:19
+23:12:18.861
+Object { row: 3, column: 13, timeFromStart: 17023, isCursorMovement: true }
+recorder.html:144:19
+23:12:18.861
+Object { isSelectionAction: true, timeFromStart: 17023, clearSelection: true }
+recorder.html:160:21
+23:12:18.861 clear selection recorder.html:161:21
+23:12:19.299
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 17462 }
+recorder.html:131:19
+23:12:19.300
+Object { row: 3, column: 14, timeFromStart: 17463, isCursorMovement: true }
+recorder.html:144:19
+23:12:19.490
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 17652 }
+recorder.html:131:19
+23:12:19.491
+Object { row: 3, column: 15, timeFromStart: 17654, isCursorMovement: true }
+recorder.html:144:19
+23:12:19.635
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 17797 }
+recorder.html:131:19
+23:12:19.636
+Object { row: 3, column: 16, timeFromStart: 17798, isCursorMovement: true }
+recorder.html:144:19
+23:12:20.115
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 18277 }
+recorder.html:131:19
+23:12:20.116
+Object { row: 3, column: 17, timeFromStart: 18278, isCursorMovement: true }
+recorder.html:144:19
+23:12:20.316
+Object { row: 3, column: 18, timeFromStart: 18479, isCursorMovement: true }
+recorder.html:144:19
+23:12:20.827
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 18989 }
+recorder.html:131:19
+23:12:20.828
+Object { row: 3, column: 19, timeFromStart: 18990, isCursorMovement: true }
+recorder.html:144:19
+23:12:21.067
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 19230 }
+recorder.html:131:19
+23:12:21.068
+Object { row: 3, column: 20, timeFromStart: 19230, isCursorMovement: true }
+recorder.html:144:19
+23:12:21.068
+Object { isSelectionAction: true, timeFromStart: 19231, clearSelection: true }
+recorder.html:160:21
+23:12:21.069 clear selection recorder.html:161:21
+23:12:21.275
+Object { start: {…}, end: {…}, action: "insert", lines: (3) […], timeFromStart: 19437 }
+recorder.html:131:19
+23:12:21.276
+Object { row: 5, column: 1, timeFromStart: 19438, isCursorMovement: true }
+recorder.html:144:19
+23:12:21.276
+Object { row: 4, column: 4, timeFromStart: 19438, isCursorMovement: true }
+recorder.html:144:19
+23:12:21.276
+Object { isSelectionAction: true, timeFromStart: 19439, clearSelection: true }
+recorder.html:160:21
+23:12:21.277 clear selection recorder.html:161:21
+23:12:21.490
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 19652 }
+recorder.html:131:19
+23:12:21.491
+Object { row: 4, column: 5, timeFromStart: 19653, isCursorMovement: true }
+recorder.html:144:19
+23:12:21.610
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 19773 }
+recorder.html:131:19
+23:12:21.611
+Object { row: 4, column: 6, timeFromStart: 19773, isCursorMovement: true }
+recorder.html:144:19
+23:12:21.690
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 19852 }
+recorder.html:131:19
+23:12:21.690
+Object { row: 4, column: 7, timeFromStart: 19853, isCursorMovement: true }
+recorder.html:144:19
+23:12:21.819
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 19981 }
+recorder.html:131:19
+23:12:21.820
+Object { row: 4, column: 8, timeFromStart: 19982, isCursorMovement: true }
+recorder.html:144:19
+23:12:21.890
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 20053 }
+recorder.html:131:19
+23:12:21.891
+Object { row: 4, column: 9, timeFromStart: 20053, isCursorMovement: true }
+recorder.html:144:19
+23:12:22.014
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 20176 }
+recorder.html:131:19
+23:12:22.014
+Object { row: 4, column: 10, timeFromStart: 20177, isCursorMovement: true }
+recorder.html:144:19
+23:12:22.859
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 21021 }
+recorder.html:131:19
+23:12:22.860
+Object { row: 4, column: 11, timeFromStart: 21022, isCursorMovement: true }
+recorder.html:144:19
+23:12:23.003
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 21165 }
+recorder.html:131:19
+23:12:23.004
+Object { row: 4, column: 12, timeFromStart: 21166, isCursorMovement: true }
+recorder.html:144:19
+23:12:23.411
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 21573 }
+recorder.html:131:19
+23:12:23.412
+Object { row: 4, column: 13, timeFromStart: 21574, isCursorMovement: true }
+recorder.html:144:19
+23:12:24.323
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 22485 }
+recorder.html:131:19
+23:12:24.324
+Object { row: 4, column: 14, timeFromStart: 22486, isCursorMovement: true }
+recorder.html:144:19
+23:12:24.506
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 22669 }
+recorder.html:131:19
+23:12:24.507
+Object { row: 4, column: 15, timeFromStart: 22670, isCursorMovement: true }
+recorder.html:144:19
+23:12:24.827
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 22989 }
+recorder.html:131:19
+23:12:24.827
+Object { row: 4, column: 16, timeFromStart: 22990, isCursorMovement: true }
+recorder.html:144:19
+23:12:25.053
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 23216 }
+recorder.html:131:19
+23:12:25.054
+Object { row: 4, column: 17, timeFromStart: 23216, isCursorMovement: true }
+recorder.html:144:19
+23:12:25.427
+Object { row: 5, column: 1, timeFromStart: 23589, isCursorMovement: true }
+recorder.html:144:19
+23:12:25.747
+Object { start: {…}, end: {…}, action: "insert", lines: (2) […], timeFromStart: 23910 }
+recorder.html:131:19
+23:12:25.748
+Object { row: 6, column: 0, timeFromStart: 23911, isCursorMovement: true }
+recorder.html:144:19
+23:12:25.875
+Object { start: {…}, end: {…}, action: "insert", lines: (2) […], timeFromStart: 24038 }
+recorder.html:131:19
+23:12:25.876
+Object { row: 7, column: 0, timeFromStart: 24038, isCursorMovement: true }
+recorder.html:144:19
+23:12:26.347
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 24509 }
+recorder.html:131:19
+23:12:26.347
+Object { row: 7, column: 1, timeFromStart: 24510, isCursorMovement: true }
+recorder.html:144:19
+23:12:26.473
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 24636 }
+recorder.html:131:19
+23:12:26.474
+Object { row: 7, column: 2, timeFromStart: 24637, isCursorMovement: true }
+recorder.html:144:19
+23:12:26.521
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 24684 }
+recorder.html:131:19
+23:12:26.522
+Object { row: 7, column: 3, timeFromStart: 24684, isCursorMovement: true }
+recorder.html:144:19
+23:12:26.594
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 24757 }
+recorder.html:131:19
+23:12:26.595
+Object { row: 7, column: 4, timeFromStart: 24758, isCursorMovement: true }
+recorder.html:144:19
+23:12:26.730
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 24893 }
+recorder.html:131:19
+23:12:26.731
+Object { row: 7, column: 5, timeFromStart: 24894, isCursorMovement: true }
+recorder.html:144:19
+23:12:26.794
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 24957 }
+recorder.html:131:19
+23:12:26.795
+Object { row: 7, column: 6, timeFromStart: 24958, isCursorMovement: true }
+recorder.html:144:19
+23:12:26.970
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 25132 }
+recorder.html:131:19
+23:12:26.970
+Object { row: 7, column: 7, timeFromStart: 25133, isCursorMovement: true }
+recorder.html:144:19
+23:12:26.994
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 25157 }
+recorder.html:131:19
+23:12:26.996
+Object { row: 7, column: 8, timeFromStart: 25159, isCursorMovement: true }
+recorder.html:144:19
+23:12:27.091
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 25253 }
+recorder.html:131:19
+23:12:27.092
+Object { row: 7, column: 9, timeFromStart: 25254, isCursorMovement: true }
+recorder.html:144:19
+23:12:27.514
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 25677 }
+recorder.html:131:19
+23:12:27.515
+Object { row: 7, column: 10, timeFromStart: 25677, isCursorMovement: true }
+recorder.html:144:19
+23:12:27.626
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 25789 }
+recorder.html:131:19
+23:12:27.627
+Object { row: 7, column: 11, timeFromStart: 25790, isCursorMovement: true }
+recorder.html:144:19
+23:12:27.659
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 25821 }
+recorder.html:131:19
+23:12:27.660
+Object { row: 7, column: 12, timeFromStart: 25822, isCursorMovement: true }
+recorder.html:144:19
+23:12:27.799
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 25962 }
+recorder.html:131:19
+23:12:27.800
+Object { row: 7, column: 13, timeFromStart: 25963, isCursorMovement: true }
+recorder.html:144:19
+23:12:28.130
+Object { isSelectionAction: true, timeFromStart: 26293, clearSelection: true }
+recorder.html:160:21
+23:12:28.131 clear selection recorder.html:161:21
+23:12:28.131
+Object { row: 7, column: 12, timeFromStart: 26294, isCursorMovement: true }
+recorder.html:144:19
+23:12:28.132
+Object { isSelectionAction: true, timeFromStart: 26294, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:28.133
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 26295 }
+recorder.html:131:19
+23:12:28.133
+Object { isSelectionAction: true, timeFromStart: 26296, clearSelection: true }
+recorder.html:160:21
+23:12:28.133 clear selection recorder.html:161:21
+23:12:28.134
+Object { isSelectionAction: true, timeFromStart: 26296, clearSelection: true }
+recorder.html:160:21
+23:12:28.134 clear selection recorder.html:161:21
+23:12:28.267
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 26429 }
+recorder.html:131:19
+23:12:28.268
+Object { row: 7, column: 13, timeFromStart: 26431, isCursorMovement: true }
+recorder.html:144:19
+23:12:28.329
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 26492 }
+recorder.html:131:19
+23:12:28.330
+Object { row: 7, column: 14, timeFromStart: 26493, isCursorMovement: true }
+recorder.html:144:19
+23:12:28.483
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 26645 }
+recorder.html:131:19
+23:12:28.483
+Object { row: 7, column: 15, timeFromStart: 26645, isCursorMovement: true }
+recorder.html:144:19
+23:12:28.565
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 26727 }
+recorder.html:131:19
+23:12:28.566
+Object { row: 7, column: 16, timeFromStart: 26728, isCursorMovement: true }
+recorder.html:144:19
+23:12:28.739
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 26901 }
+recorder.html:131:19
+23:12:28.740
+Object { row: 7, column: 17, timeFromStart: 26902, isCursorMovement: true }
+recorder.html:144:19
+23:12:29.035
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 27198 }
+recorder.html:131:19
+23:12:29.036
+Object { row: 7, column: 19, timeFromStart: 27198, isCursorMovement: true }
+recorder.html:144:19
+23:12:29.036
+Object { row: 7, column: 18, timeFromStart: 27199, isCursorMovement: true }
+recorder.html:144:19
+23:12:29.037
+Object { isSelectionAction: true, timeFromStart: 27199, clearSelection: true }
+recorder.html:160:21
+23:12:29.037 clear selection recorder.html:161:21
+23:12:30.403
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 28565 }
+recorder.html:131:19
+23:12:30.404
+Object { row: 7, column: 19, timeFromStart: 28567, isCursorMovement: true }
+recorder.html:144:19
+23:12:30.851
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 29013 }
+recorder.html:131:19
+23:12:30.852
+Object { row: 7, column: 20, timeFromStart: 29014, isCursorMovement: true }
+recorder.html:144:19
+23:12:31.029
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 29191 }
+recorder.html:131:19
+23:12:31.029
+Object { row: 7, column: 21, timeFromStart: 29192, isCursorMovement: true }
+recorder.html:144:19
+23:12:31.683
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 29845 }
+recorder.html:131:19
+23:12:31.683
+Object { row: 7, column: 22, timeFromStart: 29846, isCursorMovement: true }
+recorder.html:144:19
+23:12:31.860
+Object { row: 7, column: 23, timeFromStart: 30023, isCursorMovement: true }
+recorder.html:144:19
+23:12:32.026
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 30189 }
+recorder.html:131:19
+23:12:32.027
+Object { row: 7, column: 24, timeFromStart: 30190, isCursorMovement: true }
+recorder.html:144:19
+23:12:32.267
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 30429 }
+recorder.html:131:19
+23:12:32.267
+Object { row: 7, column: 25, timeFromStart: 30430, isCursorMovement: true }
+recorder.html:144:19
+23:12:32.268
+Object { isSelectionAction: true, timeFromStart: 30430, clearSelection: true }
+recorder.html:160:21
+23:12:32.268 clear selection recorder.html:161:21
+23:12:32.490
+Object { start: {…}, end: {…}, action: "insert", lines: (3) […], timeFromStart: 30653 }
+recorder.html:131:19
+23:12:32.491
+Object { row: 9, column: 1, timeFromStart: 30654, isCursorMovement: true }
+recorder.html:144:19
+23:12:32.491
+Object { row: 8, column: 4, timeFromStart: 30654, isCursorMovement: true }
+recorder.html:144:19
+23:12:32.492
+Object { isSelectionAction: true, timeFromStart: 30654, clearSelection: true }
+recorder.html:160:21
+23:12:32.492 clear selection recorder.html:161:21
+23:12:32.590
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 30753 }
+recorder.html:131:19
+23:12:32.591
+Object { row: 8, column: 5, timeFromStart: 30753, isCursorMovement: true }
+recorder.html:144:19
+23:12:32.674
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 30837 }
+recorder.html:131:19
+23:12:32.675
+Object { row: 8, column: 6, timeFromStart: 30837, isCursorMovement: true }
+recorder.html:144:19
+23:12:32.780
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 30942 }
+recorder.html:131:19
+23:12:32.781
+Object { row: 8, column: 7, timeFromStart: 30943, isCursorMovement: true }
+recorder.html:144:19
+23:12:32.939
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 31101 }
+recorder.html:131:19
+23:12:32.939
+Object { row: 8, column: 8, timeFromStart: 31102, isCursorMovement: true }
+recorder.html:144:19
+23:12:33.084
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 31246 }
+recorder.html:131:19
+23:12:33.085
+Object { row: 8, column: 9, timeFromStart: 31247, isCursorMovement: true }
+recorder.html:144:19
+23:12:33.203
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 31366 }
+recorder.html:131:19
+23:12:33.204
+Object { row: 8, column: 10, timeFromStart: 31367, isCursorMovement: true }
+recorder.html:144:19
+23:12:33.322
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 31485 }
+recorder.html:131:19
+23:12:33.323
+Object { row: 8, column: 11, timeFromStart: 31485, isCursorMovement: true }
+recorder.html:144:19
+23:12:33.530
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 31692 }
+recorder.html:131:19
+23:12:33.531
+Object { row: 8, column: 12, timeFromStart: 31693, isCursorMovement: true }
+recorder.html:144:19
+23:12:33.675
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 31837 }
+recorder.html:131:19
+23:12:33.675
+Object { row: 8, column: 13, timeFromStart: 31838, isCursorMovement: true }
+recorder.html:144:19
+23:12:34.083
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 32245 }
+recorder.html:131:19
+23:12:34.083
+Object { row: 8, column: 14, timeFromStart: 32245, isCursorMovement: true }
+recorder.html:144:19
+23:12:34.314
+Object { row: 8, column: 13, timeFromStart: 32476, isCursorMovement: true }
+recorder.html:144:19
+23:12:34.315
+Object { isSelectionAction: true, timeFromStart: 32477, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:34.315
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 32478 }
+recorder.html:131:19
+23:12:34.316
+Object { isSelectionAction: true, timeFromStart: 32478, clearSelection: true }
+recorder.html:160:21
+23:12:34.316 clear selection recorder.html:161:21
+23:12:34.316
+Object { isSelectionAction: true, timeFromStart: 32479, clearSelection: true }
+recorder.html:160:21
+23:12:34.317 clear selection recorder.html:161:21
+23:12:34.779
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 32941 }
+recorder.html:131:19
+23:12:34.779
+Object { row: 8, column: 14, timeFromStart: 32942, isCursorMovement: true }
+recorder.html:144:19
+23:12:34.980
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 33143 }
+recorder.html:131:19
+23:12:34.981
+Object { row: 8, column: 15, timeFromStart: 33144, isCursorMovement: true }
+recorder.html:144:19
+23:12:35.097
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 33260 }
+recorder.html:131:19
+23:12:35.098
+Object { row: 8, column: 16, timeFromStart: 33260, isCursorMovement: true }
+recorder.html:144:19
+23:12:35.451
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 33613 }
+recorder.html:131:19
+23:12:35.451
+Object { row: 8, column: 17, timeFromStart: 33614, isCursorMovement: true }
+recorder.html:144:19
+23:12:35.825
+Object { row: 9, column: 1, timeFromStart: 33987, isCursorMovement: true }
+recorder.html:144:19
+23:12:36.099
+Object { start: {…}, end: {…}, action: "insert", lines: (2) […], timeFromStart: 34261 }
+recorder.html:131:19
+23:12:36.099
+Object { row: 10, column: 0, timeFromStart: 34262, isCursorMovement: true }
+recorder.html:144:19
+23:12:36.218
+Object { start: {…}, end: {…}, action: "insert", lines: (2) […], timeFromStart: 34381 }
+recorder.html:131:19
+23:12:36.219
+Object { row: 11, column: 0, timeFromStart: 34382, isCursorMovement: true }
+recorder.html:144:19
+23:12:36.835
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 34997 }
+recorder.html:131:19
+23:12:36.836
+Object { row: 11, column: 3, timeFromStart: 34998, isCursorMovement: true }
+recorder.html:144:19
+23:12:38.107
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 36269 }
+recorder.html:131:19
+23:12:38.107
+Object { row: 11, column: 4, timeFromStart: 36269, isCursorMovement: true }
+recorder.html:144:19
+23:12:38.259
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 36421 }
+recorder.html:131:19
+23:12:38.259
+Object { row: 11, column: 5, timeFromStart: 36421, isCursorMovement: true }
+recorder.html:144:19
+23:12:38.303
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 36465 }
+recorder.html:131:19
+23:12:38.303
+Object { row: 11, column: 6, timeFromStart: 36465, isCursorMovement: true }
+recorder.html:144:19
+23:12:38.400
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 36562 }
+recorder.html:131:19
+23:12:38.401
+Object { row: 11, column: 7, timeFromStart: 36564, isCursorMovement: true }
+recorder.html:144:19
+23:12:38.508
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 36671 }
+recorder.html:131:19
+23:12:38.509
+Object { row: 11, column: 8, timeFromStart: 36671, isCursorMovement: true }
+recorder.html:144:19
+23:12:38.600
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 36763 }
+recorder.html:131:19
+23:12:38.601
+Object { row: 11, column: 9, timeFromStart: 36764, isCursorMovement: true }
+recorder.html:144:19
+23:12:39.098
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 37261 }
+recorder.html:131:19
+23:12:39.099
+Object { row: 11, column: 10, timeFromStart: 37262, isCursorMovement: true }
+recorder.html:144:19
+23:12:39.121
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 37284 }
+recorder.html:131:19
+23:12:39.122
+Object { row: 11, column: 11, timeFromStart: 37285, isCursorMovement: true }
+recorder.html:144:19
+23:12:39.234
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 37397 }
+recorder.html:131:19
+23:12:39.235
+Object { row: 11, column: 12, timeFromStart: 37397, isCursorMovement: true }
+recorder.html:144:19
+23:12:39.293
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 37456 }
+recorder.html:131:19
+23:12:39.294
+Object { row: 11, column: 13, timeFromStart: 37457, isCursorMovement: true }
+recorder.html:144:19
+23:12:39.746
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 37909 }
+recorder.html:131:19
+23:12:39.747
+Object { row: 11, column: 14, timeFromStart: 37909, isCursorMovement: true }
+recorder.html:144:19
+23:12:39.925
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38087 }
+recorder.html:131:19
+23:12:39.925
+Object { row: 11, column: 15, timeFromStart: 38088, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.038
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38200 }
+recorder.html:131:19
+23:12:40.039
+Object { row: 11, column: 16, timeFromStart: 38201, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.243
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38405 }
+recorder.html:131:19
+23:12:40.243
+Object { row: 11, column: 17, timeFromStart: 38405, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.274
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38437 }
+recorder.html:131:19
+23:12:40.275
+Object { row: 11, column: 18, timeFromStart: 38437, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.394
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38557 }
+recorder.html:131:19
+23:12:40.396
+Object { row: 11, column: 19, timeFromStart: 38558, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.531
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38694 }
+recorder.html:131:19
+23:12:40.532
+Object { row: 11, column: 20, timeFromStart: 38694, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.603
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38765 }
+recorder.html:131:19
+23:12:40.603
+Object { row: 11, column: 21, timeFromStart: 38766, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.639
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38802 }
+recorder.html:131:19
+23:12:40.640
+Object { row: 11, column: 22, timeFromStart: 38803, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.740
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38903 }
+recorder.html:131:19
+23:12:40.741
+Object { row: 11, column: 23, timeFromStart: 38904, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.835
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 38998 }
+recorder.html:131:19
+23:12:40.836
+Object { row: 11, column: 24, timeFromStart: 38998, isCursorMovement: true }
+recorder.html:144:19
+23:12:40.994
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 39157 }
+recorder.html:131:19
+23:12:40.995
+Object { row: 11, column: 25, timeFromStart: 39158, isCursorMovement: true }
+recorder.html:144:19
+23:12:41.106
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 39268 }
+recorder.html:131:19
+23:12:41.107
+Object { row: 11, column: 26, timeFromStart: 39269, isCursorMovement: true }
+recorder.html:144:19
+23:12:41.169
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 39332 }
+recorder.html:131:19
+23:12:41.170
+Object { row: 11, column: 27, timeFromStart: 39333, isCursorMovement: true }
+recorder.html:144:19
+23:12:41.257
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 39419 }
+recorder.html:131:19
+23:12:41.257
+Object { row: 11, column: 28, timeFromStart: 39420, isCursorMovement: true }
+recorder.html:144:19
+23:12:41.393
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 39556 }
+recorder.html:131:19
+23:12:41.394
+Object { row: 11, column: 29, timeFromStart: 39557, isCursorMovement: true }
+recorder.html:144:19
+23:12:41.503
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 39666 }
+recorder.html:131:19
+23:12:41.504
+Object { row: 11, column: 30, timeFromStart: 39667, isCursorMovement: true }
+recorder.html:144:19
+23:12:41.717
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 39880 }
+recorder.html:131:19
+23:12:41.718
+Object { row: 11, column: 31, timeFromStart: 39881, isCursorMovement: true }
+recorder.html:144:19
+23:12:41.814
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 39976 }
+recorder.html:131:19
+23:12:41.814
+Object { row: 11, column: 32, timeFromStart: 39977, isCursorMovement: true }
+recorder.html:144:19
+23:12:41.915
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 40077 }
+recorder.html:131:19
+23:12:41.916
+Object { row: 11, column: 33, timeFromStart: 40078, isCursorMovement: true }
+recorder.html:144:19
+23:12:42.538
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 40701 }
+recorder.html:131:19
+23:12:42.539
+Object { row: 11, column: 34, timeFromStart: 40702, isCursorMovement: true }
+recorder.html:144:19
+23:12:42.890
+Object { row: 10, column: 0, timeFromStart: 41053, isCursorMovement: true }
+recorder.html:144:19
+23:12:43.034
+Object { row: 9, column: 1, timeFromStart: 41196, isCursorMovement: true }
+recorder.html:144:19
+23:12:43.466
+Object { isSelectionAction: true, timeFromStart: 41629, clearSelection: true }
+recorder.html:160:21
+23:12:43.466 clear selection recorder.html:161:21
+23:12:43.467
+Object { row: 8, column: 17, timeFromStart: 41630, isCursorMovement: true }
+recorder.html:144:19
+23:12:43.467
+Object { isSelectionAction: true, timeFromStart: 41630, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:43.826
+Object { row: 7, column: 25, timeFromStart: 41988, isCursorMovement: true }
+recorder.html:144:19
+23:12:43.827
+Object { isSelectionAction: true, timeFromStart: 41989, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:43.986
+Object { row: 6, column: 0, timeFromStart: 42149, isCursorMovement: true }
+recorder.html:144:19
+23:12:43.987
+Object { isSelectionAction: true, timeFromStart: 42149, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:44.722
+Object { row: 5, column: 1, timeFromStart: 42884, isCursorMovement: true }
+recorder.html:144:19
+23:12:44.723
+Object { isSelectionAction: true, timeFromStart: 42885, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:44.850
+Object { row: 4, column: 17, timeFromStart: 43013, isCursorMovement: true }
+recorder.html:144:19
+23:12:44.851
+Object { isSelectionAction: true, timeFromStart: 43014, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:45.657
+Object { row: 9, column: 1, timeFromStart: 43819, isCursorMovement: true }
+recorder.html:144:19
+23:12:45.658
+Object { isSelectionAction: true, timeFromStart: 43820, clearSelection: true }
+recorder.html:160:21
+23:12:45.658 clear selection recorder.html:161:21
+23:12:45.846
+Object { isSelectionAction: true, timeFromStart: 44008, clearSelection: true }
+recorder.html:160:21
+23:12:45.846 clear selection recorder.html:161:21
+23:12:45.846
+Object { row: 10, column: 0, timeFromStart: 44009, isCursorMovement: true }
+recorder.html:144:19
+23:12:46.154
+Object { row: 9, column: 1, timeFromStart: 44317, isCursorMovement: true }
+recorder.html:144:19
+23:12:46.338
+Object { row: 8, column: 1, timeFromStart: 44500, isCursorMovement: true }
+recorder.html:144:19
+23:12:46.898
+Object { isSelectionAction: true, timeFromStart: 45061, clearSelection: true }
+recorder.html:160:21
+23:12:46.898 clear selection recorder.html:161:21
+23:12:46.899
+Object { row: 8, column: 17, timeFromStart: 45062, isCursorMovement: true }
+recorder.html:144:19
+23:12:46.899
+Object { isSelectionAction: true, timeFromStart: 45062, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:12:47.505
+Object { isSelectionAction: true, timeFromStart: 45668, clearSelection: true }
+recorder.html:160:21
+23:12:47.506 clear selection recorder.html:161:21
+23:12:48.163
+Object { isSelectionAction: true, timeFromStart: 46325, clearSelection: true }
+recorder.html:160:21
+23:12:48.163 clear selection recorder.html:161:21
+23:12:48.164
+Object { row: 8, column: 16, timeFromStart: 46326, isCursorMovement: true }
+recorder.html:144:19
+23:12:48.164
+Object { isSelectionAction: true, timeFromStart: 46326, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:48.497
+Object { row: 8, column: 15, timeFromStart: 46660, isCursorMovement: true }
+recorder.html:144:19
+23:12:48.497
+Object { isSelectionAction: true, timeFromStart: 46660, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:48.680
+Object { row: 8, column: 14, timeFromStart: 46843, isCursorMovement: true }
+recorder.html:144:19
+23:12:48.681
+Object { isSelectionAction: true, timeFromStart: 46843, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:48.809
+Object { row: 8, column: 12, timeFromStart: 46971, isCursorMovement: true }
+recorder.html:144:19
+23:12:48.810
+Object { isSelectionAction: true, timeFromStart: 46972, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:49.007
+Object { row: 8, column: 11, timeFromStart: 47170, isCursorMovement: true }
+recorder.html:144:19
+23:12:49.008
+Object { isSelectionAction: true, timeFromStart: 47170, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:49.137
+Object { row: 8, column: 10, timeFromStart: 47299, isCursorMovement: true }
+recorder.html:144:19
+23:12:49.138
+Object { isSelectionAction: true, timeFromStart: 47300, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:50.106
+Object { row: 7, column: 10, timeFromStart: 48269, isCursorMovement: true }
+recorder.html:144:19
+23:12:50.106
+Object { isSelectionAction: true, timeFromStart: 48269, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:50.358
+Object { row: 6, column: 0, timeFromStart: 48520, isCursorMovement: true }
+recorder.html:144:19
+23:12:50.358
+Object { isSelectionAction: true, timeFromStart: 48521, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:50.390
+Object { row: 5, column: 1, timeFromStart: 48553, isCursorMovement: true }
+recorder.html:144:19
+23:12:50.391
+Object { isSelectionAction: true, timeFromStart: 48553, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:50.437
+Object { row: 4, column: 10, timeFromStart: 48599, isCursorMovement: true }
+recorder.html:144:19
+23:12:50.437
+Object { isSelectionAction: true, timeFromStart: 48600, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:50.456
+Object { row: 3, column: 10, timeFromStart: 48618, isCursorMovement: true }
+recorder.html:144:19
+23:12:50.456
+Object { isSelectionAction: true, timeFromStart: 48618, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:50.491
+Object { row: 2, column: 0, timeFromStart: 48653, isCursorMovement: true }
+recorder.html:144:19
+23:12:50.491
+Object { isSelectionAction: true, timeFromStart: 48653, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:50.560
+Object { row: 1, column: 0, timeFromStart: 48722, isCursorMovement: true }
+recorder.html:144:19
+23:12:50.560
+Object { isSelectionAction: true, timeFromStart: 48723, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:51.010
+Object { row: 8, column: 17, timeFromStart: 49172, isCursorMovement: true }
+recorder.html:144:19
+23:12:51.010
+Object { isSelectionAction: true, timeFromStart: 49173, clearSelection: true }
+recorder.html:160:21
+23:12:51.011 clear selection recorder.html:161:21
+23:12:51.011
+Object { isSelectionAction: true, timeFromStart: 49173, clearSelection: true }
+recorder.html:160:21
+23:12:51.011 clear selection recorder.html:161:21
+23:12:51.332
+Object { row: 12, column: 0, timeFromStart: 49494, isCursorMovement: true }
+recorder.html:144:19
+23:12:51.333
+Object { isSelectionAction: true, timeFromStart: 49495, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:12:51.922
+Object { isSelectionAction: true, timeFromStart: 50084, clearSelection: true }
+recorder.html:160:21
+23:12:51.923 clear selection recorder.html:161:21
+23:12:52.290
+Object { row: 11, column: 0, timeFromStart: 50452, isCursorMovement: true }
+recorder.html:144:19
+23:12:52.542
+Object { row: 10, column: 0, timeFromStart: 50705, isCursorMovement: true }
+recorder.html:144:19
+23:12:52.575
+Object { row: 9, column: 0, timeFromStart: 50737, isCursorMovement: true }
+recorder.html:144:19
+23:12:52.625
+Object { row: 8, column: 0, timeFromStart: 50787, isCursorMovement: true }
+recorder.html:144:19
+23:12:52.643
+Object { row: 7, column: 0, timeFromStart: 50805, isCursorMovement: true }
+recorder.html:144:19
+23:12:52.837
+Object { row: 0, column: 0, timeFromStart: 51000, isCursorMovement: true }
+recorder.html:144:19
+23:12:53.859
+Object { row: 12, column: 0, timeFromStart: 52021, isCursorMovement: true }
+recorder.html:144:19
+23:12:53.859
+Object { isSelectionAction: true, timeFromStart: 52022, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:12:54.562
+Object { isSelectionAction: true, timeFromStart: 52724, clearSelection: true }
+recorder.html:160:21
+23:12:54.562 clear selection recorder.html:161:21
+23:12:55.339
+Object { isSelectionAction: true, timeFromStart: 53502, clearSelection: true }
+recorder.html:160:21
+23:12:55.340 clear selection recorder.html:161:21
+23:12:55.340
+Object { row: 0, column: 0, timeFromStart: 53503, isCursorMovement: true }
+recorder.html:144:19
+23:12:55.341
+Object { isSelectionAction: true, timeFromStart: 53504, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:56.537
+Object { row: 12, column: 0, timeFromStart: 54700, isCursorMovement: true }
+recorder.html:144:19
+23:12:56.537
+Object { isSelectionAction: true, timeFromStart: 54700, clearSelection: true }
+recorder.html:160:21
+23:12:56.538 clear selection recorder.html:161:21
+23:12:56.538
+Object { isSelectionAction: true, timeFromStart: 54701, clearSelection: true }
+recorder.html:160:21
+23:12:56.538 clear selection recorder.html:161:21
+23:12:56.947
+Object { isSelectionAction: true, timeFromStart: 55109, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:12:57.634
+Object { isSelectionAction: true, timeFromStart: 55797, clearSelection: true }
+recorder.html:160:21
+23:12:57.634 clear selection recorder.html:161:21
+23:12:58.025
+Object { row: 11, column: 0, timeFromStart: 56188, isCursorMovement: true }
+recorder.html:144:19
+23:12:58.250
+Object { isSelectionAction: true, timeFromStart: 56412, clearSelection: true }
+recorder.html:160:21
+23:12:58.251 clear selection recorder.html:161:21
+23:12:58.251
+Object { row: 11, column: 34, timeFromStart: 56413, isCursorMovement: true }
+recorder.html:144:19
+23:12:58.251
+Object { isSelectionAction: true, timeFromStart: 56414, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:12:58.650
+Object { isSelectionAction: true, timeFromStart: 56812, clearSelection: true }
+recorder.html:160:21
+23:12:58.650 clear selection recorder.html:161:21
+23:12:59.315
+Object { isSelectionAction: true, timeFromStart: 57477, clearSelection: true }
+recorder.html:160:21
+23:12:59.315 clear selection recorder.html:161:21
+23:12:59.316
+Object { row: 11, column: 0, timeFromStart: 57478, isCursorMovement: true }
+recorder.html:144:19
+23:12:59.316
+Object { isSelectionAction: true, timeFromStart: 57479, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:12:59.904
+Object { isSelectionAction: true, timeFromStart: 58067, clearSelection: true }
+recorder.html:160:21
+23:12:59.905 clear selection recorder.html:161:21
+23:13:00.858
+Object { isSelectionAction: true, timeFromStart: 59020, clearSelection: true }
+recorder.html:160:21
+23:13:00.859 clear selection recorder.html:161:21
+23:13:00.859
+Object { row: 11, column: 2, timeFromStart: 59022, isCursorMovement: true }
+recorder.html:144:19
+23:13:00.860
+Object { isSelectionAction: true, timeFromStart: 59022, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:01.110
+Object { row: 11, column: 3, timeFromStart: 59272, isCursorMovement: true }
+recorder.html:144:19
+23:13:01.110
+Object { isSelectionAction: true, timeFromStart: 59273, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:01.143
+Object { row: 11, column: 6, timeFromStart: 59305, isCursorMovement: true }
+recorder.html:144:19
+23:13:01.143
+Object { isSelectionAction: true, timeFromStart: 59306, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:01.197
+Object { row: 11, column: 7, timeFromStart: 59360, isCursorMovement: true }
+recorder.html:144:19
+23:13:01.198
+Object { isSelectionAction: true, timeFromStart: 59360, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:01.402
+Object { row: 11, column: 8, timeFromStart: 59564, isCursorMovement: true }
+recorder.html:144:19
+23:13:01.403
+Object { isSelectionAction: true, timeFromStart: 59565, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:01.594
+Object { row: 11, column: 9, timeFromStart: 59757, isCursorMovement: true }
+recorder.html:144:19
+23:13:01.595
+Object { isSelectionAction: true, timeFromStart: 59758, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:01.746
+Object { row: 11, column: 18, timeFromStart: 59908, isCursorMovement: true }
+recorder.html:144:19
+23:13:01.747
+Object { isSelectionAction: true, timeFromStart: 59909, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:01.998
+Object { row: 11, column: 19, timeFromStart: 60161, isCursorMovement: true }
+recorder.html:144:19
+23:13:01.998
+Object { isSelectionAction: true, timeFromStart: 60161, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:02.032
+Object { row: 11, column: 23, timeFromStart: 60194, isCursorMovement: true }
+recorder.html:144:19
+23:13:02.033
+Object { isSelectionAction: true, timeFromStart: 60195, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:02.066
+Object { row: 11, column: 24, timeFromStart: 60229, isCursorMovement: true }
+recorder.html:144:19
+23:13:02.067
+Object { isSelectionAction: true, timeFromStart: 60229, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:02.322
+Object { row: 11, column: 29, timeFromStart: 60485, isCursorMovement: true }
+recorder.html:144:19
+23:13:02.323
+Object { isSelectionAction: true, timeFromStart: 60485, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:02.524
+Object { row: 11, column: 30, timeFromStart: 60686, isCursorMovement: true }
+recorder.html:144:19
+23:13:02.524
+Object { isSelectionAction: true, timeFromStart: 60686, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:02.712
+Object { row: 11, column: 33, timeFromStart: 60875, isCursorMovement: true }
+recorder.html:144:19
+23:13:02.713
+Object { isSelectionAction: true, timeFromStart: 60875, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:03.010
+Object { row: 11, column: 34, timeFromStart: 61172, isCursorMovement: true }
+recorder.html:144:19
+23:13:03.011
+Object { isSelectionAction: true, timeFromStart: 61173, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:03.522
+Object { isSelectionAction: true, timeFromStart: 61684, clearSelection: true }
+recorder.html:160:21
+23:13:03.522 clear selection recorder.html:161:21
+23:13:03.962
+Object { isSelectionAction: true, timeFromStart: 62125, clearSelection: true }
+recorder.html:160:21
+23:13:03.963 clear selection recorder.html:161:21
+23:13:03.963
+Object { row: 11, column: 33, timeFromStart: 62126, isCursorMovement: true }
+recorder.html:144:19
+23:13:03.964
+Object { isSelectionAction: true, timeFromStart: 62126, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.214
+Object { row: 11, column: 30, timeFromStart: 62376, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.215
+Object { isSelectionAction: true, timeFromStart: 62377, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.248
+Object { row: 11, column: 29, timeFromStart: 62410, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.249
+Object { isSelectionAction: true, timeFromStart: 62411, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.305
+Object { row: 11, column: 24, timeFromStart: 62467, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.305
+Object { isSelectionAction: true, timeFromStart: 62467, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.315
+Object { row: 11, column: 23, timeFromStart: 62478, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.316
+Object { isSelectionAction: true, timeFromStart: 62479, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.350
+Object { row: 11, column: 19, timeFromStart: 62512, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.350
+Object { isSelectionAction: true, timeFromStart: 62513, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.419
+Object { row: 11, column: 18, timeFromStart: 62582, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.420
+Object { isSelectionAction: true, timeFromStart: 62582, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.457
+Object { row: 11, column: 9, timeFromStart: 62620, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.458
+Object { isSelectionAction: true, timeFromStart: 62620, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.522
+Object { row: 11, column: 8, timeFromStart: 62685, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.523
+Object { isSelectionAction: true, timeFromStart: 62685, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.761
+Object { row: 11, column: 7, timeFromStart: 62924, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.762
+Object { isSelectionAction: true, timeFromStart: 62925, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:04.897
+Object { row: 11, column: 6, timeFromStart: 63060, isCursorMovement: true }
+recorder.html:144:19
+23:13:04.898
+Object { isSelectionAction: true, timeFromStart: 63060, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:05.105
+Object { row: 11, column: 3, timeFromStart: 63268, isCursorMovement: true }
+recorder.html:144:19
+23:13:05.106
+Object { isSelectionAction: true, timeFromStart: 63268, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:05.240
+Object { row: 11, column: 2, timeFromStart: 63403, isCursorMovement: true }
+recorder.html:144:19
+23:13:05.241
+Object { isSelectionAction: true, timeFromStart: 63403, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:05.634
+Object { row: 11, column: 0, timeFromStart: 63796, isCursorMovement: true }
+recorder.html:144:19
+23:13:05.634
+Object { isSelectionAction: true, timeFromStart: 63797, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:06.562
+Object { row: 11, column: 34, timeFromStart: 64724, isCursorMovement: true }
+recorder.html:144:19
+23:13:06.563
+Object { isSelectionAction: true, timeFromStart: 64726, clearSelection: true }
+recorder.html:160:21
+23:13:06.564 clear selection recorder.html:161:21
+23:13:06.565
+Object { isSelectionAction: true, timeFromStart: 64727, clearSelection: true }
+recorder.html:160:21
+23:13:06.566 clear selection recorder.html:161:21
+23:13:07.625
+Object { row: 12, column: 0, timeFromStart: 65788, isCursorMovement: true }
+recorder.html:144:19
+23:13:10.106
+Object { row: 11, column: 34, timeFromStart: 68268, isCursorMovement: true }
+recorder.html:144:19
+23:13:10.690
+Object { row: 11, column: 33, timeFromStart: 68852, isCursorMovement: true }
+recorder.html:144:19
+23:13:10.941
+Object { row: 11, column: 32, timeFromStart: 69104, isCursorMovement: true }
+recorder.html:144:19
+23:13:10.976
+Object { row: 11, column: 31, timeFromStart: 69138, isCursorMovement: true }
+recorder.html:144:19
+23:13:11.037
+Object { row: 11, column: 30, timeFromStart: 69200, isCursorMovement: true }
+recorder.html:144:19
+23:13:11.075
+Object { row: 11, column: 29, timeFromStart: 69237, isCursorMovement: true }
+recorder.html:144:19
+23:13:11.137
+Object { row: 11, column: 28, timeFromStart: 69299, isCursorMovement: true }
+recorder.html:144:19
+23:13:11.369
+Object { isSelectionAction: true, timeFromStart: 69532, clearSelection: true }
+recorder.html:160:21
+23:13:11.370 clear selection recorder.html:161:21
+23:13:11.370
+Object { row: 10, column: 0, timeFromStart: 69533, isCursorMovement: true }
+recorder.html:144:19
+23:13:11.371
+Object { isSelectionAction: true, timeFromStart: 69534, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:11.567
+Object { row: 9, column: 1, timeFromStart: 69729, isCursorMovement: true }
+recorder.html:144:19
+23:13:11.568
+Object { isSelectionAction: true, timeFromStart: 69730, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:11.696
+Object { row: 8, column: 17, timeFromStart: 69858, isCursorMovement: true }
+recorder.html:144:19
+23:13:11.697
+Object { isSelectionAction: true, timeFromStart: 69859, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:11.868
+Object { row: 7, column: 25, timeFromStart: 70031, isCursorMovement: true }
+recorder.html:144:19
+23:13:11.869
+Object { isSelectionAction: true, timeFromStart: 70031, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:12.858
+Object { start: {…}, end: {…}, action: "remove", lines: (5) […], timeFromStart: 71020 }
+recorder.html:131:19
+23:13:12.859
+Object { isSelectionAction: true, timeFromStart: 71021, clearSelection: true }
+recorder.html:160:21
+23:13:12.859 clear selection recorder.html:161:21
+23:13:12.859
+Object { isSelectionAction: true, timeFromStart: 71022, clearSelection: true }
+recorder.html:160:21
+23:13:12.860 clear selection recorder.html:161:21
+23:13:13.524
+Object { start: {…}, end: {…}, action: "insert", lines: (5) […], timeFromStart: 71686 }
+recorder.html:131:19
+23:13:13.524
+Object { row: 11, column: 28, timeFromStart: 71687, isCursorMovement: true }
+recorder.html:144:19
+23:13:13.525
+Object { isSelectionAction: true, timeFromStart: 71687, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:14.561
+Object { isSelectionAction: true, timeFromStart: 72724, clearSelection: true }
+recorder.html:160:21
+23:13:14.562 clear selection recorder.html:161:21
+23:13:15.183
+Object { row: 11, column: 29, timeFromStart: 73346, isCursorMovement: true }
+recorder.html:144:19
+23:13:15.489
+Object { isSelectionAction: true, timeFromStart: 73652, clearSelection: true }
+recorder.html:160:21
+23:13:15.490 clear selection recorder.html:161:21
+23:13:15.490
+Object { row: 10, column: 0, timeFromStart: 73652, isCursorMovement: true }
+recorder.html:144:19
+23:13:15.491
+Object { isSelectionAction: true, timeFromStart: 73653, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:15.741
+Object { row: 9, column: 1, timeFromStart: 73903, isCursorMovement: true }
+recorder.html:144:19
+23:13:15.742
+Object { isSelectionAction: true, timeFromStart: 73904, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:15.777
+Object { row: 8, column: 17, timeFromStart: 73939, isCursorMovement: true }
+recorder.html:144:19
+23:13:15.778
+Object { isSelectionAction: true, timeFromStart: 73940, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:15.829
+Object { row: 7, column: 25, timeFromStart: 73992, isCursorMovement: true }
+recorder.html:144:19
+23:13:15.830
+Object { isSelectionAction: true, timeFromStart: 73992, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:15.841
+Object { row: 6, column: 0, timeFromStart: 74003, isCursorMovement: true }
+recorder.html:144:19
+23:13:15.841
+Object { isSelectionAction: true, timeFromStart: 74003, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:15.878
+Object { row: 5, column: 1, timeFromStart: 74041, isCursorMovement: true }
+recorder.html:144:19
+23:13:15.879
+Object { isSelectionAction: true, timeFromStart: 74041, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:15.942
+Object { row: 4, column: 17, timeFromStart: 74104, isCursorMovement: true }
+recorder.html:144:19
+23:13:15.943
+Object { isSelectionAction: true, timeFromStart: 74105, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:15.977
+Object { row: 3, column: 20, timeFromStart: 74140, isCursorMovement: true }
+recorder.html:144:19
+23:13:15.978
+Object { isSelectionAction: true, timeFromStart: 74141, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:16.866
+Object { start: {…}, end: {…}, action: "remove", lines: (9) […], timeFromStart: 75028 }
+recorder.html:131:19
+23:13:16.867
+Object { isSelectionAction: true, timeFromStart: 75029, clearSelection: true }
+recorder.html:160:21
+23:13:16.867 clear selection recorder.html:161:21
+23:13:16.867
+Object { isSelectionAction: true, timeFromStart: 75029, clearSelection: true }
+recorder.html:160:21
+23:13:16.868 clear selection recorder.html:161:21
+23:13:16.868
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 75030 }
+recorder.html:131:19
+23:13:16.868
+Object { row: 3, column: 21, timeFromStart: 75031, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.068
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 75230 }
+recorder.html:131:19
+23:13:17.069
+Object { row: 3, column: 22, timeFromStart: 75231, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.162
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 75324 }
+recorder.html:131:19
+23:13:17.162
+Object { row: 3, column: 23, timeFromStart: 75325, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.321
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 75483 }
+recorder.html:131:19
+23:13:17.322
+Object { row: 3, column: 24, timeFromStart: 75484, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.457
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 75620 }
+recorder.html:131:19
+23:13:17.458
+Object { row: 3, column: 25, timeFromStart: 75621, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.939
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 76102 }
+recorder.html:131:19
+23:13:17.940
+Object { row: 3, column: 24, timeFromStart: 76103, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.941
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 76103 }
+recorder.html:131:19
+23:13:17.942
+Object { row: 3, column: 23, timeFromStart: 76104, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.942
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 76105 }
+recorder.html:131:19
+23:13:17.943
+Object { row: 3, column: 22, timeFromStart: 76105, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.943
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 76106 }
+recorder.html:131:19
+23:13:17.944
+Object { row: 3, column: 21, timeFromStart: 76106, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.944
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 76107 }
+recorder.html:131:19
+23:13:17.945
+Object { row: 3, column: 20, timeFromStart: 76107, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.945
+Object { start: {…}, end: {…}, action: "insert", lines: (9) […], timeFromStart: 76108 }
+recorder.html:131:19
+23:13:17.946
+Object { row: 11, column: 29, timeFromStart: 76108, isCursorMovement: true }
+recorder.html:144:19
+23:13:17.946
+Object { isSelectionAction: true, timeFromStart: 76109, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:19.778
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 77941 }
+recorder.html:131:19
+23:13:19.779
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 77942 }
+recorder.html:131:19
+23:13:19.780
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 77942 }
+recorder.html:131:19
+23:13:19.780
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 77943 }
+recorder.html:131:19
+23:13:19.781
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 77944 }
+recorder.html:131:19
+23:13:19.781
+Object { isSelectionAction: true, timeFromStart: 77944, clearSelection: true }
+recorder.html:160:21
+23:13:19.782 clear selection recorder.html:161:21
+23:13:20.011
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78173 }
+recorder.html:131:19
+23:13:20.012
+Object { row: 11, column: 28, timeFromStart: 78174, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.012
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78174 }
+recorder.html:131:19
+23:13:20.013
+Object { row: 11, column: 27, timeFromStart: 78175, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.013
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78175 }
+recorder.html:131:19
+23:13:20.013
+Object { row: 11, column: 26, timeFromStart: 78176, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.014
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78176 }
+recorder.html:131:19
+23:13:20.014
+Object { row: 11, column: 25, timeFromStart: 78177, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.015
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78177 }
+recorder.html:131:19
+23:13:20.015
+Object { row: 11, column: 24, timeFromStart: 78177, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.015
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78178 }
+recorder.html:131:19
+23:13:20.016
+Object { row: 11, column: 23, timeFromStart: 78178, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.229
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78392 }
+recorder.html:131:19
+23:13:20.230
+Object { row: 11, column: 22, timeFromStart: 78393, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.231
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78393 }
+recorder.html:131:19
+23:13:20.231
+Object { row: 11, column: 21, timeFromStart: 78394, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.231
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78394 }
+recorder.html:131:19
+23:13:20.232
+Object { row: 11, column: 20, timeFromStart: 78394, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.232
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78395 }
+recorder.html:131:19
+23:13:20.232
+Object { row: 11, column: 19, timeFromStart: 78395, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.233
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78395 }
+recorder.html:131:19
+23:13:20.233
+Object { row: 11, column: 18, timeFromStart: 78395, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.376
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78539 }
+recorder.html:131:19
+23:13:20.377
+Object { row: 11, column: 17, timeFromStart: 78539, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.377
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78540 }
+recorder.html:131:19
+23:13:20.378
+Object { row: 11, column: 16, timeFromStart: 78540, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.378
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78540 }
+recorder.html:131:19
+23:13:20.378
+Object { row: 11, column: 15, timeFromStart: 78541, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.379
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78541 }
+recorder.html:131:19
+23:13:20.379
+Object { row: 11, column: 14, timeFromStart: 78542, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.379
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78542 }
+recorder.html:131:19
+23:13:20.380
+Object { row: 11, column: 13, timeFromStart: 78542, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.380
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78543 }
+recorder.html:131:19
+23:13:20.380
+Object { row: 11, column: 12, timeFromStart: 78543, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.381
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78543 }
+recorder.html:131:19
+23:13:20.381
+Object { row: 11, column: 11, timeFromStart: 78544, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.381
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78544 }
+recorder.html:131:19
+23:13:20.382
+Object { row: 11, column: 10, timeFromStart: 78545, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.382
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78545 }
+recorder.html:131:19
+23:13:20.382
+Object { row: 11, column: 9, timeFromStart: 78545, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.383
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78545 }
+recorder.html:131:19
+23:13:20.383
+Object { row: 11, column: 8, timeFromStart: 78546, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.834
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78996 }
+recorder.html:131:19
+23:13:20.835
+Object { row: 11, column: 7, timeFromStart: 78997, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.835
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78998 }
+recorder.html:131:19
+23:13:20.836
+Object { row: 11, column: 6, timeFromStart: 78998, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.836
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78998 }
+recorder.html:131:19
+23:13:20.837
+Object { row: 11, column: 5, timeFromStart: 78999, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.837
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 78999 }
+recorder.html:131:19
+23:13:20.837
+Object { row: 11, column: 4, timeFromStart: 79000, isCursorMovement: true }
+recorder.html:144:19
+23:13:20.838
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 79000 }
+recorder.html:131:19
+23:13:20.838
+Object { row: 11, column: 3, timeFromStart: 79001, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.211
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79373 }
+recorder.html:131:19
+23:13:21.211
+Object { row: 11, column: 4, timeFromStart: 79374, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.212
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79375 }
+recorder.html:131:19
+23:13:21.212
+Object { row: 11, column: 5, timeFromStart: 79375, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.213
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79375 }
+recorder.html:131:19
+23:13:21.213
+Object { row: 11, column: 6, timeFromStart: 79375, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.213
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79376 }
+recorder.html:131:19
+23:13:21.214
+Object { row: 11, column: 7, timeFromStart: 79376, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.214
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79377 }
+recorder.html:131:19
+23:13:21.215
+Object { row: 11, column: 8, timeFromStart: 79377, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.215
+Object { isSelectionAction: true, timeFromStart: 79378, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.362
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79525 }
+recorder.html:131:19
+23:13:21.363
+Object { row: 11, column: 9, timeFromStart: 79526, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.364
+Object { isSelectionAction: true, timeFromStart: 79526, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.364
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79527 }
+recorder.html:131:19
+23:13:21.365
+Object { row: 11, column: 10, timeFromStart: 79527, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.365
+Object { isSelectionAction: true, timeFromStart: 79528, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.365
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79528 }
+recorder.html:131:19
+23:13:21.366
+Object { row: 11, column: 11, timeFromStart: 79528, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.366
+Object { isSelectionAction: true, timeFromStart: 79528, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.367
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79529 }
+recorder.html:131:19
+23:13:21.367
+Object { row: 11, column: 12, timeFromStart: 79529, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.367
+Object { isSelectionAction: true, timeFromStart: 79530, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.368
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79530 }
+recorder.html:131:19
+23:13:21.368
+Object { row: 11, column: 13, timeFromStart: 79530, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.369
+Object { isSelectionAction: true, timeFromStart: 79531, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.369
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79532 }
+recorder.html:131:19
+23:13:21.369
+Object { row: 11, column: 14, timeFromStart: 79532, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.370
+Object { isSelectionAction: true, timeFromStart: 79533, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.370
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79533 }
+recorder.html:131:19
+23:13:21.370
+Object { row: 11, column: 15, timeFromStart: 79533, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.371
+Object { isSelectionAction: true, timeFromStart: 79533, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.371
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79533 }
+recorder.html:131:19
+23:13:21.371
+Object { row: 11, column: 16, timeFromStart: 79534, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.372
+Object { isSelectionAction: true, timeFromStart: 79534, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.372
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79534 }
+recorder.html:131:19
+23:13:21.373
+Object { row: 11, column: 17, timeFromStart: 79535, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.373
+Object { isSelectionAction: true, timeFromStart: 79535, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.373
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79536 }
+recorder.html:131:19
+23:13:21.374
+Object { row: 11, column: 18, timeFromStart: 79536, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.374
+Object { isSelectionAction: true, timeFromStart: 79536, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.374
+Object { isSelectionAction: true, timeFromStart: 79537, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.567
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79730 }
+recorder.html:131:19
+23:13:21.567
+Object { row: 11, column: 19, timeFromStart: 79730, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.568
+Object { isSelectionAction: true, timeFromStart: 79731, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.568
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79731 }
+recorder.html:131:19
+23:13:21.569
+Object { row: 11, column: 20, timeFromStart: 79732, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.569
+Object { isSelectionAction: true, timeFromStart: 79732, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.569
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79732 }
+recorder.html:131:19
+23:13:21.570
+Object { row: 11, column: 21, timeFromStart: 79732, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.570
+Object { isSelectionAction: true, timeFromStart: 79732, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.570
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79732 }
+recorder.html:131:19
+23:13:21.571
+Object { row: 11, column: 22, timeFromStart: 79733, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.571
+Object { isSelectionAction: true, timeFromStart: 79733, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.571
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79733 }
+recorder.html:131:19
+23:13:21.572
+Object { row: 11, column: 23, timeFromStart: 79734, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.572
+Object { isSelectionAction: true, timeFromStart: 79734, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.572
+Object { isSelectionAction: true, timeFromStart: 79735, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.699
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79862 }
+recorder.html:131:19
+23:13:21.700
+Object { row: 11, column: 24, timeFromStart: 79863, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.700
+Object { isSelectionAction: true, timeFromStart: 79863, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.701
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79863 }
+recorder.html:131:19
+23:13:21.701
+Object { row: 11, column: 25, timeFromStart: 79863, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.701
+Object { isSelectionAction: true, timeFromStart: 79863, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.702
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79864 }
+recorder.html:131:19
+23:13:21.702
+Object { row: 11, column: 26, timeFromStart: 79864, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.702
+Object { isSelectionAction: true, timeFromStart: 79865, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.703
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79865 }
+recorder.html:131:19
+23:13:21.703
+Object { row: 11, column: 27, timeFromStart: 79865, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.703
+Object { isSelectionAction: true, timeFromStart: 79866, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.704
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79866 }
+recorder.html:131:19
+23:13:21.704
+Object { row: 11, column: 28, timeFromStart: 79866, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.704
+Object { isSelectionAction: true, timeFromStart: 79867, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.705
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 79867 }
+recorder.html:131:19
+23:13:21.705
+Object { row: 11, column: 29, timeFromStart: 79867, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.705
+Object { isSelectionAction: true, timeFromStart: 79867, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.706
+Object { isSelectionAction: true, timeFromStart: 79869, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.857
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80020 }
+recorder.html:131:19
+23:13:21.858
+Object { row: 11, column: 30, timeFromStart: 80021, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.859
+Object { isSelectionAction: true, timeFromStart: 80021, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.859
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80022 }
+recorder.html:131:19
+23:13:21.859
+Object { row: 11, column: 31, timeFromStart: 80022, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.860
+Object { isSelectionAction: true, timeFromStart: 80022, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.860
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80023 }
+recorder.html:131:19
+23:13:21.860
+Object { row: 11, column: 32, timeFromStart: 80023, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.861
+Object { isSelectionAction: true, timeFromStart: 80023, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.861
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80024 }
+recorder.html:131:19
+23:13:21.862
+Object { row: 11, column: 33, timeFromStart: 80024, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.862
+Object { isSelectionAction: true, timeFromStart: 80025, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.862
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80025 }
+recorder.html:131:19
+23:13:21.863
+Object { row: 11, column: 34, timeFromStart: 80025, isCursorMovement: true }
+recorder.html:144:19
+23:13:21.863
+Object { isSelectionAction: true, timeFromStart: 80026, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:21.863
+Object { isSelectionAction: true, timeFromStart: 80026, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.026
+Object { start: {…}, end: {…}, action: "remove", lines: (9) […], timeFromStart: 80189 }
+recorder.html:131:19
+23:13:22.027
+Object { row: 3, column: 25, timeFromStart: 80190, isCursorMovement: true }
+recorder.html:144:19
+23:13:22.027
+Object { isSelectionAction: true, timeFromStart: 80190, range: {…}, isBackwards: true }
+recorder.html:167:19
+23:13:22.028
+Object { isSelectionAction: true, timeFromStart: 80191, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.028
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80191 }
+recorder.html:131:19
+23:13:22.029
+Object { row: 3, column: 26, timeFromStart: 80191, isCursorMovement: true }
+recorder.html:144:19
+23:13:22.029
+Object { isSelectionAction: true, timeFromStart: 80191, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.029
+Object { isSelectionAction: true, timeFromStart: 80191, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.030
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80192 }
+recorder.html:131:19
+23:13:22.030
+Object { row: 3, column: 27, timeFromStart: 80192, isCursorMovement: true }
+recorder.html:144:19
+23:13:22.030
+Object { isSelectionAction: true, timeFromStart: 80192, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.031
+Object { isSelectionAction: true, timeFromStart: 80193, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.031
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80193 }
+recorder.html:131:19
+23:13:22.031
+Object { row: 3, column: 28, timeFromStart: 80193, isCursorMovement: true }
+recorder.html:144:19
+23:13:22.032
+Object { isSelectionAction: true, timeFromStart: 80194, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.032
+Object { isSelectionAction: true, timeFromStart: 80194, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.032
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80194 }
+recorder.html:131:19
+23:13:22.033
+Object { row: 3, column: 29, timeFromStart: 80196, isCursorMovement: true }
+recorder.html:144:19
+23:13:22.033
+Object { isSelectionAction: true, timeFromStart: 80196, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.033
+Object { isSelectionAction: true, timeFromStart: 80196, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.034
+Object { start: {…}, end: {…}, action: "insert", lines: (1) […], timeFromStart: 80196 }
+recorder.html:131:19
+23:13:22.034
+Object { row: 3, column: 30, timeFromStart: 80197, isCursorMovement: true }
+recorder.html:144:19
+23:13:22.034
+Object { isSelectionAction: true, timeFromStart: 80197, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.035
+Object { isSelectionAction: true, timeFromStart: 80197, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:22.035
+Object { row: 3, column: 25, timeFromStart: 80198, isCursorMovement: true }
+recorder.html:144:19
+23:13:22.035
+Object { isSelectionAction: true, timeFromStart: 80198, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:23.594
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 81757 }
+recorder.html:131:19
+23:13:23.595
+Object { row: 3, column: 24, timeFromStart: 81757, isCursorMovement: true }
+recorder.html:144:19
+23:13:23.595
+Object { isSelectionAction: true, timeFromStart: 81757, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:23.596
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 81758 }
+recorder.html:131:19
+23:13:23.596
+Object { row: 3, column: 23, timeFromStart: 81758, isCursorMovement: true }
+recorder.html:144:19
+23:13:23.597
+Object { isSelectionAction: true, timeFromStart: 81760, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:23.597
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 81760 }
+recorder.html:131:19
+23:13:23.597
+Object { row: 3, column: 22, timeFromStart: 81760, isCursorMovement: true }
+recorder.html:144:19
+23:13:23.598
+Object { isSelectionAction: true, timeFromStart: 81761, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:23.598
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 81761 }
+recorder.html:131:19
+23:13:23.599
+Object { row: 3, column: 21, timeFromStart: 81761, isCursorMovement: true }
+recorder.html:144:19
+23:13:23.599
+Object { isSelectionAction: true, timeFromStart: 81762, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:23.599
+Object { start: {…}, end: {…}, action: "remove", lines: (1) […], timeFromStart: 81762 }
+recorder.html:131:19
+23:13:23.600
+Object { row: 3, column: 20, timeFromStart: 81763, isCursorMovement: true }
+recorder.html:144:19
+23:13:23.600
+Object { isSelectionAction: true, timeFromStart: 81763, clearSelection: true }
+recorder.html:160:21
+23:13:23.600 clear selection recorder.html:161:21
+23:13:23.600
+Object { start: {…}, end: {…}, action: "insert", lines: (9) […], timeFromStart: 81763 }
+recorder.html:131:19
+23:13:23.601
+Object { row: 11, column: 29, timeFromStart: 81763, isCursorMovement: true }
+recorder.html:144:19
+23:13:23.601
+Object { isSelectionAction: true, timeFromStart: 81763, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:23.601
+Object { isSelectionAction: true, timeFromStart: 81764, clearSelection: true }
+recorder.html:160:21
+23:13:23.602 clear selection recorder.html:161:21
+23:13:23.602
+Object { isSelectionAction: true, timeFromStart: 81764, range: {…}, isBackwards: false }
+recorder.html:167:19
+23:13:24.353
+Object { isSelectionAction: true, timeFromStart: 82516, clearSelection: true }
+recorder.html:160:21
+23:13:24.354 clear selection recorder.html:161:21

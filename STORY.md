@@ -4558,3 +4558,167 @@ The delta which occurs after the largest diff is -  { row: 10, column: 18, timeF
 
 It's fun to debug and do some sort of autopsy report of an issue and debug it
 with data
+
+Making the debug script a bit generic for using it in both similar scenarios
+and their recording file to get more data
+
+```bash
+$ node ./issues/scripts-for-debugging/debug-issue-1-and-2.js ./issues/scenario-1-selection-issue/0f0a59dcf3ea86f39762b2d7f6353a6e1c3854a3.textrec
+```
+
+```
+$ node ./issues/scripts-for-debugging/debug-issue-1-and-2.js ./issues/scenario-2-selection/0705a39ad2a0706a5604e89d68e00f5d39761be9.textrec
+The deltas whose timeFromStart decreases compared to previous delta
+{ row: 16, column: 67, timeFromStart: 170003, isCursorMovement: true } 20529
+{ row: 16, column: 68, timeFromStart: 170092, isCursorMovement: true } 25304
+{ row: 16, column: 69, timeFromStart: 170179, isCursorMovement: true } 25218
+{ row: 16, column: 70, timeFromStart: 170339, isCursorMovement: true } 25058
+{ row: 16, column: 71, timeFromStart: 170420, isCursorMovement: true } 24977
+{ row: 16, column: 72, timeFromStart: 170579, isCursorMovement: true } 24818
+{ row: 16, column: 73, timeFromStart: 170612, isCursorMovement: true } 24785
+{ row: 6, column: 16, timeFromStart: 182179, isCursorMovement: true } 9609
+{ row: 16, column: 68, timeFromStart: 190893, isCursorMovement: true } 4503
+{ row: 16, column: 69, timeFromStart: 190893, isCursorMovement: true } 4504
+{ row: 16, column: 70, timeFromStart: 190893, isCursorMovement: true } 4504
+{ row: 16, column: 71, timeFromStart: 190893, isCursorMovement: true } 4504
+{ row: 16, column: 72, timeFromStart: 190893, isCursorMovement: true } 4504
+{ row: 16, column: 73, timeFromStart: 190893, isCursorMovement: true } 4504
+The largest diff between timeFromStart of two deltas is -  25304
+The delta which occurs after the largest diff is -  { row: 16, column: 68, timeFromStart: 170092, isCursorMovement: true }
+```
+
+We do seem to have a magic number in scenario 2 too `190893`
+
+I'm still wondering what might have gone wrong. Hmm. Also, while reading the
+code I noticed one bug
+
+```javascript
+recordingEditor.session.selection.on("changeSelection", function (e) {
+  let currentTime = Date.now();
+  let diff = currentTime - startTime;
+  const selection = recordingEditor.session.selection;
+
+  if (recording) {
+    delta = {
+      isSelectionAction: true,
+      timeFromStart: diff,
+    };
+    if (selection.isEmpty()) {
+      delta.clearSelection = true;
+      return;
+    }
+    delta.range = selection.getRange();
+    delta.isBackwards = selection.isBackwards();
+    deltas.push(delta);
+    // console.log(delta);
+  }
+});
+```
+
+Look at the line
+
+```javascript
+if (selection.isEmpty()) {
+  delta.clearSelection = true;
+  return;
+}
+```
+
+I miss to push `delta` to the list of `deltas`. Hmm.
+
+I just did one more recording. Interesting, that has similar data. It's easy to
+reproduce. That's good I guess.
+
+`selection-issue-sample-3.textrec`
+
+```bash
+$ node ./issues/scripts-for-debugging/debug-issue-1-and-2.js ./issues/selection-issue-sample-3.textrec
+The deltas whose timeFromStart decreases compared to previous delta
+{ row: 11, column: 4, timeFromStart: 36269, isCursorMovement: true } 43104
+{ row: 11, column: 5, timeFromStart: 36421, isCursorMovement: true } 42954
+{ row: 11, column: 6, timeFromStart: 36465, isCursorMovement: true } 42910
+{ row: 11, column: 7, timeFromStart: 36564, isCursorMovement: true } 42812
+{ row: 11, column: 8, timeFromStart: 36671, isCursorMovement: true } 42706
+{ row: 11, column: 9, timeFromStart: 36764, isCursorMovement: true } 42761
+{ row: 11, column: 10, timeFromStart: 37262, isCursorMovement: true } 42265
+{ row: 11, column: 11, timeFromStart: 37285, isCursorMovement: true } 42243
+{ row: 11, column: 12, timeFromStart: 37397, isCursorMovement: true } 42132
+{ row: 11, column: 13, timeFromStart: 37457, isCursorMovement: true } 42073
+{ row: 11, column: 14, timeFromStart: 37909, isCursorMovement: true } 41623
+{ row: 11, column: 15, timeFromStart: 38088, isCursorMovement: true } 41445
+{ row: 11, column: 16, timeFromStart: 38201, isCursorMovement: true } 41332
+{ row: 11, column: 17, timeFromStart: 38405, isCursorMovement: true } 41129
+{ row: 11, column: 18, timeFromStart: 38437, isCursorMovement: true } 41099
+{ row: 11, column: 19, timeFromStart: 38558, isCursorMovement: true } 41172
+{ row: 11, column: 20, timeFromStart: 38694, isCursorMovement: true } 41037
+{ row: 11, column: 21, timeFromStart: 38766, isCursorMovement: true } 40966
+{ row: 11, column: 22, timeFromStart: 38803, isCursorMovement: true } 40929
+{ row: 11, column: 23, timeFromStart: 38904, isCursorMovement: true } 40829
+{ row: 11, column: 24, timeFromStart: 38998, isCursorMovement: true } 40864
+{ row: 11, column: 25, timeFromStart: 39158, isCursorMovement: true } 40705
+{ row: 11, column: 26, timeFromStart: 39269, isCursorMovement: true } 40595
+{ row: 11, column: 27, timeFromStart: 39333, isCursorMovement: true } 40532
+{ row: 11, column: 28, timeFromStart: 39420, isCursorMovement: true } 40446
+{ row: 11, column: 29, timeFromStart: 39557, isCursorMovement: true } 40310
+{ row: 11, column: 30, timeFromStart: 39667, isCursorMovement: true } 40353
+{ row: 11, column: 31, timeFromStart: 39881, isCursorMovement: true } 40141
+{ row: 11, column: 32, timeFromStart: 39977, isCursorMovement: true } 40046
+{ row: 11, column: 33, timeFromStart: 40078, isCursorMovement: true } 39946
+{ row: 11, column: 34, timeFromStart: 40702, isCursorMovement: true } 39323
+{ row: 3, column: 21, timeFromStart: 75031, isCursorMovement: true } 5160
+{ row: 3, column: 22, timeFromStart: 75231, isCursorMovement: true } 4961
+{ row: 3, column: 23, timeFromStart: 75325, isCursorMovement: true } 4868
+{ row: 3, column: 24, timeFromStart: 75484, isCursorMovement: true } 4710
+{ row: 3, column: 25, timeFromStart: 75621, isCursorMovement: true } 4575
+The largest diff between timeFromStart of two deltas is -  43104
+The delta which occurs after the largest diff is -  { row: 11, column: 4, timeFromStart: 36269, isCursorMovement: true }
+```
+
+I just got the console log exported from the browser
+
+`console-export-selection-issue-sample-3.txt` for the above issue.
+
+I noticed a peculiar thing.
+
+In the console log, there are two deltas with the same `timeFromStart` of
+`36269` but in the recording file there's only one!
+
+I didn't get why this is the case. Hmm. Also, the console log shows that the
+log came at one point and the logs previous and after have some data. But the
+same `36269` in the recording file has different previous deltas and after
+deltas. It's weird.
+
+But yeah, it makes sense to some extent. As I was confused as to how an event
+thought occurred in the past come up later in the deltas array. I was initially
+worried that maybe the data is wrong because of some calculation mistake in
+diff calculation. It wasn't. The console logs show it. But the deltas have the
+data differently. Hmm
+
+So, the actual deltas are all right with right data. At least that's how it
+looks like. But the ordering of deltas in the recording file is wrong for some
+reason, also looks like some might even be missing in the recording file. For
+example only one delta with `36269` `timeFromStart` is present in the
+recording file instead of 2 as in the console log.
+
+So, I need to check how array `push` method works and if it has concurrency
+issues :)
+
+https://duckduckgo.com/?t=ffab&q=javascript+array+push+is+thread+safe%3F&ia=web
+
+https://duckduckgo.com/?t=ffab&q=javascript+array+push+supports+concurrency%3F&ia=web
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+
+https://stackoverflow.com/questions/555191/javascript-semaphore-test-and-set-lock
+
+https://stackoverflow.com/questions/12314927/jquery-array-push-not-working-properly-inside-ajax-success?noredirect=1&lq=1
+
+https://stackoverflow.com/questions/555191/javascript-semaphore-test-and-set-lock
+
+Something about concurrency. Something I don't understand I think.
+
+https://duckduckgo.com/?q=javascript%3A+concurrency+issues+when+using+array.push&t=ffab&ia=web
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
+
+

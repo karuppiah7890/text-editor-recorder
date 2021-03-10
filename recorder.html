@@ -128,7 +128,8 @@
           delete delta.id;
           delta.timeFromStart = diff;
           deltas.push(delta);
-          // console.log(delta);
+          // TODO: Remove log
+          console.log(delta);
         }
       });
 
@@ -141,7 +142,8 @@
           delta.timeFromStart = diff;
           delta.isCursorMovement = true;
           deltas.push(delta);
-          // console.log(delta);
+          // TODO: Remove log
+          console.log(delta);
         }
       });
 
@@ -157,12 +159,17 @@
           };
           if (selection.isEmpty()) {
             delta.clearSelection = true;
+          // TODO: Remove log
+            console.log(delta);
+          // TODO: Remove log
+            console.log("clear selection");
             return;
           }
           delta.range = selection.getRange();
           delta.isBackwards = selection.isBackwards();
           deltas.push(delta);
-          // console.log(delta);
+          // TODO: Remove log
+          console.log(delta);
         }
       });
     </script>

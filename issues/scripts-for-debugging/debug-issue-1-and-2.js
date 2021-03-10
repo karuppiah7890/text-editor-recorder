@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const fileContent = fs.readFileSync(`${__dirname}/0f0a59dcf3ea86f39762b2d7f6353a6e1c3854a3.textrec`, 'utf8')
+const fileContent = fs.readFileSync(process.argv[2], 'utf8')
 
 const deltas = JSON.parse(fileContent)
 
