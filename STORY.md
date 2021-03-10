@@ -4555,3 +4555,6 @@ The deltas whose timeFromStart decreases compared to previous delta
 The largest diff between timeFromStart of two deltas is -  46525
 The delta which occurs after the largest diff is -  { row: 10, column: 18, timeFromStart: 65012, isCursorMovement: true }
 ```
+
+It's fun to debug and do some sort of autopsy report of an issue and debug it
+with data
