@@ -7,6 +7,12 @@ const deltas = JSON.parse(fileContent)
 // console.log(deltas);
 
 console.log("The deltas whose timeFromStart decreases compared to previous delta");
+let maxDiffForDecreasingDeltas = 0;
+let deltaWithMaxDiffForDecreasingDeltas = {}
+
+let maxDiffForIncreasingDeltas = 0;
+let deltaWithMaxDiffForIncreasingDeltas = {}
+
 deltas.forEach((delta, index) => {
     if (index == 0) {
         return
@@ -16,25 +22,26 @@ deltas.forEach((delta, index) => {
 
     if (delta.timeFromStart < previousDelta.timeFromStart) {
         console.log(delta, previousDelta.timeFromStart - delta.timeFromStart);
+
+        const diff = previousDelta.timeFromStart - delta.timeFromStart
+        if (diff > maxDiffForDecreasingDeltas) {
+            deltaWithMaxDiffForDecreasingDeltas = delta
+            maxDiffForDecreasingDeltas = diff
+        }
+    } else {
+        const diff = delta.timeFromStart - previousDelta.timeFromStart
+        if (diff > maxDiffForIncreasingDeltas) {
+            deltaWithMaxDiffForIncreasingDeltas = delta
+            maxDiffForIncreasingDeltas = diff
+        }
     }
 });
 
-let deltaWithMaxDiff = {}
-let largestDiff = deltas.reduce((maxDiff, delta, index,) => {
-    if (index == 0) {
-        return maxDiff
-    }
+console.log("\nFor decreasing order of deltas -");
+console.log("The largest diff between timeFromStart of two deltas is - ", maxDiffForDecreasingDeltas);
+console.log("The delta which occurs after the largest diff is - ", deltaWithMaxDiffForDecreasingDeltas);
 
-    const previousDelta = deltas[index - 1]
+console.log("\nFor increasing order of deltas -");
+console.log("The largest diff between timeFromStart of two deltas is - ", maxDiffForIncreasingDeltas);
+console.log("The delta which occurs after the largest diff is - ", deltaWithMaxDiffForIncreasingDeltas);
 
-    if (delta.timeFromStart < previousDelta.timeFromStart) {
-        diff = previousDelta.timeFromStart - delta.timeFromStart
-        if (diff > maxDiff) {
-            deltaWithMaxDiff = delta
-            maxDiff = diff
-        }
-    }
-    return maxDiff
-}, 0);
-console.log("The largest diff between timeFromStart of two deltas is - ", largestDiff);
-console.log("The delta which occurs after the largest diff is - ", deltaWithMaxDiff);

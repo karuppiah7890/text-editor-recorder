@@ -4732,3 +4732,47 @@ Next Steps:
 [Tasks]
 
 - Fix clear selection delta not being pushed to the deltas array
+
+---
+
+On reading how JavaScript runtime works
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
+
+It looks like there's no possibility of concurrency issues. Surely no loss of
+data issues. Every event that was raised would be handled and only one event
+handler function will run at any point in time so ideally there shouldn't be
+any issues modifying the array. Hmm.
+
+---
+
+Some more thoughts from my notes app -
+
+One of the ways to solve the problem of wrong order deltas in the deltas array 
+is to simply sort it. But it's gonna take a lot of time for big arrays. 
+Anyways, but it's possible. But maybe there's a better way. Gotta check.
+
+Also, one pressing problem is, I also noticed loss of data in the array 
+compared to the complete data in console based on two delta values out of which 
+one was missing in recording file but present in the console. Idk, gotta verify 
+if there's loss of data.
+
+Maybe I need to record the number of deltas and then check it in console and 
+also in recording file. Count the deltas somehow. Hmm. As simply count on final 
+array is gonna be the same value as recording file value. Hmm
+
+Also, if sorting is a solution, then I can use different arrays to store 
+different events and then merge them and sort them ;) That is if concurrency is 
+the issue and multiple events especially different events is causing issues in 
+storing data. But what if I use multiple arrays and still notice concurrency 
+issues because of concurrency in same kind of event but it occurring multiple 
+times
+
+---
+
+I was also thinking about how media files store data. Timed data. Files like
+audio files, video files. Hmm.
+
+---
+
+
