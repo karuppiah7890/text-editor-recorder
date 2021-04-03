@@ -4796,3 +4796,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ---
 
 I'm going to add the debug logic in the recorder code before serializing the array into a JSON string to see if there are any issues there! :)
+
+Okay, looks like based on the debug logic, we have issues even before the JSON
+serialization
