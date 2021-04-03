@@ -4775,4 +4775,24 @@ audio files, video files. Hmm.
 
 ---
 
+Validate your assumptions about the whole thing.
 
+What are some assumptions or puzzles?
+
+One puzzle is - how is the time from start not always increasing.
+
+One assumption is - JSON serialization is properly happening, meaning, given the order of objects in an array like 1, 2, 3, 4, the serialized JSON array would have the same order. This assumption leads to the puzzle of how can array push go wrong. Especially when the time from start is right on the object, which shows it happened a long time ago, but it comes waaaay later in the array. Did the push take some time? Is that why? How come push alone was delayed as part of the async function? But time calculation etc happened at the right time?
+
+Another assumption: there is no loss of data in the file recording. But when doing console logging it felt like there might be loss of data or some discrepancy between reality and the recording
+
+Next steps - check the increasing order of data in the array before converting to JSON. Okay? Hmm
+
+---
+
+https://duckduckgo.com/?t=ffab&q=json.stringify+maintains+array+order+in+json+string%3F&ia=web
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+
+---
+
+I'm going to add the debug logic in the recorder code before serializing the array into a JSON string to see if there are any issues there! :)
