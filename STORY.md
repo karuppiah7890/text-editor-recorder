@@ -4799,3 +4799,9 @@ I'm going to add the debug logic in the recorder code before serializing the arr
 
 Okay, looks like based on the debug logic, we have issues even before the JSON
 serialization
+
+---
+
+I'm actually wondering if this issue is only happening when the feature selection exists. Or when the feature mouse movement exists. Or does the issue exist even in the basic version of the program?
+
+Hmm
