@@ -9,7 +9,7 @@ type in a web based text editor and also play it back later.
 
 ## Demos
 
-Website - https://karuppiah7890.github.io/text-editor-recorder
+Website - [https://karuppiah7890.github.io/text-editor-recorder](https://karuppiah7890.github.io/text-editor-recorder)
 
 Recorder - [https://karuppiah7890.github.io/text-editor-recorder/recorder.html](https://karuppiah7890.github.io/text-editor-recorder/recorder.html) or [https://karuppiah7890.github.io/text-editor-recorder/recorder](https://karuppiah7890.github.io/text-editor-recorder/recorder)
 
@@ -19,10 +19,10 @@ I have recorded demos of various versions of the tool. The top most is the
 latest, and the bottom most is the oldest :)
 
 - Text Editor Recorder Player: Demo 2 - Cursor Movement Recording and Playing
-  https://www.youtube.com/watch?v=k-i6dwH6y70
+  [https://www.youtube.com/watch?v=k-i6dwH6y70](https://www.youtube.com/watch?v=k-i6dwH6y70)
 
 - Text Editor Recorder Player: Demo 1
-  https://www.youtube.com/watch?v=t17uJKb-rho
+  [https://www.youtube.com/watch?v=t17uJKb-rho](https://www.youtube.com/watch?v=t17uJKb-rho)
 
 ## Applications
 
@@ -40,22 +40,22 @@ I have personally seen a few applications for this kind of tool.
 
 This tool has been inspired by some existing things out there.
 
-- https://asciinema.org/ - Open Source Tool for recording and playing terminal
+- [https://asciinema.org](https://asciinema.org) - Open Source Tool for recording and playing terminal
   sessions. I learned some algorithms for playing recording from asciinema
   Python code.
-- https://scrimba.com/ - Their courses show instructor typing code in actual
+- [https://scrimba.com](https://scrimba.com) - Their courses show instructor typing code in actual
   editor and user can copy the code or even modify it in the same editor and
   save it separately. The tutorial can be fast forwarded and one can go back
   too, and pause too. There's also the instructor voice in the background as
   audio. It has a pretty cool UI :)
-  Example - https://scrimba.com/scrim/cV7M2uR?pl=p7P5Hd
-- https://www.openreplay.com/ - Recording and playing browser usage. Browser
+  Example - [https://scrimba.com/scrim/cV7M2uR?pl=p7P5Hd](https://scrimba.com/scrim/cV7M2uR?pl=p7P5Hd)
+- [https://www.openreplay.com](https://www.openreplay.com) - Recording and playing browser usage. Browser
   Sessions. Also, streaming browser usage live
-- https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour -
+- [https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) -
   Extension in Visual Studio Code to do Code Walkthroughs and Record it and
   Play it
-  Extra links: https://github.com/microsoft/codetour , https://techcommunity.microsoft.com/blog/educatordeveloperblog/codetour-vscode-extension-allows-you-to-produce-interactive-guides-assessments-a/1274297
-- https://tmate.io/ - Instant terminal sharing
+  Extra links: [https://github.com/microsoft/codetour](https://github.com/microsoft/codetour) , [https://techcommunity.microsoft.com/blog/educatordeveloperblog/codetour-vscode-extension-allows-you-to-produce-interactive-guides-assessments-a/1274297](https://techcommunity.microsoft.com/blog/educatordeveloperblog/codetour-vscode-extension-allows-you-to-produce-interactive-guides-assessments-a/1274297)
+- [https://tmate.io](https://tmate.io) - Instant terminal sharing
   
 ## Future Ideas
 
