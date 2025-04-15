@@ -53,8 +53,8 @@ This tool has been inspired by some existing things out there.
   Sessions. Also, streaming browser usage live
 - [https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) -
   Extension in Visual Studio Code to do Code Walkthroughs and Record it and
-  Play it
-  Extra links: [https://github.com/microsoft/codetour](https://github.com/microsoft/codetour) , [https://techcommunity.microsoft.com/blog/educatordeveloperblog/codetour-vscode-extension-allows-you-to-produce-interactive-guides-assessments-a/1274297](https://techcommunity.microsoft.com/blog/educatordeveloperblog/codetour-vscode-extension-allows-you-to-produce-interactive-guides-assessments-a/1274297)
+  Play it. Extra links: [https://github.com/microsoft/codetour](https://github.com/microsoft/codetour),
+  [https://techcommunity.microsoft.com/blog/educatordeveloperblog/codetour-vscode-extension-allows-you-to-produce-interactive-guides-assessments-a/1274297](https://techcommunity.microsoft.com/blog/educatordeveloperblog/codetour-vscode-extension-allows-you-to-produce-interactive-guides-assessments-a/1274297)
 - [https://tmate.io](https://tmate.io) - Instant terminal sharing
   
 ## Future Ideas
