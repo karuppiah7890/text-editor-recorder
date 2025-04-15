@@ -39,3 +39,36 @@ This tool has been inspired by some existing things out there.
   too, and pause too. There's also the instructor voice in the background as
   audio. It has a pretty cool UI :)
   Example - https://scrimba.com/scrim/cV7M2uR?pl=p7P5Hd
+- https://www.openreplay.com/ - Recording and playing browser usage. Browser
+  Sessions. Also, streaming browser usage live
+- https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour -
+  Extension in Visual Studio Code to do Code Walkthroughs and Record it and
+  Play it
+  Extra links: https://github.com/microsoft/codetour , https://techcommunity.microsoft.com/blog/educatordeveloperblog/codetour-vscode-extension-allows-you-to-produce-interactive-guides-assessments-a/1274297
+- https://tmate.io/ - Instant terminal sharing
+  
+## Future Ideas
+
+- Extension in any software to do recording, playing, streaming - of the usage of
+  the software. Example softwares where usage can be tracked, recorded, played,
+  streamed etc - Browser, Text Editor, Terminal. Can also create separate tool
+  or software to do the recording. This can be called as Custom Recording of the
+  software, instead of using video recording, screen recording tools
+
+  Examples:
+  - Visual Studio Code Extensions for recording, playing, streaming
+    the text editor usage.
+  - vim Extensions for recording, playing, streaming
+    the text editor usage.
+  - emacs Extensions for recording, playing, streaming
+    the text editor usage.
+  - Any Code Editor Extensions/plugins for recording, playing, streaming
+    the text editor usage.
+  - Chrome Extensions for recording, playing, streaming
+    the browser usage.
+  - Firefox Extensions for recording, playing, streaming
+    the browser usage.
+  - Any Browser Extensions/Plugins for recording, playing, streaming
+    the browser usage.
+  - Any Software Extensions/Plugins for recording, playing, streaming
+    the browser usage.  
