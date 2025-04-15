@@ -3,7 +3,17 @@
 This is a completely offline web application which helps you record when you
 type in a web based text editor and also play it back later.
 
+[Record - Click here to record and download the recording](https://karuppiah7890.github.io/text-editor-recorder/recorder.html)
+
+[Play - Click here to play the downloaded recording](https://karuppiah7890.github.io/text-editor-player/player.html)
+
 ## Demos
+
+Website - https://karuppiah7890.github.io/text-editor-recorder
+
+Recorder - https://karuppiah7890.github.io/text-editor-recorder/recorder.html or https://karuppiah7890.github.io/text-editor-recorder/recorder
+
+Player - https://karuppiah7890.github.io/text-editor-player/player.html or https://karuppiah7890.github.io/text-editor-recorder/player
 
 I have recorded demos of various versions of the tool. The top most is the
 latest, and the bottom most is the oldest :)
